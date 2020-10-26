@@ -7,17 +7,21 @@ const ComicsBody = () => {
   let [msg, setMsg] = useState('')
   let [filterDate, setFilterDate] = useState('nextWeek')
 
-  const API_BASE = 'http://gateway.marvel.com/v1/public'
+  const API_BASE = 'https://gateway.marvel.com/v1/public'
   const MARVEL_API_PUBLIC = 'a2247180c2419763e9dd936e4d1f0aab'
 
   function getComics() {
     setMsg('')
+
     const fetchURI = `${API_BASE}/comics?dateDescriptor=${filterDate}&apikey=${MARVEL_API_PUBLIC}&limit=100`
-    fetch(fetchURI, {
-      "method": "GET",
-      "referrer": "developer.marvel.com",  // required for API responses
-      "referrerPolicy": "no-referrer-when-downgrade"
-    })
+    const requestConfig = window.location.hostname === 'localhost'
+      ? {
+          "method": "GET",
+          "referrer": "developer.marvel.com",  // required for API responses
+          "referrerPolicy": "no-referrer-when-downgrade"
+        }
+      : { "method": "GET" }
+    fetch(fetchURI, requestConfig)
     .then(response => response.json())
     .then(response => {
       if (response.data.results.length) {
