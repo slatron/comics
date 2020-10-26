@@ -79,16 +79,17 @@ module.exports = (env, argv) => {
     // Split unchanging vendor files into seprate bundle
     optimization: {
       minimize: argv.mode === 'production' ? true : false,
-       splitChunks: {
-          cacheGroups: {
-             vendor: {
-                test: /node_modules/,
-                chunks: 'initial',
-                name: 'vendor',
-                enforce: true
-             }
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /node_modules/,
+            chunks: 'initial',
+            name: 'vendor',
+            enforce: true
           }
-       }
+        }
+      }
     }
+
   } // End webpack.config object returned
 }
