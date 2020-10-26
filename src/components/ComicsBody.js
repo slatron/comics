@@ -5,14 +5,14 @@ import ComicsList from 'components/ComicsList/ComicsList'
 const ComicsBody = () => {
   let [comicResults, setComicResults] = useState([])
   let [msg, setMsg] = useState('')
+  let [filterDate, setFilterDate] = useState('nextWeek')
 
   const API_BASE = 'http://gateway.marvel.com/v1/public'
   const MARVEL_API_PUBLIC = 'a2247180c2419763e9dd936e4d1f0aab'
 
   function getComics() {
     setMsg('')
-    const fetchURI = `${API_BASE}/comics?dateDescriptor=nextWeek&apikey=${MARVEL_API_PUBLIC}`
-    // const fetchURI = `${API_BASE}/characters?apikey=${MARVEL_API_PUBLIC}`
+    const fetchURI = `${API_BASE}/comics?dateDescriptor=${filterDate}&apikey=${MARVEL_API_PUBLIC}&limit=100`
     fetch(fetchURI, {
       "method": "GET",
       "referrer": "developer.marvel.com",  // required for API responses
@@ -43,6 +43,21 @@ const ComicsBody = () => {
     }
   }
 
+  function filterTradePaperbacks() {
+    if (comicResults.length) {
+      const filteredComics = comicResults.filter(comic => {
+        return comic.title.indexOf('(Trade Paperback)') !== -1
+      }).filter(comic => {
+        return comic.title.indexOf('Star Wars') === -1
+      })
+      setComicResults(filteredComics)
+    }
+  }
+
+  function handleFilterDateChange(e) {
+    setFilterDate(e.target.value)
+  }
+
   return (
     <div>
       <h2>Comics</h2>
@@ -50,9 +65,24 @@ const ComicsBody = () => {
         ? <p>{msg}</p>
         : null
       }
-      <button onClick={getComics}>Get Next Weeks Comics</button>
+
+      <label>
+        Select a date filter
+        <select value={filterDate} onChange={handleFilterDateChange}>
+          <option value="lastWeek">Last Week</option>
+          <option value="thisWeek">This Week</option>
+          <option value="nextWeek">Next Week</option>
+          <option value="thisMonth">This Month</option>
+        </select>
+      </label>
+
+      <button onClick={getComics}>Show Comics</button>
       {comicResults.length
         ? <button onClick={filterVariants}>Display Only Variants</button>
+        : null
+      }
+      {comicResults.length
+        ? <button onClick={filterTradePaperbacks}>Display Only Trade Paperbacks</button>
         : null
       }
       <ComicsList comics={comicResults} />
