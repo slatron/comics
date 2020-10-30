@@ -10,7 +10,7 @@ const ComicsList = (props) => {
 
   const comicsListDOM = props.comics ?
     props.comics.map((comic) =>
-      <li>
+      <li key={comic.id.toString()}>
         <img src={generateImgUrl(comic)} alt={comic.title} />
         {comic.title}
       </li>

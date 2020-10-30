@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Print styles.
+   Based on HTML5-bolerplate print styles
+   ========================================================================== */
+.print-records-page {
+  margin: $base-unit;
+}
+
+.print-link a {
+  text-decoration: none;
+}
+
+@media print {
+  *,
+  *:before,
+  *:after,
+  p:first-letter,
+  div:first-letter,
+  blockquote:first-letter,
+  li:first-letter,
+  p:first-line,
+  div:first-line,
+  blockquote:first-line,
+  li:first-line {
+    background-color: transparent;
+    color: #000 !important; /* Black prints faster:
+                               http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group;
+  }
+
+  h5.panel-heading,
+  thead tr {
+    font-family: sans-serif; // liberation bold prints poor on Firefox
+    font-weight: bold;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .noprint {
+    display: none !important;
+  }
+  .print-records-page {
+    margin: 0;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  .grid-padded {
+    margin: 0;
+  }
+
+  .grid.grid-main .grid-col-even {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .form-row > label,
+  .form-row > div {
+    display: inline-block; // display single-record panels without flexbox
+  }
+
+  .but-row,
+  .but,
+  .but-selection,
+  .but-cancel {
+    display: none;
+  }
+
+  // Selectively turn off some Icons
+  .icon-arrows-left,
+  .icon-arrows-right,
+  .icon-rewind,
+  .icon-play,
+  .icon-warning {
+    display: none;
+  }
+
+  // Re-draw some backgrounds wanted in print mode
+  .budget-view .budget-totals td {
+    background-color: $color-ltgrey !important; // override zebra striping
+  }
+
+}
