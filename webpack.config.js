@@ -1,40 +1,32 @@
 const path = require('path')
+const HTMLWebPackPlugin = require('html-webpack-plugin')
+
+const generateSetting = require('./config/generateSetting')
 const getFilesFromDir = require('./config/files')
 const PAGE_DIR = path.join('src', 'pages', path.sep)
 
+// Generate entry setting for javscript files in PAGE_DIR
 const jsFiles = getFilesFromDir(PAGE_DIR, ['.js'])
-const entry = jsFiles.reduce((obj, filePath) => {
-  const entryChunkName = filePath.replace(path.extname(filePath), '').replace(PAGE_DIR, '')
-  obj[entryChunkName] = `./${filePath}`
-  return obj
-}, {})
+const entry = generateSetting.entry(jsFiles)
 
-const HTMLWebPackPlugin = require("html-webpack-plugin")
+// Generate entry setting for html files in PAGE_DIR
 const htmlFiles = getFilesFromDir(PAGE_DIR, ['.html'])
-
-const htmlPlugins = htmlFiles.map(filePath => {
-  const fileName = filePath.replace(PAGE_DIR, '')
-  return new HTMLWebPackPlugin({
-    chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
-    // chunks: ['main', 'vendor'],
-    template: filePath,
-    filename: fileName
-  })
-})
+const htmlPlugins = generateSetting.htmlPlugins(htmlFiles)
 
 module.exports = (env, argv) => {
-  // This will be replaces by the actual tag version from the commoand line
-  // - TODO: How to read passed string through gulp
+  // This will be replaced by the actual tag version from the command line
+  // - TODO: How to read tag string here from command line
   const tag = argv.tag || '0.0.0'
 
   return {
-
+    devtool: 'source-map',
     // Create js bundle for each page:
     entry,
 
-    // Uncomment this to bundle all js into one main.tag.js file
+    // Replace entry with this to bundle all js into one main.tag.js file
     // - This would be a large single download like the current application
     // - as opposed to one js file per page
+    // - See comment in /config/gerenateSettngs.js for additional change
     // entry: {
     //   main: './src/pages/index.js'
     // },
@@ -46,13 +38,19 @@ module.exports = (env, argv) => {
     },
 
     // Put each html page in its own file
-    plugins:[...htmlPlugins],
+    plugins:[
+      ...htmlPlugins,
+      require('autoprefixer')
+    ],
 
     // Create alias for reslving pathname imports
+    // - this allows for non-relative imports
+    // - import 'components/foo' instead of import '../../../components/foo'
     resolve: {
       alias: {
         src: path.resolve(__dirname, 'src'),
         components: path.resolve(__dirname, 'src', 'components'),
+        styles: path.resolve(__dirname, 'src', 'styles'),
         pages: path.resolve(__dirname, 'src', 'pages')
       }
     },
@@ -61,12 +59,58 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+          test: /\.(gif|png|svg|jpg)$/,
+          exclude: path.resolve(__dirname, './src/fonts'),
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
         },
         {
+          test: /\.(ttf|eot|woff|woff2|svg)$/,
+          include: path.resolve(__dirname, './src/fonts'),
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+              esModule: false
+            },
+          },
+        },
+        // Uncomment to support plain css files
+        // {
+        //   test: /\.css$/,
+        //   use: ["style-loader", "css-loader", "postcss-loader"]
+        // },
+        {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"]
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader"
+            },
+            {
+              loader:  "postcss-loader",
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: "resolve-url-loader"
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                  sourceMap: true
+              }
+            }
+          ]
         },
         {
           test: /\.js$/,
@@ -84,7 +128,9 @@ module.exports = (env, argv) => {
       ]
     },
 
-    // Split unchanging vendor files into seprate bundle
+    // Split vendor files into seprate bundle
+    // - These files do not change often and should be cached separately
+    // - Affects "dependencies" packages in package.js
     optimization: {
       minimize: argv.mode === 'production' ? true : false,
       splitChunks: {
@@ -98,6 +144,5 @@ module.exports = (env, argv) => {
         }
       }
     }
-
   } // End webpack.config object returned
 }
