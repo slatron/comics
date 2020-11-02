@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react'
 
 const FilterControls = (props) => {
   return (
@@ -22,7 +21,7 @@ const FilterControls = (props) => {
           </button>
         : null
       }
-      {props.comicResults.length
+      {props.comicResults.length !== props.fullResults.length
         ? <button onClick={props.resetComics}>reset</button>
         : null
       }

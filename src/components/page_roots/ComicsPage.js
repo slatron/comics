@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
-
+import api from 'src/api/api'
 import './ComicsPage.scss'
 
-const noop = () => {}
+const COMIC_CACHE = {}
 
 const ComicsPage = () => {
   let [fullResults, setFullResults] = useState([]);
@@ -17,34 +17,31 @@ const ComicsPage = () => {
     getComics('thisWeek')
   }, []);
 
-  const API_BASE = 'https://gateway.marvel.com/v1/public'
-  const MARVEL_API_PUBLIC = 'a2247180c2419763e9dd936e4d1f0aab'
-
   function getComics(dateString) {
     setMsg('')
-    const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateString}&apikey=${MARVEL_API_PUBLIC}&limit=100`
-    const requestConfig = window.location.hostname === 'localhost'
-      ? {
-          "method": "GET",
-          "referrer": "developer.marvel.com",  // required for API responses
-          "referrerPolicy": "no-referrer-when-downgrade"
-        }
-      : { "method": "GET" }
-    fetch(fetchURI, requestConfig)
-    .then(response => response.json())
-    .then(response => {
-      if (response.data.results.length) {
-        setFullResults(response.data.results)
-        setComicResults(response.data.results)
-      } else {
-        setMsg('no comics found')
-      }
-    })
-    .catch(err => {
-      setMsg('Error getting comics')
-    	console.log(err)
-    })
-    .finally(() => setFilterDate(dateString))
+    if (COMIC_CACHE[dateString]) {
+      setFullResults(COMIC_CACHE[dateString])
+      setComicResults(COMIC_CACHE[dateString])
+      setFilterDate(dateString)
+    } else {
+      api.getComicsByDateDescriptor(dateString)
+        .then(response => response.json())
+        .then(response => {
+          if (response.data.results.length) {
+            COMIC_CACHE[dateString] = response.data.results
+            setFullResults(response.data.results)
+            setComicResults(response.data.results)
+          } else {
+            setMsg('no comics found')
+          }
+        })
+        .catch(err => {
+          setMsg('Error getting comics')
+        	console.log(err)
+        })
+        .finally(() => setFilterDate(dateString))
+
+    }
   }
 
   function filterComics(term) {
@@ -74,6 +71,7 @@ const ComicsPage = () => {
       }
       <FilterControls
         comicResults={comicResults}
+        fullResults={fullResults}
         resetComics={resetComics}
         filterComics={filterComics}
         filterDate={filterDate}
