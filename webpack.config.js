@@ -49,9 +49,10 @@ module.exports = (env, argv) => {
     resolve: {
       alias: {
         src: path.resolve(__dirname, 'src'),
+        api: path.resolve(__dirname, 'src', 'api'),
         components: path.resolve(__dirname, 'src', 'components'),
-        styles: path.resolve(__dirname, 'src', 'styles'),
-        pages: path.resolve(__dirname, 'src', 'pages')
+        pages: path.resolve(__dirname, 'src', 'pages'),
+        styles: path.resolve(__dirname, 'src', 'styles')
       }
     },
 
