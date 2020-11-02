@@ -19,6 +19,7 @@ const ComicsPage = () => {
 
   function getComics(dateString) {
     setMsg('')
+    setComicResults([])
     if (COMIC_CACHE[dateString]) {
       setFullResults(COMIC_CACHE[dateString])
       setComicResults(COMIC_CACHE[dateString])

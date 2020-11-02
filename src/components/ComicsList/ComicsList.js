@@ -8,13 +8,13 @@ const ComicsList = (props) => {
       : 'https://via.placeholder.com/150'
   }
 
-  const comicsListDOM = props.comics ?
+  const comicsListDOM = props.comics.length ?
     props.comics.map((comic) =>
       <li key={comic.id.toString()}>
         <img src={generateImgUrl(comic)} alt={comic.title} />
         {comic.title}
       </li>
-    ) : null
+    ) : <div className="loading">loading...</div>
 
   return (
     <ul>{comicsListDOM}</ul>
