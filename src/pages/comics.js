@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ComicsBody from 'components/ComicsBody';
+import ComicsPage from 'components/page_roots/ComicsPage';
 
 import 'styles/main.scss'
 
-ReactDOM.render(<ComicsBody />, document.getElementById('comics'));
+ReactDOM.render(<ComicsPage />, document.getElementById('comics'));

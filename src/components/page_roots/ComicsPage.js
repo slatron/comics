@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import ComicsList from 'components/ComicsList/ComicsList'
+import FilterControls from 'components/FilterControls/FilterControls'
 
-import './ComicsBody.scss'
+import './ComicsPage.scss'
 
 const noop = () => {}
 
-const ComicsBody = () => {
+const ComicsPage = () => {
+  let [fullResults, setFullResults] = useState([]);
   let [comicResults, setComicResults] = useState([])
   let [msg, setMsg] = useState('')
   let [filterDate, setFilterDate] = useState('thisWeek')
-  let [resultsFiltered, setResultsFiltered] = useState(false)
-  let [fullResults, setFullResults] = useState([]);
 
   useEffect(() => {
     getComics('thisWeek')
@@ -34,8 +34,8 @@ const ComicsBody = () => {
     .then(response => response.json())
     .then(response => {
       if (response.data.results.length) {
+        setFullResults(response.data.results)
         setComicResults(response.data.results)
-        setResultsFiltered(false)
       } else {
         setMsg('no comics found')
       }
@@ -47,17 +47,14 @@ const ComicsBody = () => {
     .finally(() => setFilterDate(dateString))
   }
 
-  function filterComics(e) {
-    resultsFiltered ? setComicResults(fullResults) : noop
-    if (comicResults.length) {
-      const filteredComics = comicResults.filter(comic => {
-        return comic.title.indexOf(e.target.dataset.filter) !== -1
+  function filterComics(term) {
+    if (fullResults.length) {
+      const filteredComics = fullResults.filter(comic => {
+        return comic.title.indexOf(term) !== -1
       }).filter(comic => {
         return comic.title.indexOf('Star Wars') === -1
       })
-      setFullResults(comicResults);
       setComicResults(filteredComics)
-      setResultsFiltered(true)
     }
   }
 
@@ -71,33 +68,19 @@ const ComicsBody = () => {
 
   return (
     <div>
-      <div className="filter-controls">
-        {msg.length
-          ? <p>{msg}</p>
-          : null
-        }
-        <select value={filterDate} onChange={handleFilterDateChange}>
-          <option value="lastWeek">Last Week</option>
-          <option value="thisWeek">This Week</option>
-          <option value="nextWeek">Next Week</option>
-          <option value="thisMonth">This Month</option>
-        </select>
-        {comicResults.length
-          ? <button data-filter="(Variant)" onClick={filterComics}>Variants</button>
-          : null
-        }
-        {comicResults.length
-          ? <button data-filter="(Trade Paperback)" onClick={filterComics}>Trades</button>
-          : null
-        }
-        {resultsFiltered
-          ? <button onClick={resetComics}>reset</button>
-          : null
-        }
-      </div>
+      {msg.length
+        ? <p>{msg}</p>
+        : null
+      }
+      <FilterControls
+        comicResults={comicResults}
+        resetComics={resetComics}
+        filterComics={filterComics}
+        filterDate={filterDate}
+        handleFilterDateChange={handleFilterDateChange} />
       <ComicsList comics={comicResults} />
     </div>
   )
 }
 
-export default ComicsBody
+export default ComicsPage
