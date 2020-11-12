@@ -52,7 +52,8 @@ module.exports = (env, argv) => {
         api: path.resolve(__dirname, 'src', 'api'),
         components: path.resolve(__dirname, 'src', 'components'),
         pages: path.resolve(__dirname, 'src', 'pages'),
-        styles: path.resolve(__dirname, 'src', 'styles')
+        styles: path.resolve(__dirname, 'src', 'styles'),
+        utils: path.resolve(__dirname, 'src', 'utils')
       }
     },
 
