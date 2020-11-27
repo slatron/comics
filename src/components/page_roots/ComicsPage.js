@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
-import './ComicsPage.scss'
 
+// Store responses after calls
 const COMIC_CACHE = {}
 
 const ComicsPage = () => {
@@ -29,9 +29,12 @@ const ComicsPage = () => {
         .then(response => response.json())
         .then(response => {
           if (response.data.results.length) {
-            COMIC_CACHE[dateString] = response.data.results
-            setFullResults(response.data.results)
-            setComicResults(response.data.results)
+            const results = response.data.results.filter(comic => {
+              return comic.title.toLowerCase().indexOf('star wars') === -1
+            })
+            COMIC_CACHE[dateString] = results
+            setFullResults(results)
+            setComicResults(results)
           } else {
             setMsg('no comics found')
           }
@@ -49,8 +52,6 @@ const ComicsPage = () => {
     if (fullResults.length) {
       const filteredComics = fullResults.filter(comic => {
         return comic.title.indexOf(term) !== -1
-      }).filter(comic => {
-        return comic.title.indexOf('Star Wars') === -1
       })
       setComicResults(filteredComics)
     }
