@@ -1,4 +1,5 @@
 import React from 'react'
+import './FilterControls.scss'
 
 const FilterControls = (props) => {
   return (
@@ -22,7 +23,7 @@ const FilterControls = (props) => {
         : null
       }
       {props.comicResults.length !== props.fullResults.length
-        ? <button onClick={props.resetComics}>reset</button>
+        ? <button onClick={props.resetComics}>all</button>
         : null
       }
     </div>
