@@ -5,7 +5,7 @@ const Tier = (props) => {
 
   const movieListDOM = props.movies.map((movie) => {
     return (
-      <Movie key={movie.key} movie={movie} />
+      <Movie key={movie.movieKey} movie={movie} />
     )
   })
 
