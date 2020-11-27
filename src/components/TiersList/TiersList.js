@@ -14,7 +14,7 @@ const TiersList = (props) => {
   // Generate list of tiers if populated
   const tiersListDOM = props.tiers.length ?
     props.tiers.map((tier) => {
-      return <Tier tier={tier} movies={moviesByTier[tier.title]} />
+      return <Tier tier={tier} key={tier.title} movies={moviesByTier[tier.title]} />
     }) : <div className="loading">loading...</div>
 
   return (
