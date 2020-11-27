@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
-import './ComicsPage.scss'
 
 // Store responses after calls
 const COMIC_CACHE = {}
@@ -31,7 +30,7 @@ const ComicsPage = () => {
         .then(response => {
           if (response.data.results.length) {
             const results = response.data.results.filter(comic => {
-              return comic.title.indexOf('Star Wars') === -1
+              return comic.title.toLowerCase().indexOf('star wars') === -1
             })
             COMIC_CACHE[dateString] = results
             setFullResults(results)
