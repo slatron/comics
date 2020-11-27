@@ -5,12 +5,12 @@ const Tier = (props) => {
 
   const movieListDOM = props.movies.map((movie) => {
     return (
-      <Movie movie={movie} />
+      <Movie key={movie.movieKey} movie={movie} />
     )
   })
 
   return (
-    <div class={`tier tier-${props.tier.title}`}>
+    <div className={`tier tier-${props.tier.title}`}>
       <p>{props.tier.desc}</p>
       {movieListDOM}
     </div>

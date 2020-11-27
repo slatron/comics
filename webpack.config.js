@@ -1,5 +1,7 @@
 const path = require('path')
 const HTMLWebPackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const generateSetting = require('./config/generateSetting')
 const getFilesFromDir = require('./config/files')
@@ -40,7 +42,16 @@ module.exports = (env, argv) => {
     // Put each html page in its own file
     plugins:[
       ...htmlPlugins,
-      require('autoprefixer')
+      require('autoprefixer'),
+      new CleanWebpackPlugin(),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'src', 'images'),
+            to: 'assets/images/'
+          }
+        ]
+      })
     ],
 
     // Create alias for reslving pathname imports
