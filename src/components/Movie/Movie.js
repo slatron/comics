@@ -4,7 +4,7 @@ const Movie = (props) => {
   return (
     <section
       className={`movie ${props.movie.movieKey}`}
-      style={{backgroundImage: `url('../assets/images/${props.movie.movieKey}.jpg')`}}
+      style={{backgroundImage: `url('./assets/images/${props.movie.movieKey}.jpg')`}}
       key={props.movie.movieKey}
     >
       <span className="ranking clarify">{props.movie.rank}</span>
