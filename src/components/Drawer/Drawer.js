@@ -9,7 +9,7 @@ const Drawer = (props) => {
     >
       <ul>
         <li>
-          <a href="/comics.html">Comics</a>
+          <a href="./comics.html">Comics</a>
         </li>
         <li className={`${props.section === 'mcu' ? 'active' : ''}`}>
           <a href="/mcu-rank.html">MCU Rank</a>
