@@ -12,9 +12,10 @@ const COMIC_CACHE = {}
 const ComicsPage = () => {
   let [fullResults, setFullResults] = useState([]);
   let [comicResults, setComicResults] = useState([])
-  let [drawerActive, setdrawerActive] = useState(false)
+  let [drawerActive, setDrawerActive] = useState(false)
+  let [activeFilter, setActiveFilter] = useState('(all)')
   const handleMenuToggle = () => {
-    setdrawerActive(!drawerActive)
+    setDrawerActive(!drawerActive)
   };
 
   let [msg, setMsg] = useState('')
@@ -56,6 +57,7 @@ const ComicsPage = () => {
   }
 
   function filterComics(term) {
+    setActiveFilter(term)
     if (fullResults.length) {
       const filteredComics = fullResults.filter(comic => {
         return comic.title.indexOf(term) !== -1
@@ -65,20 +67,13 @@ const ComicsPage = () => {
   }
 
   function resetComics() {
+    setActiveFilter('(all)')
     getComics(filterDate)
   }
 
   function handleFilterDateChange(e) {
     getComics(e.target.value)
   }
-
-  //   <FilterControls
-  //     comicResults={comicResults}
-  //     fullResults={fullResults}
-  //     resetComics={resetComics}
-  //     filterComics={filterComics}
-  //     filterDate={filterDate}
-  //     handleFilterDateChange={handleFilterDateChange} />
 
   return (
     <>
@@ -87,7 +82,16 @@ const ComicsPage = () => {
         : null
       }
       <HeaderBar toggleMenu={handleMenuToggle} drawerActive={drawerActive} />
-      <Drawer section="comics" drawerActive={drawerActive} />
+      <Drawer section="comics" drawerActive={drawerActive}>
+        <FilterControls
+          comicResults={comicResults}
+          fullResults={fullResults}
+          resetComics={resetComics}
+          filterComics={filterComics}
+          filterDate={filterDate}
+          activeFiler={activeFilter}
+          handleFilterDateChange={handleFilterDateChange} />
+      </Drawer>
       <div className="main-body">
         <ComicsList comics={comicResults} />
       </div>
