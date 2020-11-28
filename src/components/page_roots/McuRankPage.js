@@ -4,9 +4,9 @@ import HeaderBar from 'components/HeaderBar/HeaderBar'
 import Drawer from 'components/Drawer/Drawer'
 import TiersList from 'components/TiersList/TiersList'
 import { sorting } from 'utils/sorting'
+import api from 'src/api/api'
 
 import './McuRankPage.scss'
-import api from 'src/api/api'
 
 const McuRankPage = () => {
   let [allMovies, setAllMovies] = useState([]);

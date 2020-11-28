@@ -4,4 +4,4 @@ import ComicsPage from 'components/page_roots/ComicsPage';
 
 import 'styles/main.scss'
 
-ReactDOM.render(<ComicsPage />, document.getElementById('comics'));
+ReactDOM.render(<ComicsPage />, document.getElementById('comics-page'));

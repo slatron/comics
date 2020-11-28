@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import HeaderBar from 'components/HeaderBar/HeaderBar'
+import Drawer from 'components/Drawer/Drawer'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
@@ -10,6 +12,11 @@ const COMIC_CACHE = {}
 const ComicsPage = () => {
   let [fullResults, setFullResults] = useState([]);
   let [comicResults, setComicResults] = useState([])
+  let [drawerActive, setdrawerActive] = useState(false)
+  const handleMenuToggle = () => {
+    setdrawerActive(!drawerActive)
+  };
+
   let [msg, setMsg] = useState('')
   let [filterDate, setFilterDate] = useState('thisWeek')
 
@@ -65,21 +72,26 @@ const ComicsPage = () => {
     getComics(e.target.value)
   }
 
+  //   <FilterControls
+  //     comicResults={comicResults}
+  //     fullResults={fullResults}
+  //     resetComics={resetComics}
+  //     filterComics={filterComics}
+  //     filterDate={filterDate}
+  //     handleFilterDateChange={handleFilterDateChange} />
+
   return (
-    <div>
+    <>
       {msg.length
         ? <p>{msg}</p>
         : null
       }
-      <FilterControls
-        comicResults={comicResults}
-        fullResults={fullResults}
-        resetComics={resetComics}
-        filterComics={filterComics}
-        filterDate={filterDate}
-        handleFilterDateChange={handleFilterDateChange} />
-      <ComicsList comics={comicResults} />
-    </div>
+      <HeaderBar toggleMenu={handleMenuToggle} drawerActive={drawerActive} />
+      <Drawer section="comics" drawerActive={drawerActive} />
+      <div className="main-body">
+        <ComicsList comics={comicResults} />
+      </div>
+    </>
   )
 }
 
