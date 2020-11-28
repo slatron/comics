@@ -17,7 +17,7 @@ const ComicsList = (props) => {
     ) : <div className="loading">loading...</div>
 
   return (
-    <ul>{comicsListDOM}</ul>
+    <ul class="comics-list">{comicsListDOM}</ul>
   )
 }
 

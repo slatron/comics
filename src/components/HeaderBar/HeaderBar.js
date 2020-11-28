@@ -6,13 +6,13 @@ const HeaderBar = (props) => {
     <div className="header-bar">
       <div className="flex-left vertical-align-container">
         <div
-            class="hamburger"
+            className="hamburger"
             className={`hamburger ${props.drawerActive ? 'active' : ''}`}
             onClick={props.toggleMenu}
         >
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
         </div>
       </div>
       <div className="flex-center vertical-align-container">

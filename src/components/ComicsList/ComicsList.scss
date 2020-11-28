@@ -1,23 +1,25 @@
-ul {
-  border-top: 1px solid #000;
-  margin: 0;
-  padding-top: 40px;
-  padding-left: 0;
-}
-
-li {
-  list-style-type: none;
-  font-size: 18px;
-  border-bottom: 1px solid #000;
-  margin: 0;
-  padding: 1em;
-
-  img {
-    width: 65px;
-    padding-right: 1em;
+.comics-list {
+  ul {
+    border-top: 1px solid #000;
+    margin: 0;
+    padding-top: 40px;
+    padding-left: 0;
   }
 
-  &:nth-of-type(odd) {
-    background: #dcdcdc;
+  li {
+    list-style-type: none;
+    font-size: 18px;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    padding: 1em;
+
+    img {
+      width: 65px;
+      padding-right: 1em;
+    }
+
+    &:nth-of-type(odd) {
+      background: #dcdcdc;
+    }
   }
 }
