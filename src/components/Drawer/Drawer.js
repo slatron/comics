@@ -15,6 +15,7 @@ const Drawer = (props) => {
           <a href="./mcu-rank.html">MCU Rank</a>
         </li>
       </ul>
+      {props.children}
     </nav>
   )
 }

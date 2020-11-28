@@ -11,19 +11,25 @@ const FilterControls = (props) => {
         <option value="thisMonth">This Month</option>
       </select>
       {props.comicResults.length
-        ? <button onClick={() => props.filterComics('(Variant)')}>
+        ? <button
+            className={`${props.activeFiler === '(Variant)' ? 'active' : ''}`}
+            onClick={() => props.filterComics('(Variant)')}>
             Variants
           </button>
         : null
       }
       {props.comicResults.length
-        ? <button onClick={() => props.filterComics('(Trade Paperback)')}>
+        ? <button
+            className={`${props.activeFiler === '(Trade Paperback)' ? 'active' : ''}`}
+            onClick={() => props.filterComics('(Trade Paperback)')}>
             Trades
           </button>
         : null
       }
-      {props.comicResults.length !== props.fullResults.length
-        ? <button onClick={props.resetComics}>all</button>
+      {props.comicResults.length
+        ? <button
+        className={`${props.activeFiler === '(all)' ? 'active' : ''}`}
+            onClick={props.resetComics}>all</button>
         : null
       }
     </div>
