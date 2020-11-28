@@ -5,6 +5,11 @@
   margin: 0 auto;
 }
 
+.main-body {
+  position: relative;
+  z-index: $layer-main-body;
+}
+
 // Header
 // ======================
 

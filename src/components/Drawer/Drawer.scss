@@ -1,0 +1,49 @@
+@import './src/styles/base/settings';
+
+// Layout
+#drawer {
+  top: $header-height - 1;
+  background: red;
+  width: $drawer-width;
+  left: -$drawer-width;
+  overflow-y: auto;
+  position: fixed;
+  max-height: $drawer-max-height;
+  z-index: $layer-top-elements;
+  transition: $transtion-drawer;
+  border-radius: 0 0 $base-rounded-corners 0;
+  padding-bottom: $base-rounded-corners;
+
+  &.active {
+    left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #drawer {
+    // width: 325px;
+    // left: -325px;
+    // max-height: 350px;
+  }
+}
+
+// Link Styles
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $color-white;
+}
+
+li {
+  padding: $base-unit-half;
+  margin: 0;
+  border-bottom: 1px solid $color-white;
+  transition: $transtion-drawer;
+
+  &.active,
+  &:hover {
+    background: $color-black;
+  }
+}
