@@ -18,7 +18,7 @@ const TiersList = (props) => {
     }) : <div className="loading">loading...</div>
 
   return (
-    <div className="movie-viewer">
+    <div className="tiers-list">
       {tiersListDOM}
     </div>
   )

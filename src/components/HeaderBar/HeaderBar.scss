@@ -1,0 +1,72 @@
+@import './src/styles/base/settings';
+
+.header-bar {
+  background: red;
+  border-bottom: 1px solid $color-white;
+  padding: 0.5em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  z-index: $layer-top-elements;
+  color: #fff;
+  display: flex;
+
+  a {
+    color: #fff;
+  }
+
+  .logo {
+    font-weight: bold;
+    padding: 5px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+  .logo2 {
+    background: #000;
+  }
+
+  .flex-left {
+    flex-grow: 1;
+  }
+
+  .flex-center {
+    justify-items: center;
+  }
+
+  .flex-right {
+    text-align: right;
+    flex-grow: 1;
+  }
+
+  .hamburger {
+    width: 30px;
+  }
+
+  .hamburger .line{
+    width: 30px;
+    height: 3px;
+    background-color: #ecf0f1;
+    display: block;
+    margin: 6px auto;
+    transition: $transtion-drawer;
+  }
+
+  .hamburger:hover{
+    cursor: pointer;
+  }
+
+  .hamburger.active .line:nth-child(2){
+    opacity: 0;
+  }
+
+  .hamburger.active .line:nth-child(1){
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .hamburger.active .line:nth-child(3){
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+}

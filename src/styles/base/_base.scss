@@ -13,16 +13,14 @@ html, body {
 }
 
 a {
-  -webkit-transition: $link-transition-property $link-transition-speed $link-transition-type;
-  -moz-transition: $link-transition-property $link-transition-speed $link-transition-type;
-  -o-transition: $link-transition-property $link-transition-speed $link-transition-type;
-  transition: $link-transition-property $link-transition-speed $link-transition-type;
-  color: $color-royal;
+  color: $color-white;
+  text-decoration: none;
+  transition: $transtion-drawer;
 }
 
 // IMO top margins are annoying - MS
 // Standard block text lements should push the one below away
-h1, h2, h3, h4, h5, h6, p, ul, dl, ol, table {
+h1, h2, h3, h4, h5, h6, p, dl, ol, table {
   margin-top: 0;
   margin-bottom: $base-unit;
 }
@@ -44,26 +42,17 @@ table {
 }
 
 thead tr {
-  background: $color-agua;
   font-family: $base-font-family-bold;
-}
-
-tbody tr:nth-child(even) {
-  background-color: $color-ltltgrey;
 }
 
 td,
 th {
   padding: $base-unit-half $base-unit-quarter;
-  border: 1px solid $color-ltgrey;
+  border: 1px solid #ccc;
   position: relative;
   text-align: left;
   vertical-align: top;
   word-wrap:break-word;
-}
-
-input:focus {
-  background: $color-caution;
 }
 
 input[type=checkbox] {
