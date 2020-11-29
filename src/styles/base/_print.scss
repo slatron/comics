@@ -2,14 +2,6 @@
    Print styles.
    Based on HTML5-bolerplate print styles
    ========================================================================== */
-.print-records-page {
-  margin: $base-unit;
-}
-
-.print-link a {
-  text-decoration: none;
-}
-
 @media print {
   *,
   *:before,
@@ -46,9 +38,7 @@
     display: table-header-group;
   }
 
-  h5.panel-heading,
   thead tr {
-    font-family: sans-serif; // liberation bold prints poor on Firefox
     font-weight: bold;
   }
 
@@ -71,47 +61,4 @@
   .noprint {
     display: none !important;
   }
-  .print-records-page {
-    margin: 0;
-  }
-
-  .grid {
-    display: block;
-  }
-
-  .grid-padded {
-    margin: 0;
-  }
-
-  .grid.grid-main .grid-col-even {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .form-row > label,
-  .form-row > div {
-    display: inline-block; // display single-record panels without flexbox
-  }
-
-  .but-row,
-  .but,
-  .but-selection,
-  .but-cancel {
-    display: none;
-  }
-
-  // Selectively turn off some Icons
-  .icon-arrows-left,
-  .icon-arrows-right,
-  .icon-rewind,
-  .icon-play,
-  .icon-warning {
-    display: none;
-  }
-
-  // Re-draw some backgrounds wanted in print mode
-  .budget-view .budget-totals td {
-    background-color: $color-ltgrey !important; // override zebra striping
-  }
-
 }

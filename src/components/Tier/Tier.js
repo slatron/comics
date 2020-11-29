@@ -1,6 +1,8 @@
 import React from 'react'
 import Movie from 'components/Movie/Movie'
 
+import './Tier.scss'
+
 const Tier = (props) => {
 
   const movieListDOM = props.movies.map((movie) => {

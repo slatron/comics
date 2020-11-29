@@ -6,24 +6,22 @@ $header-height: 44px;
 
 // Z-Index Layers
 $layer-main-body: 1;
+$layer-window-shade: 10;
 $layer-top-elements: 1000;
 
 // Drawer Settings:
-$drawer-width: 150px;
+$drawer-width: 175px;
 $drawer-max-height: 500px;
 
 $transtion-drawer: all 0.3s ease-in-out;
 
-// Breakpoint mixins
+// =========== Breakpoint mixins
 @mixin breakpoint($point) {
   @if $point == laptop {
-    @media (min-width: 64em) { @content ; }
+    @media (min-width: 840px) { @content ; }
   }
   @else if $point == tablet {
-    @media (max-width: 50em) { @content ; }
-  }
-  @else if $point == phone {
-    @media (max-width: 37.5em)  { @content ; }
+    @media (min-width: 560px) { @content ; }
   }
 }
 

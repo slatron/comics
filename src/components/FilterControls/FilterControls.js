@@ -19,7 +19,7 @@ const FilterControls = (props) => {
               <div
                 className={`switch ${props.activeFiler === '(all)' ? 'active' : ''}`}
                 onClick={props.resetComics}>
-                all
+                All
               </div>
               <div
                 className={`switch ${props.activeFiler === '(Variant)' ? 'active' : ''}`}
