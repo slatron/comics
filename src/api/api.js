@@ -28,8 +28,8 @@ const requestConfig = window.location.hostname === 'localhost'
 
 export default {
 
-  getComicsByDateDescriptor: (dateString) => {
-    const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateString}&apikey=${MARVEL_API_PUBLIC}&limit=100`
+  getComicsByDateDescriptor: (dateDescriptor) => {
+    const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateDescriptor}&apikey=${MARVEL_API_PUBLIC}&limit=100`
     return fetch(fetchURI, requestConfig)
   },
 

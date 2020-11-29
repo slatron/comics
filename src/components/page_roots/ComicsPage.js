@@ -6,15 +6,24 @@ import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
 
+import './ComicsPage.scss'
+
 // Store responses after calls
 const COMIC_CACHE = {}
 
 const ComicsPage = () => {
-  let [fullResults, setFullResults] = useState([]);
+  let [fullResults, setFullResults] = useState([])
   let [comicResults, setComicResults] = useState([])
-  let [drawerActive, setDrawerActive] = useState(false)
+
   let [activeFilter, setActiveFilter] = useState('(all)')
-  const handleMenuToggle = () => {
+
+  let [drawerActive, setDrawerActive] = useState(false)
+  let [filterOpen, setFilterOpen] = useState(false)
+
+  const toggleFilterOpen = () => {
+    setFilterOpen(!filterOpen)
+  }
+  const handleDrawerToggle = () => {
     setDrawerActive(!drawerActive)
   };
 
@@ -64,11 +73,13 @@ const ComicsPage = () => {
       })
       setComicResults(filteredComics)
     }
+    handleDrawerToggle()
   }
 
   function resetComics() {
     setActiveFilter('(all)')
     getComics(filterDate)
+    handleDrawerToggle()
   }
 
   function handleFilterDateChange(e) {
@@ -81,7 +92,6 @@ const ComicsPage = () => {
         ? <p>{msg}</p>
         : null
       }
-      <HeaderBar toggleMenu={handleMenuToggle} drawerActive={drawerActive} />
       <Drawer section="comics" drawerActive={drawerActive}>
         <FilterControls
           comicResults={comicResults}
@@ -89,9 +99,17 @@ const ComicsPage = () => {
           resetComics={resetComics}
           filterComics={filterComics}
           filterDate={filterDate}
+          toggleFilterOpen={toggleFilterOpen}
+          filterOpen={filterOpen}
           activeFiler={activeFilter}
           handleFilterDateChange={handleFilterDateChange} />
       </Drawer>
+      <div
+        className={`window-shade ${drawerActive ? 'active' : ''}`}
+        onClick={handleDrawerToggle} />
+      <HeaderBar
+        toggleMenu={handleDrawerToggle}
+        drawerActive={drawerActive} />
       <div className="main-body">
         <ComicsList comics={comicResults} />
       </div>

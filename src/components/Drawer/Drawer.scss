@@ -26,13 +26,17 @@
   }
 
   li {
-    padding: $base-unit-half;
     border-bottom: 1px solid $color-white;
     transition: $transtion-drawer;
 
     &.active,
     &:hover {
       background: $color-black;
+    }
+
+    a {
+      display: block;
+      padding: $base-unit-half;
     }
   }
 }

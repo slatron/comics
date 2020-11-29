@@ -61,27 +61,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $base-font-family-bold;}
 
 h1 {
-  color: $color-royal;
   @extend %text-large}
 
 h2 {
-  color: $color-medgrey;
   @extend %text-extralg}
 
 h3 {
-  color: $color-medgrey;
   @extend %text-large}
 
 h4 {
-  color: $color-dkdkblue;
   @extend %text-large}
 
 h5 {
-  color: $color-royal;
   @extend %text-medlg}
 
 h6 {
-  color: $color-royal;
   @extend %text-medlg}
 
 p {
