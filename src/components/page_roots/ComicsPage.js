@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import HeaderBar from 'components/HeaderBar/HeaderBar'
-import Drawer from 'components/Drawer/Drawer'
+import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
@@ -12,28 +11,19 @@ const COMIC_CACHE = {}
 const ComicsPage = () => {
   let [fullResults, setFullResults] = useState([])
   let [comicResults, setComicResults] = useState([])
-
   let [activeFilter, setActiveFilter] = useState('(all)')
-
-  let [drawerActive, setDrawerActive] = useState(false)
   let [filterOpen, setFilterOpen] = useState(false)
+  let [filterDate, setFilterDate] = useState('thisWeek')
 
   const toggleFilterOpen = () => {
     setFilterOpen(!filterOpen)
   }
-  const handleDrawerToggle = () => {
-    setDrawerActive(!drawerActive)
-  };
-
-  let [msg, setMsg] = useState('FAAAAARRRRTTTTTT')
-  let [filterDate, setFilterDate] = useState('thisWeek')
 
   useEffect(() => {
     getComics('thisWeek')
   }, []);
 
   function getComics(dateString) {
-    setMsg('')
     setComicResults([])
     if (COMIC_CACHE[dateString]) {
       setFullResults(COMIC_CACHE[dateString])
@@ -50,12 +40,9 @@ const ComicsPage = () => {
             COMIC_CACHE[dateString] = results
             setFullResults(results)
             setComicResults(results)
-          } else {
-            setMsg('no comics found')
           }
         })
         .catch(err => {
-          setMsg('Error getting comics')
         	console.log(err)
         })
         .finally(() => setFilterDate(dateString))
@@ -71,13 +58,11 @@ const ComicsPage = () => {
       })
       setComicResults(filteredComics)
     }
-    handleDrawerToggle()
   }
 
   function resetComics() {
     setActiveFilter('(all)')
     getComics(filterDate)
-    handleDrawerToggle()
   }
 
   function handleFilterDateChange(e) {
@@ -86,14 +71,8 @@ const ComicsPage = () => {
 
   return (
     <>
-      {msg.length
-        ? <p>{msg}</p>
-        : null
-      }
-      <HeaderBar
-        toggleMenu={handleDrawerToggle}
-        drawerActive={drawerActive} />
-      <Drawer section="comics" drawerActive={drawerActive}>
+    <CommonTemplate
+      drawerChildren={
         <FilterControls
           comicResults={comicResults}
           fullResults={fullResults}
@@ -104,13 +83,11 @@ const ComicsPage = () => {
           filterOpen={filterOpen}
           activeFiler={activeFilter}
           handleFilterDateChange={handleFilterDateChange} />
-      </Drawer>
-      <div
-        className={`window-shade ${drawerActive ? 'active' : ''}`}
-        onClick={handleDrawerToggle} />
-      <div className="main-body">
-        <ComicsList comics={comicResults} />
-      </div>
+      }
+      pageName="comics"
+    >
+      <ComicsList comics={comicResults} />
+    </CommonTemplate>
     </>
   )
 }
