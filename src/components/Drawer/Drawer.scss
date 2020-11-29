@@ -39,12 +39,12 @@
       padding: $base-unit-half;
     }
   }
-}
-
-@media (min-width: 768px) {
-  #drawer {
-    // width: 325px;
-    // left: -325px;
-    // max-height: 350px;
+  @include breakpoint(tablet) {
+    width: $drawer-width * 1.5;
+    left: -$drawer-width * 1.5;
+  }
+  @include breakpoint(laptop) {
+    width: $drawer-width * 2;
+    left: -$drawer-width * 2;
   }
 }

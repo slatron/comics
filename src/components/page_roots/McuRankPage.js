@@ -6,14 +6,13 @@ import TiersList from 'components/TiersList/TiersList'
 import { sorting } from 'utils/sorting'
 import api from 'src/api/api'
 
-import './McuRankPage.scss'
-
 const McuRankPage = () => {
-  let [allMovies, setAllMovies] = useState([]);
-  let [allTiers, setAllTiers] = useState([]);
-  let [drawerActive, setdrawerActive] = useState(false)
-  const handleMenuToggle = () => {
-    setdrawerActive(!drawerActive)
+  let [allMovies, setAllMovies] = useState([])
+  let [allTiers, setAllTiers] = useState([])
+  let [drawerActive, setDrawerActive] = useState(false)
+
+  const handleDrawerToggle = () => {
+    setDrawerActive(!drawerActive)
   };
 
   useEffect(() => {
@@ -33,8 +32,15 @@ const McuRankPage = () => {
 
   return (
     <>
-      <HeaderBar toggleMenu={handleMenuToggle} drawerActive={drawerActive} />
-      <Drawer section="mcu" drawerActive={drawerActive} />
+      <HeaderBar
+        toggleMenu={handleDrawerToggle}
+        drawerActive={drawerActive} />
+      <Drawer
+        section="mcu"
+        drawerActive={drawerActive} />
+      <div
+        className={`window-shade ${drawerActive ? 'active' : ''}`}
+        onClick={handleDrawerToggle} />
       <div className="main-body">
         <TiersList movies={allMovies} tiers={allTiers} />
       </div>

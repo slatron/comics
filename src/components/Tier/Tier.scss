@@ -27,10 +27,6 @@
   color: #efefef;
 }
 
-@mixin breakpoint() {
-  @media (max-width: 37.5em)  { @content ; }
-}
-
 section.movie {
   height: 300px;
   background-repeat: no-repeat;
@@ -53,11 +49,10 @@ section.movie {
   position: absolute;
   top: 1em;
   padding: 3px 6px;
-  font-size: 32px;
   font-weight: bold;
-  @include breakpoint() {
+  @include breakpoint(tablet) {
     padding: 0 3px;
-    font-size: 22px;
+    font-size: 28px;
   }
 }
 
@@ -67,9 +62,9 @@ section.movie {
   bottom: 1em;
   font-weight: bold;
   padding: 3px 6px;
-  font-size: 24px;
-  @include breakpoint() {
+  font-size: 18px;
+  @include breakpoint(tablet) {
     padding: 0 3px;
-    font-size: 16px;
+    font-size: 36px;
   }
 }

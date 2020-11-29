@@ -6,8 +6,6 @@ import ComicsList from 'components/ComicsList/ComicsList'
 import FilterControls from 'components/FilterControls/FilterControls'
 import api from 'src/api/api'
 
-import './ComicsPage.scss'
-
 // Store responses after calls
 const COMIC_CACHE = {}
 
@@ -27,7 +25,7 @@ const ComicsPage = () => {
     setDrawerActive(!drawerActive)
   };
 
-  let [msg, setMsg] = useState('')
+  let [msg, setMsg] = useState('FAAAAARRRRTTTTTT')
   let [filterDate, setFilterDate] = useState('thisWeek')
 
   useEffect(() => {
@@ -92,6 +90,9 @@ const ComicsPage = () => {
         ? <p>{msg}</p>
         : null
       }
+      <HeaderBar
+        toggleMenu={handleDrawerToggle}
+        drawerActive={drawerActive} />
       <Drawer section="comics" drawerActive={drawerActive}>
         <FilterControls
           comicResults={comicResults}
@@ -107,9 +108,6 @@ const ComicsPage = () => {
       <div
         className={`window-shade ${drawerActive ? 'active' : ''}`}
         onClick={handleDrawerToggle} />
-      <HeaderBar
-        toggleMenu={handleDrawerToggle}
-        drawerActive={drawerActive} />
       <div className="main-body">
         <ComicsList comics={comicResults} />
       </div>
