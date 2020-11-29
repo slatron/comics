@@ -1,20 +1,38 @@
 @import './src/styles/base/settings';
 
 .filter-controls {
-  padding: $base-unit-half;
-  margin: $base-unit-half;
-  border: 1px solid $color-black;
-  border-radius: $base-rounded-corners;
+  transition: $transtion-drawer;
 
-  select {
-    margin-bottom: $base-unit-half;
+  .filter-controls-body  {
+    max-height: 0;
+
+    &.active {
+      max-height: 200px;
+    }
   }
 
-  button {
-    border-radius: $base-rounded-corners;
+  h6 {
+    cursor: pointer;
+    margin-top: $base-unit-quarter;
+    margin-left: $base-unit-half;
+    margin-bottom: 0;
+  }
+
+  .filter-controls-body>select,
+  .filter-controls-body>.switch {
     margin-bottom: $base-unit-half;
+    display: none;
+  }
+
+  .filter-controls-body.active>select {
+    display: inline-block;
+    margin: $base-unit-half $base-unit-quarter $base-unit-half $base-unit;
+  }
+  .filter-controls-body.active>.switch {
     display: block;
-    padding: $base-unit-half $base-unit-quarter;
+    cursor: pointer;
+    margin: 0;
+    padding: $base-unit-half $base-unit-quarter$base-unit-half $base-unit;
 
     &.active {
       color: $color-white;

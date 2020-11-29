@@ -7,6 +7,7 @@
 
 .main-body {
   position: relative;
+  top: $header-height;
   z-index: $layer-main-body;
 }
 
