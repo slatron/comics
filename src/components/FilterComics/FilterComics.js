@@ -1,7 +1,7 @@
 import React from 'react'
-import './FilterControls.scss'
+import './FilterComics.scss'
 
-const FilterControls = (props) => {
+const FilterComics = (props) => {
   return (
     <div className="filter-controls">
       <h6 onClick={props.toggleFilterOpen}>+ Filter Results</h6>
@@ -39,4 +39,4 @@ const FilterControls = (props) => {
   )
 }
 
-export default FilterControls
+export default FilterComics
