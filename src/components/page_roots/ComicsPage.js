@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
-import FilterControls from 'components/FilterControls/FilterControls'
+import FilterComics from 'components/FilterComics/FilterComics'
 import api from 'src/api/api'
 
 // Store responses after calls
@@ -73,7 +73,7 @@ const ComicsPage = () => {
     <>
     <CommonTemplate
       drawerChildren={
-        <FilterControls
+        <FilterComics
           comicResults={comicResults}
           fullResults={fullResults}
           resetComics={resetComics}

@@ -1,15 +1,31 @@
 import React, { useState } from 'react'
-import HeaderBar from 'components/HeaderBar/HeaderBar'
-import Drawer from 'components/Drawer/Drawer'
+import HeaderBar from './HeaderBar/HeaderBar'
+import Drawer from './Drawer/Drawer'
+import Lightbox from './Lightbox/Lightbox'
+import LightboxContext from './Lightbox/LightboxContext'
 
 const CommonTemplate = (props) => {
   let [drawerActive, setDrawerActive] = useState(false)
+  let [lightboxActive, setLightboxActive] = useState(false)
+  let [lightboxContents, setLightboxContents] = useState(null)
   const handleDrawerToggle = () => {
     setDrawerActive(!drawerActive)
   };
 
+  const handleLightboxToggle = (element, url) => {
+    console.log(' ** COMIC ELEMENT', element)
+    if (element) {
+      element.url = url
+      setLightboxContents(element)
+      setLightboxActive(true)
+    } else {
+      setLightboxContents(null)
+      setLightboxActive(false)
+    }
+  }
+
   return (
-    <>
+    <LightboxContext.Provider value={handleLightboxToggle}>
       <HeaderBar
         toggleMenu={handleDrawerToggle}
         drawerActive={drawerActive} />
@@ -19,10 +35,13 @@ const CommonTemplate = (props) => {
       <div
         className={`window-shade ${drawerActive ? 'active' : ''}`}
         onClick={handleDrawerToggle} />
+      <Lightbox
+        lightboxActive={lightboxActive}
+        lightboxContents={lightboxContents} />
       <div className="main-body">
         {props.children}
       </div>
-    </>
+    </LightboxContext.Provider>
   )
 }
 

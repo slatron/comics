@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './ComicsList.scss'
+import LightboxContext from 'components/Layout/Lightbox/LightboxContext'
 
 const ComicsList = (props) => {
   function generateImgUrl(comic) {
@@ -8,16 +9,31 @@ const ComicsList = (props) => {
       : 'https://via.placeholder.com/150'
   }
 
-  const comicsListDOM = props.comics.length ?
-    props.comics.map((comic) =>
-      <li key={comic.id.toString()}>
-        <img src={generateImgUrl(comic)} alt={comic.title} />
-        {comic.title}
-      </li>
-    ) : <div className="loading">loading...</div>
+  function AllComics({handleLightboxToggle}) {
+    const comicsListDOM = props.comics.length ?
+      props.comics.map((comic) =>
+        <li key={comic.id.toString()}>
+          <img
+            src={generateImgUrl(comic)}
+            onClick={() => handleLightboxToggle(comic, generateImgUrl(comic))}
+            alt={comic.title} />
+          {comic.title}
+        </li>
+      ) : <div className="loading">loading...</div>
+
+    return (
+      <ul className="comics-list">
+        {comicsListDOM}
+      </ul>
+    );
+  }
 
   return (
-    <ul className="comics-list">{comicsListDOM}</ul>
+    <LightboxContext.Consumer>
+      {(handleLightboxToggle) =>
+        <AllComics handleLightboxToggle={handleLightboxToggle} />
+      }
+    </LightboxContext.Consumer>
   )
 }
 
