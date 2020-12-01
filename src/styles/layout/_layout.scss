@@ -26,6 +26,9 @@
 
   &.active {
     display: block;
+    @include breakpoint(tablet) {
+      display: none !important;
+    }
   }
 }
 
