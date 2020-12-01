@@ -13,7 +13,6 @@ const CommonTemplate = (props) => {
   };
 
   const handleLightboxToggle = (element, url) => {
-    console.log(' ** COMIC ELEMENT', element)
     if (element) {
       element.url = url
       setLightboxContents(element)

@@ -5,6 +5,7 @@
 
   .filter-controls-body  {
     max-height: 0;
+    margin-left: $base-unit * 1.5;
 
     &.active {
       max-height: 200px;
@@ -26,7 +27,7 @@
 
   .filter-controls-body.active>select {
     display: inline-block;
-    margin: $base-unit-half $base-unit-quarter $base-unit-half $base-unit;
+    margin: $base-unit-half $base-unit-quarter $base-unit-half 0;
   }
   .filter-controls-body.active>.switch {
     display: block;

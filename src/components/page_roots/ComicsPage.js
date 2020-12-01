@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/FilterComics/FilterComics'
+import { useLocalStorage } from 'hooks/useLocalStorage';
 import api from 'src/api/api'
 
-// Store responses after calls
-const COMIC_CACHE = {}
+// Clear Cached Responses after 1 hour
+const lastStore = localStorage.getItem('lastStore')
+if (Date.now() - lastStore > 3600000) {
+  localStorage.clear();
+}
+
+const COMIC_CACHE = {
+  'lastWeek': JSON.parse(localStorage.getItem('lastWeek')),
+  'thisWeek': JSON.parse(localStorage.getItem('thisWeek')),
+  'nextWeek': JSON.parse(localStorage.getItem('nextWeek')),
+  'thisMonth': JSON.parse(localStorage.getItem('thisMonth'))
+}
 
 const ComicsPage = () => {
   let [fullResults, setFullResults] = useState([])
@@ -38,6 +49,8 @@ const ComicsPage = () => {
               return comic.title.toLowerCase().indexOf('star wars') === -1
             })
             COMIC_CACHE[dateString] = results
+            localStorage.setItem(dateString, JSON.stringify(results))
+            localStorage.setItem('lastStore', Date.now())
             setFullResults(results)
             setComicResults(results)
           }

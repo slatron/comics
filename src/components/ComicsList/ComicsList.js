@@ -3,13 +3,13 @@ import './ComicsList.scss'
 import LightboxContext from 'components/Layout/Lightbox/LightboxContext'
 
 const ComicsList = (props) => {
-  function generateImgUrl(comic) {
-    return comic.images.length
-      ? `${comic.images[0].path}.${comic.images[0].extension}`
-      : 'https://via.placeholder.com/150'
-  }
-
   function AllComics({handleLightboxToggle}) {
+    const generateImgUrl = (comic) => {
+      return comic.images.length
+        ? `${comic.images[0].path}.${comic.images[0].extension}`
+        : 'https://via.placeholder.com/150'
+    }
+
     const comicsListDOM = props.comics.length ?
       props.comics.map((comic) =>
         <li key={comic.id.toString()}>
