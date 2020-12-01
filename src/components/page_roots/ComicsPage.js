@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/FilterComics/FilterComics'
-import { useLocalStorage } from 'hooks/useLocalStorage';
 import api from 'src/api/api'
 
 // Clear Cached Responses after 1 hour
 const lastStore = localStorage.getItem('lastStore')
-if (Date.now() - lastStore > 3600000) {
+const sinceLastStore = (Date.now() - lastStore)
+console.log('sinceLastStore: ', sinceLastStore)
+if (sinceLastStore > 3600000) {
   localStorage.clear();
 }
 

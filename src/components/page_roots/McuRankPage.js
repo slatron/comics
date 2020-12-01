@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import TiersList from 'components/TiersList/TiersList'
 import { sorting } from 'utils/sorting'
+import { useLocalStorage } from 'hooks/useLocalStorage';
 import api from 'src/api/api'
 
 const McuRankPage = () => {
-  let [allMovies, setAllMovies] = useState([])
-  let [allTiers, setAllTiers] = useState([])
+  let [allMovies, setAllMovies] = useLocalStorage('allMovies', [])
+  let [allTiers, setAllTiers] = useLocalStorage('allTiers', [])
 
   useEffect(() => {
     getMovies()
