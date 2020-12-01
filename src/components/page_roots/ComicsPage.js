@@ -83,20 +83,21 @@ const ComicsPage = () => {
     getComics(e.target.value)
   }
 
+  const FilterComicsProps = {
+    resetComics,
+    filterComics,
+    filterDate,
+    toggleFilterOpen,
+    filterOpen,
+    activeFilter,
+    handleFilterDateChange
+  }
+
   return (
     <>
     <CommonTemplate
       drawerChildren={
-        <FilterComics
-          comicResults={comicResults}
-          fullResults={fullResults}
-          resetComics={resetComics}
-          filterComics={filterComics}
-          filterDate={filterDate}
-          toggleFilterOpen={toggleFilterOpen}
-          filterOpen={filterOpen}
-          activeFiler={activeFilter}
-          handleFilterDateChange={handleFilterDateChange} />
+        <FilterComics {...FilterComicsProps} />
       }
       pageName="comics"
     >
