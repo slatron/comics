@@ -27,7 +27,7 @@ const McuRankPage = () => {
   return (
     <>
       <CommonTemplate pageName="mcu">
-        <TiersList movies={allMovies} tiers={allTiers} />
+        <TiersList items={allMovies} tiers={allTiers} />
       </CommonTemplate>
     </>
   )

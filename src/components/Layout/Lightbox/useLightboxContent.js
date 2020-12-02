@@ -1,9 +1,9 @@
 // Experimenting with component-level hook to manage content
 //
-// import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect, useReducer } from 'react'
 //
 // export const useLightboxContent = (content) => {
-//   const [ lightboxContent, setLightboxContent ] = useState(null)
+//   const [ lightboxContent, setLightboxContent ] = useReducer(lightboxReducer, null)
 //
 //   useEffect(() => {
 //     if (content) setLightboxContent(content)

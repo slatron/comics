@@ -6,6 +6,8 @@ import WindowShade from './WindowShade/WindowShade'
 import LightboxContext from './Lightbox/LightboxContext'
 import useLightboxContext from './Lightbox/LightboxContext'
 
+import './CommonTemplate.scss'
+
 const CommonTemplate = (props) => {
   const [drawerActive, setDrawerActive] = useState(false)
   const [shadeActive, setShadeActive] = useState(false)
@@ -46,9 +48,9 @@ const CommonTemplate = (props) => {
       <WindowShade
         active={shadeActive}
         closeShade={handleCloseShade} />
-      <div className="main-body">
+      <main>
         {props.children}
-      </div>
+      </main>
     </LightboxContext.Provider>
   )
 }

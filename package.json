@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode development",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "Michael A. Slater <slatron@gmail.com> (http://mikeslater.com/)",
@@ -14,7 +16,10 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.1.2",
     "autoprefixer": "^10.0.2",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.3.2",
@@ -22,8 +27,10 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "image-minimizer-webpack-plugin": "^1.0.0",
+    "jest": "^26.6.3",
     "postcss": "^8.1.7",
     "postcss-loader": "^4.0.4",
+    "react-test-renderer": "^17.0.1",
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",

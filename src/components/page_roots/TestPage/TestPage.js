@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
-
+import Product from 'components/Product/Product'
 const TestPage = () => {
   return (
     <>
@@ -11,7 +11,7 @@ const TestPage = () => {
         }
         pageName="test"
       >
-        <p>I Should be inside the main-body</p>
+        <Product />
       </CommonTemplate>
     </>
   )

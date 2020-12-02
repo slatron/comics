@@ -4,8 +4,7 @@
   max-width: $wrapper-width;
   margin: 0 auto;
 }
-
-.main-body {
+main {
   position: relative;
   top: $header-height;
   z-index: $layer-main-body;

@@ -1,20 +1,20 @@
-// This component takes the movies and tiers and sorts them into Tier components
+// This component takes items and tiers and sorts them into Tier components
 import React from 'react'
 import Tier from 'components/Rankings/Tier/Tier'
 
 const TiersList = (props) => {
 
-  // Sort movies into object keyed by tier title
-  const moviesByTier = {}
-  props.movies.forEach(movie => {
-    if (!moviesByTier[movie.tier]) moviesByTier[movie.tier] = []
-    moviesByTier[movie.tier].push(movie)
+  // Sort items into object keyed by tier title
+  const itemsByTier = {}
+  props.items.forEach(item => {
+    if (!itemsByTier[item.tier]) itemsByTier[item.tier] = []
+    itemsByTier[item.tier].push(item)
   })
 
   // Generate list of tiers if populated
   const tiersListDOM = props.tiers.length ?
     props.tiers.map((tier) => {
-      return <Tier tier={tier} key={tier.title} movies={moviesByTier[tier.title]} />
+      return <Tier tier={tier} key={tier.title} items={itemsByTier[tier.title]} />
     }) : <div className="loading">loading...</div>
 
   return (
