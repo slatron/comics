@@ -2,20 +2,29 @@ import React, { useState } from 'react'
 import HeaderBar from './HeaderBar/HeaderBar'
 import Drawer from './Drawer/Drawer'
 import Lightbox from './Lightbox/Lightbox'
+import WindowShade from './WindowShade/WindowShade'
 import LightboxContext from './Lightbox/LightboxContext'
+import useLightboxContext from './Lightbox/LightboxContext'
 
 const CommonTemplate = (props) => {
-  let [drawerActive, setDrawerActive] = useState(false)
-  let [lightboxActive, setLightboxActive] = useState(false)
-  let [lightboxContents, setLightboxContents] = useState(null)
+  const [drawerActive, setDrawerActive] = useState(false)
+  const [shadeActive, setShadeActive] = useState(false)
+  const [lightboxActive, setLightboxActive] = useState(false)
+  const [lightboxContents, setLightboxContents] = useState(null)
+
   const handleDrawerToggle = () => {
     setDrawerActive(!drawerActive)
+    setShadeActive(!drawerActive)
+  };
+
+  const handleCloseShade = () => {
+    setDrawerActive(false)
+    setShadeActive(false)
   };
 
   const handleLightboxToggle = (element, url) => {
     if (element) {
-      element.url = url
-      setLightboxContents(element)
+      setLightboxContents({...element, url})
       setLightboxActive(true)
     } else {
       setLightboxContents(null)
@@ -31,12 +40,12 @@ const CommonTemplate = (props) => {
       <Drawer section={props.pageName} drawerActive={drawerActive}>
         {props.drawerChildren}
       </Drawer>
-      <div
-        className={`window-shade ${drawerActive ? 'active' : ''}`}
-        onClick={handleDrawerToggle} />
       <Lightbox
         lightboxActive={lightboxActive}
         lightboxContents={lightboxContents} />
+      <WindowShade
+        active={shadeActive}
+        closeShade={handleCloseShade} />
       <div className="main-body">
         {props.children}
       </div>

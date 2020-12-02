@@ -1,0 +1,12 @@
+@import './src/styles/base/settings';
+
+.wrapper {
+  max-width: $wrapper-width;
+  margin: 0 auto;
+}
+
+.main-body {
+  position: relative;
+  top: $header-height;
+  z-index: $layer-main-body;
+}

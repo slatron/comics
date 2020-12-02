@@ -1,5 +1,5 @@
 // This component takes the movies and tiers and sorts them into Tier components
-import React, { useState } from 'react'
+import React from 'react'
 import Tier from 'components/Tier/Tier'
 
 const TiersList = (props) => {

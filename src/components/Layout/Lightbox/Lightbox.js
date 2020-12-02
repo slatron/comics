@@ -5,7 +5,7 @@ import './Lightbox.scss'
 const Lightbox = (props) => {
 
   const LBcontent = props.lightboxContents
-    ? (
+    && (
       <p>
         <img
           src={props.lightboxContents.url}
@@ -13,7 +13,6 @@ const Lightbox = (props) => {
         {props.lightboxContents.title}
       </p>
     )
-    : null
 
   return (
     <LightboxContext.Consumer>
