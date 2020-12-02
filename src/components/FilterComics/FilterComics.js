@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './FilterComics.scss'
 
 const FilterComics = (props) => {
+  const [filterOpen, setFilterOpen] = useState(false)
+  const toggleFilterOpen = () => {
+    setFilterOpen(!filterOpen)
+  }
+
   return (
     <div className="filter-controls">
-      <h6 onClick={props.toggleFilterOpen}>+ Filter Results</h6>
-      <div className={`filter-controls-body ${props.filterOpen ? 'active' : ''}`}>
+      <h6 onClick={toggleFilterOpen}>+ Filter Results</h6>
+      <div className={`filter-controls-body ${filterOpen ? 'active' : ''}`}>
         <select
           value={props.filterDate}
           onChange={props.handleFilterDateChange}>
