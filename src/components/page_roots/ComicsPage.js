@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/FilterComics/FilterComics'
-import api from 'src/api/api'
-
-// Clear Cached Responses after 1 hour
-const lastStore = localStorage.getItem('lastStore')
-const sinceLastStore = (Date.now() - lastStore)
-if (sinceLastStore > 3600000) {
-  localStorage.clear();
-}
+import { useFetchComics } from 'hooks/useFetchComics'
 
 const ComicsPage = () => {
   const [fullResults, setFullResults] = useState([])
@@ -18,41 +10,18 @@ const ComicsPage = () => {
   const [activeFilter, setActiveFilter] = useState('(all)')
   const [filterOpen, setFilterOpen] = useState(false)
   const [filterDate, setFilterDate] = useState('thisWeek')
-
+  const [loading, comicsResults] = useFetchComics(filterDate)
   const toggleFilterOpen = () => {
     setFilterOpen(!filterOpen)
   }
-
   useEffect(() => {
-    getComics('thisWeek')
-  }, []);
+    initComics(filterDate)
+  }, [comicsResults]);
 
-  function getComics(dateString) {
-    setComicResults([])
-    if (localStorage.getItem(dateString)) {
-      setFullResults(JSON.parse(localStorage.getItem(dateString)))
-      setComicResults(JSON.parse(localStorage.getItem(dateString)))
-      setFilterDate(dateString)
-    } else {
-      api.getComicsByDateDescriptor(dateString)
-        .then(response => response.json())
-        .then(response => {
-          if (response.data.results.length) {
-            const results = response.data.results.filter(comic => {
-              return comic.title.toLowerCase().indexOf('star wars') === -1
-            })
-            localStorage.setItem(dateString, JSON.stringify(results))
-            localStorage.setItem('lastStore', Date.now())
-            setFullResults(results)
-            setComicResults(results)
-          }
-        })
-        .catch(err => {
-        	console.log(err)
-        })
-        .finally(() => setFilterDate(dateString))
-
-    }
+  function initComics(dateString) {
+    setFullResults(comicsResults)
+    setComicResults(comicsResults)
+    setFilterDate(dateString)
   }
 
   function filterComics(term) {
@@ -67,11 +36,11 @@ const ComicsPage = () => {
 
   function resetComics() {
     setActiveFilter('(all)')
-    getComics(filterDate)
+    initComics(filterDate)
   }
 
   function handleFilterDateChange(e) {
-    getComics(e.target.value)
+    setFilterDate(e.target.value)
   }
 
   const FilterComicsProps = {
@@ -85,7 +54,6 @@ const ComicsPage = () => {
   }
 
   return (
-    <>
     <CommonTemplate
       drawerChildren={
         <FilterComics {...FilterComicsProps} />
@@ -94,7 +62,6 @@ const ComicsPage = () => {
     >
       <ComicsList comics={comicResults} />
     </CommonTemplate>
-    </>
   )
 }
 

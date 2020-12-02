@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import TiersList from 'components/TiersList/TiersList'
 import { sorting } from 'utils/sorting'
