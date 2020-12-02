@@ -1,6 +1,6 @@
 // This component takes the movies and tiers and sorts them into Tier components
 import React from 'react'
-import Tier from 'components/Tier/Tier'
+import Tier from 'components/Rankings/Tier/Tier'
 
 const TiersList = (props) => {
 

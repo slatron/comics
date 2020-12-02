@@ -1,5 +1,5 @@
 import React from 'react'
-import Movie from 'components/Movie/Movie'
+import Movie from 'components/Rankings/Movie/Movie'
 
 import './Tier.scss'
 

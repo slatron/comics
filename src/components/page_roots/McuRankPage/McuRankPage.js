@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
-import TiersList from 'components/TiersList/TiersList'
+import TiersList from 'components/Rankings/TiersList/TiersList'
 import { sorting } from 'utils/sorting'
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import api from 'src/api/api'
