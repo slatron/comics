@@ -8,12 +8,9 @@ const ComicsPage = () => {
   const [fullResults, setFullResults] = useState([])
   const [comicResults, setComicResults] = useState([])
   const [activeFilter, setActiveFilter] = useState('(all)')
-  const [filterOpen, setFilterOpen] = useState(false)
   const [filterDate, setFilterDate] = useState('thisWeek')
   const [loading, comicsResults] = useFetchComics(filterDate)
-  const toggleFilterOpen = () => {
-    setFilterOpen(!filterOpen)
-  }
+
   useEffect(() => {
     initComics(filterDate)
   }, [comicsResults]);
@@ -47,8 +44,6 @@ const ComicsPage = () => {
     resetComics,
     filterComics,
     filterDate,
-    toggleFilterOpen,
-    filterOpen,
     activeFilter,
     handleFilterDateChange
   }
