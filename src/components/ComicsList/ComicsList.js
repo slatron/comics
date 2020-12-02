@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './ComicsList.scss'
 import LightboxContext from 'components/Layout/Lightbox/LightboxContext'
 

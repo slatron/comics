@@ -1,15 +1,4 @@
-// Wrapper
-// ======================
-.wrapper {
-  max-width: $wrapper-width;
-  margin: 0 auto;
-}
-
-.main-body {
-  position: relative;
-  top: $header-height;
-  z-index: $layer-main-body;
-}
+@import './src/styles/base/settings';
 
 .window-shade {
   transition: $transtion-drawer;
@@ -31,9 +20,3 @@
     }
   }
 }
-
-// Header
-// ======================
-
-// Navigation
-// =========================

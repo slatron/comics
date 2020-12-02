@@ -8,24 +8,16 @@ import api from 'src/api/api'
 // Clear Cached Responses after 1 hour
 const lastStore = localStorage.getItem('lastStore')
 const sinceLastStore = (Date.now() - lastStore)
-console.log('sinceLastStore: ', sinceLastStore)
 if (sinceLastStore > 3600000) {
   localStorage.clear();
 }
 
-const COMIC_CACHE = {
-  'lastWeek': JSON.parse(localStorage.getItem('lastWeek')),
-  'thisWeek': JSON.parse(localStorage.getItem('thisWeek')),
-  'nextWeek': JSON.parse(localStorage.getItem('nextWeek')),
-  'thisMonth': JSON.parse(localStorage.getItem('thisMonth'))
-}
-
 const ComicsPage = () => {
-  let [fullResults, setFullResults] = useState([])
-  let [comicResults, setComicResults] = useState([])
-  let [activeFilter, setActiveFilter] = useState('(all)')
-  let [filterOpen, setFilterOpen] = useState(false)
-  let [filterDate, setFilterDate] = useState('thisWeek')
+  const [fullResults, setFullResults] = useState([])
+  const [comicResults, setComicResults] = useState([])
+  const [activeFilter, setActiveFilter] = useState('(all)')
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [filterDate, setFilterDate] = useState('thisWeek')
 
   const toggleFilterOpen = () => {
     setFilterOpen(!filterOpen)
@@ -37,9 +29,9 @@ const ComicsPage = () => {
 
   function getComics(dateString) {
     setComicResults([])
-    if (COMIC_CACHE[dateString]) {
-      setFullResults(COMIC_CACHE[dateString])
-      setComicResults(COMIC_CACHE[dateString])
+    if (localStorage.getItem(dateString)) {
+      setFullResults(JSON.parse(localStorage.getItem(dateString)))
+      setComicResults(JSON.parse(localStorage.getItem(dateString)))
       setFilterDate(dateString)
     } else {
       api.getComicsByDateDescriptor(dateString)
@@ -49,7 +41,6 @@ const ComicsPage = () => {
             const results = response.data.results.filter(comic => {
               return comic.title.toLowerCase().indexOf('star wars') === -1
             })
-            COMIC_CACHE[dateString] = results
             localStorage.setItem(dateString, JSON.stringify(results))
             localStorage.setItem('lastStore', Date.now())
             setFullResults(results)
