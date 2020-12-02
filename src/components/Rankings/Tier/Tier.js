@@ -1,20 +1,20 @@
 import React from 'react'
-import Movie from 'components/Rankings/Movie/Movie'
+import Item from 'components/Rankings/Item/Item'
 
 import './Tier.scss'
 
 const Tier = (props) => {
 
-  const movieListDOM = props.movies.map((movie) => {
+  const itemListDOM = props.items.map((item) => {
     return (
-      <Movie key={movie.movieKey} movie={movie} />
+      <Item key={item.movieKey} item={item} />
     )
   })
 
   return (
     <div className={`tier tier-${props.tier.title}`}>
       <p>{props.tier.desc}</p>
-      {movieListDOM}
+      {itemListDOM}
     </div>
   )
 }
