@@ -12,7 +12,7 @@ const Tier = (props) => {
   })
 
   return (
-    <div className={`tier tier-${props.tier.title}`}>
+    <div data-testid="tier" className={`tier tier-${props.tier.title}`}>
       <p>{props.tier.desc}</p>
       {itemListDOM}
     </div>

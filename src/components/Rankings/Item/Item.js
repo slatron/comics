@@ -4,6 +4,7 @@ const Item = (props) => {
   return (
     <section
       className={`item ${props.item.movieKey}`}
+      data-testid="item"
       style={{backgroundImage: `url('./assets/images/${props.item.movieKey}.jpg')`}}
       key={props.item.movieKey}
     >
