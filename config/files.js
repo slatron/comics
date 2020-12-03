@@ -2,10 +2,7 @@ const fs   = require('fs')
 const path = require('path')
 
 function getFilesFromDir(dir, fileTypes) {
-  console.log(' ****')
-  console.log(' ** Gathering fileTypes: ', fileTypes)
-  console.log(' ** From dir: ', dir)
-  console.log(' ****\n\n')
+  console.log(` ** getFilesFromDir: ${dir} ${fileTypes}`)
   const filesToReturn = []
 
   function walkDir(currentPath) {
