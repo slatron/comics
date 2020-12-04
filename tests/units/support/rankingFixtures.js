@@ -16,24 +16,24 @@ export const testItems = [
     tier: 'one',
     title: 'Item one - 1',
     rank: 1,
-    movieKey: 'one-1'
+    key: 'one-1'
   },
   {
     tier: 'one',
     title: 'Item one - 2',
     rank: 2,
-    movieKey: 'one-2'
+    key: 'one-2'
   },
   {
     tier: 'one',
     title: 'Item one - 3',
     rank: 3,
-    movieKey: 'one-3'
+    key: 'one-3'
   },
   {
     tier: 'two',
     title: 'Item two - 1',
     rank: 4,
-    movieKey: 'two-1'
+    key: 'two-1'
   }
 ]

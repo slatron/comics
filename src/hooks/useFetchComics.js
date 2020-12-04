@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import api from 'src/api/api'
 
 // Clear Cached Responses after 1 hour
@@ -10,10 +10,10 @@ if (sinceLastStore > 3600000) {
 }
 
 export const useFetchComics = (dateString) => {
-  const [ comics, setComics ] = React.useState([])
-  const [ loading, setLoading ] = React.useState(true)
+  const [ comics, setComics ] = useState([])
+  const [ loading, setLoading ] = useState(true)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true)
     if (localStorage.getItem(dateString)) {
       console.log(' ** Getting Comics Results From Cache')
