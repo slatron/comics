@@ -14,7 +14,7 @@ const ComicListItem = (props) => {
   }
 
   return (
-    <li key={props.comic.id.toString()}>
+    <li key={props.key}>
       <img
         src={generateImgUrl(props.comic)}
         onClick={() => dispatch(lightboxShow({...props.comic, ...{url: generateImgUrl(props.comic)}} ))   }

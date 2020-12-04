@@ -10,12 +10,11 @@ const Lightbox = () => {
 
   const LBcontent = lightboxObj
     && (
-      <p>
+      <>
         <img
           src={lightboxObj.url}
           alt={lightboxObj.title} />
-        {lightboxObj.title}
-      </p>
+      </>
     )
 
   return (

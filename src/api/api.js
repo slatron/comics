@@ -39,6 +39,13 @@ export default {
 
   getTiersFB: () => {
     return db.ref('tiers').once('value')
-  }
+  },
 
+  getRemAlbumsFB: () => {
+    return db.ref('rem-albums').once('value')
+  },
+
+  getRemTiersFB: () => {
+    return db.ref('rem-tiers').once('value')
+  }
 }
