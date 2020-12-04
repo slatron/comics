@@ -3,7 +3,6 @@ import HeaderBar from './HeaderBar/HeaderBar'
 import Drawer from './Drawer/Drawer'
 import Lightbox from './Lightbox/Lightbox'
 import WindowShade from './WindowShade/WindowShade'
-// import LightboxContext from './Lightbox/LightboxContext'
 
 import './CommonTemplate.scss'
 

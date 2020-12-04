@@ -1,9 +1,9 @@
-const lightboxReducer = (state=null, action) => {
+const lightboxReducer = (state={}, action) => {
   switch(action.type) {
     case 'LIGHTBOX_SHOW':
-      return state = {...state, ...action.payload};
+      return {...state, ...action.payload};
     case 'LIGHTBOX_HIDE':
-      return state = null;
+      return {};
     default:
       return state;
   }
