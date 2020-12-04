@@ -7,31 +7,14 @@ import WindowShade from './WindowShade/WindowShade'
 import './CommonTemplate.scss'
 
 const CommonTemplate = (props) => {
-  const [drawerActive, setDrawerActive] = useState(false)
-  const [shadeActive, setShadeActive] = useState(false)
-
-  const handleDrawerToggle = () => {
-    setDrawerActive(!drawerActive)
-    setShadeActive(!drawerActive)
-  };
-
-  const handleCloseShade = () => {
-    setDrawerActive(false)
-    setShadeActive(false)
-  };
-
   return (
     <>
-      <HeaderBar
-        toggleMenu={handleDrawerToggle}
-        drawerActive={drawerActive} />
-      <Drawer section={props.pageName} drawerActive={drawerActive}>
+      <HeaderBar />
+      <Drawer section={props.pageName}>
         {props.drawerChildren}
       </Drawer>
       <Lightbox />
-      <WindowShade
-        active={shadeActive}
-        closeShade={handleCloseShade} />
+      <WindowShade />
       <main class={`main-content-${props.pageName}`}>
         {props.children}
       </main>
