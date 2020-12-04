@@ -1,9 +1,14 @@
 import React from 'react'
 import './ComicsList.scss'
-import LightboxContext from 'components/Layout/Lightbox/LightboxContext'
+
+import {useSelector, useDispatch} from 'react-redux'
+import { lightboxShow } from 'store/actions'
 
 const ComicsList = (props) => {
-  function AllComics({handleLightboxToggle}) {
+  const lightboxObj = useSelector(state => state.lightbox)
+  const dispatch = useDispatch()
+
+  function AllComics() {
     const generateImgUrl = (comic) => {
       return comic.images.length
         ? `${comic.images[0].path}.${comic.images[0].extension}`
@@ -15,7 +20,7 @@ const ComicsList = (props) => {
         <li key={comic.id.toString()}>
           <img
             src={generateImgUrl(comic)}
-            onClick={() => handleLightboxToggle(comic, generateImgUrl(comic))}
+            onClick={() => dispatch(lightboxShow({...comic, ...{url: generateImgUrl(comic)}} ))   }
             alt={comic.title} />
           {comic.title}
         </li>
@@ -29,11 +34,7 @@ const ComicsList = (props) => {
   }
 
   return (
-    <LightboxContext.Consumer>
-      {(handleLightboxToggle) =>
-        <AllComics handleLightboxToggle={handleLightboxToggle} />
-      }
-    </LightboxContext.Consumer>
+    <AllComics />
   )
 }
 

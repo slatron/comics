@@ -1,29 +1,29 @@
 import React from 'react'
-import LightboxContext from './LightboxContext'
 import './Lightbox.scss'
 
-const Lightbox = (props) => {
+import {useSelector, useDispatch} from 'react-redux'
+import { lightboxHide } from 'store/actions'
 
-  const LBcontent = props.lightboxContents
+const Lightbox = () => {
+  const lightboxObj = useSelector(state => state.lightbox)
+  const dispatch = useDispatch()
+
+  const LBcontent = lightboxObj
     && (
       <p>
         <img
-          src={props.lightboxContents.url}
-          alt={props.lightboxContents.title} />
-        {props.lightboxContents.title}
+          src={lightboxObj.url}
+          alt={lightboxObj.title} />
+        {lightboxObj.title}
       </p>
     )
 
   return (
-    <LightboxContext.Consumer>
-      {(handleLightboxToggle) =>
-        <div
-          className={`lightbox ${props.lightboxActive ? 'active' : ''}`}
-          onClick={() => handleLightboxToggle(null)}>
-          {LBcontent}
-        </div>
-      }
-    </LightboxContext.Consumer>
+    <div
+      className={`lightbox ${lightboxObj ? 'active' : ''}`}
+      onClick={() => dispatch(lightboxHide())}>
+      {LBcontent}
+    </div>
   )
 }
 
