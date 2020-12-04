@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import './Drawer.scss'
 
+import {useSelector} from 'react-redux'
+
 const Drawer = (props) => {
+  const drawerActive = useSelector(state => state.drawer)
   return (
     <nav
       id="drawer"
-      className={`${props.drawerActive ? 'active' : ''}`}
+      className={`${drawerActive ? 'active' : ''}`}
     >
       <ul>
         <li className={`${props.section === 'mcu' ? 'active' : ''}`}>

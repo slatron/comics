@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {useSelector, useDispatch} from 'react-redux'
-import { lightboxShow } from 'store/actions'
+import { lightboxShow, windowshadeShow } from 'store/actions'
 
 const ComicListItem = (props) => {
   const lightboxObj = useSelector(state => state.lightbox)
@@ -13,11 +13,16 @@ const ComicListItem = (props) => {
       : 'https://via.placeholder.com/150'
   }
 
+  const handleClick = () => {
+    dispatch(lightboxShow({...props.comic, ...{url: generateImgUrl(props.comic)}}))
+    dispatch(windowshadeShow())
+  }
+
   return (
     <li key={props.key}>
       <img
         src={generateImgUrl(props.comic)}
-        onClick={() => dispatch(lightboxShow({...props.comic, ...{url: generateImgUrl(props.comic)}} ))   }
+        onClick={() => handleClick()}
         alt={props.comic.title} />
       {props.comic.title}
     </li>

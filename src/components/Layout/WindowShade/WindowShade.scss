@@ -15,7 +15,7 @@
 
   &.active {
     display: block;
-    @include breakpoint(tablet) {
+    @include breakpoint(laptop) {
       display: none !important;
     }
   }

@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
 import './HeaderBar.scss'
 
-const HeaderBar = (props) => {
+import {useSelector, useDispatch} from 'react-redux'
+import { windowshadeShow, windowshadeHide, drawerShow, drawerHide } from 'store/actions'
+
+const HeaderBar = () => {
+  const drawerActive = useSelector(state => state.drawer)
+  const dispatch = useDispatch()
+
+  const toggleMenu = () => {
+    if (drawerActive) {
+      dispatch(drawerHide())
+      dispatch(windowshadeHide())
+    } else {
+      dispatch(drawerShow())
+      dispatch(windowshadeShow())
+    }
+  }
+
   return (
     <div className="header-bar">
       <div className="flex-left vertical-align-container">
         <div
-            className="hamburger"
-            className={`hamburger ${props.drawerActive ? 'active' : ''}`}
-            onClick={props.toggleMenu}
+            className={`hamburger ${drawerActive ? 'active' : ''}`}
+            onClick={() => toggleMenu()}
         >
           <span className="line"></span>
           <span className="line"></span>

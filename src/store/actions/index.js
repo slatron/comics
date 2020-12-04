@@ -24,3 +24,27 @@ export const lightboxHide = () => {
     type: 'LIGHTBOX_HIDE'
   }
 }
+
+// windowshade.js actions
+export const windowshadeShow = () => {
+  return {
+    type: 'WINDOWSHADE_SHOW'
+  }
+}
+export const windowshadeHide = () => {
+  return {
+    type: 'WINDOWSHADE_HIDE'
+  }
+}
+
+// drawer.js actions
+export const drawerShow = () => {
+  return {
+    type: 'DRAWER_SHOW'
+  }
+}
+export const drawerHide = () => {
+  return {
+    type: 'DRAWER_HIDE'
+  }
+}
