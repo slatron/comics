@@ -1,3 +1,5 @@
+// This hook returns comics for the dateString from the api provider
+
 import { useState, useEffect } from 'react'
 import api from 'src/api/api'
 

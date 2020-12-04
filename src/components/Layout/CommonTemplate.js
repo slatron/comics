@@ -32,7 +32,7 @@ const CommonTemplate = (props) => {
       <WindowShade
         active={shadeActive}
         closeShade={handleCloseShade} />
-      <main>
+      <main class={`main-content-${props.pageName}`}>
         {props.children}
       </main>
     </>

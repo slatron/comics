@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Item.scss'
+
 const Item = (props) => {
   return (
     <section
