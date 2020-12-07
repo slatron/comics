@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/Forms/FilterComics/FilterComics'
-import { useFetchComics } from 'hooks/useFetchComics'
+import { useFetchComics } from './useFetchComics'
 
 const ComicsPage = () => {
   const [fullResults, setFullResults] = useState([])

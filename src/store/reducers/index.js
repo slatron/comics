@@ -1,16 +1,13 @@
 // This file combines all store reducers to a single export
-
-import counterReducer from './counter'
+import drawerReducer from './drawer'
 import lightboxReducer from './lightbox'
 import windowshadeReducer from './windowshade'
-import drawerReducer from './drawer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
-  counter: counterReducer,
+  drawer: drawerReducer,
   lightbox: lightboxReducer,
-  windowshade: windowshadeReducer,
-  drawer: drawerReducer
+  windowshade: windowshadeReducer
 })
 
 export default allReducers
