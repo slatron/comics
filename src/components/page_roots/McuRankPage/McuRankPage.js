@@ -6,8 +6,8 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 import api from 'src/api/api'
 
 const McuRankPage = () => {
-  let [allMovies, setAllMovies] = useLocalStorage('allMovies', [])
-  let [allTiers, setAllTiers] = useLocalStorage('allTiers', [])
+  const [allMovies, setAllMovies] = useLocalStorage('allMovies', [])
+  const [allTiers, setAllTiers] = useLocalStorage('allTiers', [])
 
   useEffect(() => {
     getMovies()

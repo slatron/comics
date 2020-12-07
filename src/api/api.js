@@ -1,5 +1,6 @@
-import firebase from "firebase/app"
-import "firebase/database"
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4Ut5x488eODNFmnlisGKRSNYhuoHJ6Pw",
@@ -11,10 +12,10 @@ const firebaseConfig = {
   appId: "1:236578939074:web:b57b6e1006f6b327"
 }
 
-// Initialize Firebase
+// Initialize DB
 const db = firebase
   .initializeApp(firebaseConfig)
-  .database();
+  .database()
 
 const API_BASE = 'https://gateway.marvel.com/v1/public'
 const MARVEL_API_PUBLIC = 'a2247180c2419763e9dd936e4d1f0aab'
@@ -47,5 +48,38 @@ export default {
 
   getRemTiersFB: () => {
     return db.ref('rem-tiers').once('value')
+  },
+
+  login: (email, pass) => {
+    firebase.auth()
+            .signInWithEmailAndPassword(email, pass)
+            .then((response) => {
+              console.log('response: ', response)
+              console.log('...you are signed in!')
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorCode, errorMessage)
+            });
+  },
+
+  logout: () => {
+    firebase.auth()
+            .signOut()
+            .then(() => {
+              console.log('You have signed out')
+            })
+            .catch((error) => {
+              console.log('Error signing out: ', error)
+            })
+  },
+
+  getLoginObserver: (callback) => {
+    firebase.auth()
+            .onAuthStateChanged((user) => {
+              user = user ? user : {}
+              callback(user)
+            })
   }
 }
