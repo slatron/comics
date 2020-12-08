@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import api from 'src/api/api'
 import {useFormData} from '../useFormData'
+import '../forms.scss'
 
 const LoginForm = () => {
 
@@ -13,23 +14,30 @@ const LoginForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="basic-form" onSubmit={handleSubmit}>
         <h3>Login Here</h3>
-        <label for="login_email">Email </label>
-        <input
-          type="email"
-          name="login_email"
-          id="login_email"
-          value={inputs.login_email}
-          onChange={handleInputChange}/>
-        <br />
-        <label for="login_pass">Password </label>
-        <input
-          id="login_pass"
-          type="password" 
-          name="login_pass"
-          value={inputs.login_pass}
-          onChange={handleInputChange}/>
+        <div className="field-pair">
+          <label for="login_email">Email </label>
+          <div className="input-container">
+            <input
+              type="email"
+              name="login_email"
+              id="login_email"
+              value={inputs.login_email}
+              onChange={handleInputChange}/>
+          </div>
+        </div>
+        <div className="field-pair">
+          <label for="login_pass">Password </label>
+          <div className="input-container">
+            <input
+              id="login_pass"
+              type="password"
+              name="login_pass"
+              value={inputs.login_pass}
+              onChange={handleInputChange}/>
+          </div>
+        </div>
         <button type="submit">login</button>
       </form>
     </>

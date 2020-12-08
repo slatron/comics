@@ -50,6 +50,10 @@ export default {
     return db.ref('rem-tiers').once('value')
   },
 
+  updateRemTiersFB: (tiers) => {
+    return db.ref('rem-tiers').set(tiers)
+  },
+
   login: (email, pass) => {
     firebase.auth()
             .signInWithEmailAndPassword(email, pass)

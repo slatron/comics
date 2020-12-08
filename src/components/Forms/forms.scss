@@ -1,0 +1,23 @@
+@import './src/styles/base/settings';
+
+.basic-form {
+  max-width: 75%;
+  padding: $base-unit-half;
+  margin: $base-unit-half;
+  border: 2px solid $color-black;
+  border-radius: $base-rounded-corners;
+
+  .field-pair {
+    display: flex;
+    margin-bottom: $base-unit-quarter;
+    label {
+      width: 25%;
+    }
+    .input-container {
+      flex-grow: 1;
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

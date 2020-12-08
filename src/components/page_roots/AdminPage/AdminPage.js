@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom'
 import {useFetchAuth} from '../useFetchAuth'
 import api from 'src/api/api'
 
-import LoginForm from 'components/Forms/LoginForm/LoginForm'
+import LoginForm from 'components/forms/LoginForm/LoginForm'
 import CommonTemplate from 'components/Layout/CommonTemplate'
-import AdminTiers from 'components/Admin/AdminTiers/AdminTiers'
+import AdminTiers from './AdminTiers/AdminTiers'
 
 const AdminPage = () => {
   const [loadingUser, user] = useFetchAuth()
@@ -14,7 +14,7 @@ const AdminPage = () => {
   const logoutUser = () => {
     api.logout()
   }
-  
+
   const AdminSection = (props) => {
     return props.user.logged_in
       ? (
@@ -27,7 +27,6 @@ const AdminPage = () => {
       )
       : (
       <>
-        <p>{`Hello, ${props.user.name}`}</p>
         <LoginForm />
       </>
       )

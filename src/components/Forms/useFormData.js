@@ -2,14 +2,13 @@
 //   and returns them as an inputs object
 import React, {useState} from 'react'
 
-export const useFormData = (callback, initData) => {
-  console.log('initData: ', initData)
+export const useFormData = (callback) => {
   const [inputs, setInputs] = useState({})
-  const handleSubmit = (e) => {
-    if (e) {
-      e.preventDefault()
-    }
-    callback()
+  const handleInitData = (data) => {
+    setInputs(inputs => ({
+      ...inputs,
+      ...data
+    }))
   }
   const handleInputChange = (e) => {
     e.persist()
@@ -18,9 +17,16 @@ export const useFormData = (callback, initData) => {
       [e.target.name]:e.target.value
     }))
   }
+  const handleSubmit = (e) => {
+    if (e) {
+      e.preventDefault()
+    }
+    callback()
+  }
   return {
     inputs,
-    handleSubmit,
+    handleInitData,
     handleInputChange,
+    handleSubmit
   }
 }
