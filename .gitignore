@@ -2,3 +2,4 @@ node_modules
 app
 deploy.sh
 *.snap
+.vscode
