@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import api from 'src/api/api'
 import {sorting} from 'src/utils/sorting'
-import TiersNameForm from 'src/components/Forms/TiersNameForm/TiersNameForm'
+import TiersNameForm from 'src/components/forms/TiersNameForm/TiersNameForm'
 
 const AdminTiers = () => {
     const [allTiers, setAllTiers] = useState([])
 
     useEffect(() => {
-      getMovies()
+      getRemTiers()
     }, []);
-    
-    function getMovies() {
+
+    function getRemTiers() {
         api.getRemTiersFB().then(snapshot => {
             const sortedTiers = snapshot.val().sort(sorting().sortBy('position', true))
             setAllTiers(sortedTiers)

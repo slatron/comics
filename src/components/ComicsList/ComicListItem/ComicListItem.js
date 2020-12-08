@@ -14,7 +14,13 @@ const ComicListItem = (props) => {
   }
 
   const handleClick = () => {
-    dispatch(lightboxShow({...props.comic, ...{url: generateImgUrl(props.comic)}}))
+    dispatch(lightboxShow({
+      ...props.comic,
+      ...{
+        type: 'cover-image',
+        url: generateImgUrl(props.comic)
+      }
+    }))
     dispatch(windowshadeShow())
   }
 
