@@ -1,6 +1,6 @@
 // This hook handles input changes on a form
 //   and returns them as an inputs object
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 export const useFormData = (callback) => {
   const [inputs, setInputs] = useState({})

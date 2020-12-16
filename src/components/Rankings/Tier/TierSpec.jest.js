@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 
 import React from 'react'
-import {fireEvent, render, screen} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import Tier from './Tier'
 
 import {testTiers, testItems} from 'tests/units/support/rankingFixtures'

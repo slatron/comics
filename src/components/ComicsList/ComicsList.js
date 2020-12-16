@@ -7,7 +7,7 @@ const ComicsList = (props) => {
   function AllComics() {
     const comicsListDOM = props.comics.length ?
       props.comics.map((comic) =>
-        <ComicListItem comickey={comic.id.toString()} comic={comic} />
+        <ComicListItem key={comic.id.toString()} comic={comic} />
       ) : <div className="loading">loading...</div>
 
     return (

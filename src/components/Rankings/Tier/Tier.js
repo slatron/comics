@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Item from 'components/Rankings/Item/Item'
 
 import './Tier.scss'
@@ -17,6 +18,12 @@ const Tier = (props) => {
       {itemListDOM}
     </div>
   )
+}
+
+
+Tier.propTypes = {
+  items: PropTypes.array,
+  tier: PropTypes.object
 }
 
 export default Tier

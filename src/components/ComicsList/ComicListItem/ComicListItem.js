@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import {useSelector, useDispatch} from 'react-redux'
-import { lightboxShow, windowshadeShow } from 'store/actions'
+import {useDispatch} from 'react-redux'
+import {lightboxShow, windowshadeShow} from 'store/actions'
 
 const ComicListItem = (props) => {
-  const lightboxObj = useSelector(state => state.lightbox)
   const dispatch = useDispatch()
 
   const generateImgUrl = (comic) => {
@@ -25,7 +25,7 @@ const ComicListItem = (props) => {
   }
 
   return (
-    <li key={props.comickey}>
+    <li key={props.comic.id.toString()}>
       <img
         src={generateImgUrl(props.comic)}
         onClick={() => handleClick()}
@@ -33,6 +33,10 @@ const ComicListItem = (props) => {
       {props.comic.title}
     </li>
   )
+}
+
+ComicListItem.propTypes = {
+  comic: PropTypes.object.isRequired
 }
 
 export default ComicListItem

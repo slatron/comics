@@ -9,7 +9,7 @@ const ComicsPage = () => {
   const [comicResults, setComicResults] = useState([])
   const [activeFilter, setActiveFilter] = useState('(all)')
   const [filterDate, setFilterDate] = useState('thisWeek')
-  const [loading, comicsResults] = useFetchComics(filterDate)
+  const [loadingComics, comicsResults] = useFetchComics(filterDate)
 
   useEffect(() => {
     initComics(filterDate)
@@ -55,6 +55,7 @@ const ComicsPage = () => {
       }
       pageName="comics"
     >
+      {loadingComics && <div className="loading">loading...</div>}
       <ComicsList comics={comicResults} />
     </CommonTemplate>
   )

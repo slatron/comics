@@ -1,5 +1,6 @@
 // This component takes items and tiers and sorts them into Tier components
 import React from 'react'
+import PropTypes from 'prop-types'
 import Tier from 'components/Rankings/Tier/Tier'
 
 const TiersList = (props) => {
@@ -22,6 +23,11 @@ const TiersList = (props) => {
       {tiersListDOM}
     </div>
   )
+}
+
+TiersList.propTypes = {
+  items: PropTypes.array,
+  tiers: PropTypes.array
 }
 
 export default TiersList

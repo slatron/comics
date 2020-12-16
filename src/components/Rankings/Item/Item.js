@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import './Item.scss'
 
 const Item = (props) => {
@@ -16,6 +16,10 @@ const Item = (props) => {
       </span>
     </section>
   )
+}
+
+Item.propTypes = {
+  item: PropTypes.object
 }
 
 export default Item

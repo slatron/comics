@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import PropTypes from 'prop-types'
 import {useFormData} from '../useFormData'
 import api from 'src/api/api'
 import '../forms.scss'
@@ -47,6 +48,10 @@ const TiersNameForm = (props) => {
         <button type="submit">Update Tiers</button>
       </form>
     )
+}
+
+TiersNameForm.propTypes = {
+  tiers: PropTypes.array
 }
 
 export default TiersNameForm
