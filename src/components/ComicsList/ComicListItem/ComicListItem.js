@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
 import {useDispatch} from 'react-redux'
 import {lightboxShow, windowshadeShow} from 'store/actions'
 
+import ComicsListItemDetails from 'components/ComicsList/ComicsListItemDetails/ComicsListItemDetails'
+
 const ComicListItem = (props) => {
+  const [detailsOpen, setDetailsOpen] = useState(false)
   const dispatch = useDispatch()
 
   const generateImgUrl = (comic) => {
@@ -13,7 +16,11 @@ const ComicListItem = (props) => {
       : 'https://via.placeholder.com/150'
   }
 
-  const handleClick = () => {
+  const handleShowDetailsCLick = () => {
+    setDetailsOpen(!detailsOpen)
+  }
+
+  const handleImageClick = () => {
     dispatch(lightboxShow({
       ...props.comic,
       ...{
@@ -25,12 +32,28 @@ const ComicListItem = (props) => {
   }
 
   return (
-    <li key={props.comic.id.toString()}>
-      <img
-        src={generateImgUrl(props.comic)}
-        onClick={() => handleClick()}
-        alt={props.comic.title} />
-      {props.comic.title}
+    <li 
+      key={props.comic.id.toString()}
+      className={`${detailsOpen ? 'expanded' : ''}`}
+    >
+      <div className="comic-img">
+        <img
+          src={generateImgUrl(props.comic)}
+          onClick={() => handleImageClick()}
+          alt={props.comic.title} />
+      </div>
+      <div className="comic-details">
+        <h3>{props.comic.title}</h3>
+        {detailsOpen &&
+          <ComicsListItemDetails comic={props.comic}></ComicsListItemDetails>
+        }
+      </div>
+      <span
+        className="comic-expand"
+        onClick={() => handleShowDetailsCLick()}
+      >
+        &lt;
+      </span>
     </li>
   )
 }

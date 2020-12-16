@@ -1,3 +1,6 @@
+@import './src/styles/base/settings';
+$comic-img-width: 75px;
+
 .comics-list {
   ul {
     border-top: 1px solid #000;
@@ -9,11 +12,47 @@
     list-style-type: none;
     font-size: 18px;
     border-bottom: 1px solid #000;
-    padding: 1em;
+    display: flex;
+    padding: $base-unit;
 
-    img {
-      width: 65px;
-      padding-right: 1em;
+    .comic-img {
+      width: $comic-img-width;
+      padding-right: $base-unit;
+      transition: $transtion-drawer;
+    }
+
+    .comic-details {
+      flex-grow: 1;
+      max-height: 92px;
+      transition: all 0.7s ease-in-out;
+      overflow-y: hidden;
+      h3 {
+        font-weight: normal
+      }
+    }
+
+    .comic-expand {
+      align-self: flex-start;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      padding-left: $base-unit-half;
+      transition: $transtion-drawer;
+    }
+
+    &.expanded {
+      .comic-img {
+        width: $comic-img-width * 2;
+      }
+      .comic-details  {
+        max-height: 500px;
+      }
+      .comic-details h3 {
+        font-weight: bold;
+      }
+      .comic-expand {
+        transform: rotate(-90deg);
+      }
     }
 
     &:nth-of-type(odd) {
