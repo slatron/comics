@@ -99,10 +99,7 @@ module.exports = (env, argv) => {
               loader: "css-loader"
             },
             {
-              loader:  "postcss-loader",
-              options: {
-                sourceMap: true
-              }
+              loader:  "postcss-loader"
             },
             {
               loader: "resolve-url-loader"
