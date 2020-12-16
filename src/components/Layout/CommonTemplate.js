@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import HeaderBar from './HeaderBar/HeaderBar'
 import Drawer from './Drawer/Drawer'
 import Lightbox from './Lightbox/Lightbox'
@@ -20,6 +21,12 @@ const CommonTemplate = (props) => {
       </main>
     </>
   )
+}
+
+CommonTemplate.propTypes = {
+  pageName: PropTypes.string,
+  drawerChildren: PropTypes.element,
+  children: PropTypes.element
 }
 
 export default CommonTemplate

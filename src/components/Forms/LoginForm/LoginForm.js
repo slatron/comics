@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import api from 'src/api/api'
 import {useFormData} from '../useFormData'
 import '../forms.scss'

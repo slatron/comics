@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import ReactDOM from 'react-dom'
-
+import React from 'react'
+import PropTypes from 'prop-types'
 import {useFetchAuth} from '../useFetchAuth'
 import api from 'src/api/api'
 
@@ -31,7 +30,11 @@ const AdminPage = () => {
       </>
       )
   }
-
+  
+  AdminSection.propTypes = {
+    user: PropTypes.object
+  }
+  
   return (
     <>
       <CommonTemplate

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import './Drawer.scss'
 
 import {useSelector} from 'react-redux'
@@ -21,6 +22,11 @@ const Drawer = (props) => {
       {props.children}
     </nav>
   )
+}
+
+Drawer.propTypes = {
+  children: PropTypes.element.isRequired,
+  section: PropTypes.string
 }
 
 export default Drawer

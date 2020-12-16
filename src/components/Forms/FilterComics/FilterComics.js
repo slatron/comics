@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import './FilterComics.scss'
 
 const FilterComics = (props) => {
@@ -37,6 +38,14 @@ const FilterComics = (props) => {
     </div>
   </div>
   )
+}
+
+FilterComics.propTypes = {
+  filterComics: PropTypes.func,
+  activeFilter: PropTypes.string,
+  resetComics: PropTypes.func,
+  handleFilterDateChange: PropTypes.func,
+  filterDate: PropTypes.string
 }
 
 export default FilterComics
