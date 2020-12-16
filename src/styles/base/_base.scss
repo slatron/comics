@@ -36,6 +36,10 @@ ul, li {
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 table {
   @extend %text-small;
   border-collapse: collapse;
