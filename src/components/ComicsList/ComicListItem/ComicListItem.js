@@ -25,7 +25,7 @@ const ComicListItem = (props) => {
   }
 
   return (
-    <li key={props.key}>
+    <li key={props.comickey}>
       <img
         src={generateImgUrl(props.comic)}
         onClick={() => handleClick()}
