@@ -13,9 +13,6 @@ module.exports = {
     const fileName = filePath.replace(PAGE_DIR, '')
     return new HTMLWebPackPlugin({
       chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
-      // Uncomment this to bundle all js into one main.tag.js file
-      // - connects each html page to one main.js file
-      // chunks: ['main', 'vendor'],
       template: filePath,
       filename: fileName
     })

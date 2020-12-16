@@ -15,7 +15,7 @@ const CommonTemplate = (props) => {
       </Drawer>
       <Lightbox />
       <WindowShade />
-      <main class={`main-content-${props.pageName}`}>
+      <main className={`main-content-${props.pageName}`}>
         {props.children}
       </main>
     </>

@@ -17,7 +17,7 @@ const LoginForm = () => {
       <form className="basic-form" onSubmit={handleSubmit}>
         <h3>Login Here</h3>
         <div className="field-pair">
-          <label for="login_email">Email </label>
+          <label htmlFor="login_email">Email </label>
           <div className="input-container">
             <input
               type="email"
@@ -28,7 +28,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="field-pair">
-          <label for="login_pass">Password </label>
+          <label htmlFor="login_pass">Password </label>
           <div className="input-container">
             <input
               id="login_pass"
