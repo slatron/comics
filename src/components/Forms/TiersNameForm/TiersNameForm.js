@@ -29,7 +29,7 @@ const TiersNameForm = (props) => {
 
     const TierInputs = props.tiers.map((tier) => {
       return (
-        <div className="field-pair">
+        <div key={tier.title} className="field-pair">
           <label>{tier.title.toUpperCase()}</label>
           <div className="input-container">
             <input

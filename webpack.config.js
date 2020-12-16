@@ -16,27 +16,15 @@ const htmlFiles = getFilesFromDir(PAGE_DIR, ['.html'])
 const htmlPlugins = generateSetting.htmlPlugins(htmlFiles)
 
 module.exports = (env, argv) => {
-  // This will be replaced by the actual tag version from the command line
-  // - TODO: How to read tag string here from command line
-  const tag = argv.tag || '0.0.0'
-
   return {
     devtool: 'source-map',
     // Create js bundle for each page:
     entry,
 
-    // Replace entry with this to bundle all js into one main.tag.js file
-    // - This would be a large single download like the current application
-    // - as opposed to one js file per page
-    // - See comment in /config/gerenateSettngs.js for additional change
-    // entry: {
-    //   main: './src/pages/index.js'
-    // },
-
     // generates js files for pages
     output: {
       path: path.resolve(__dirname, "app"),
-      filename: `[name].${tag}.js`
+      filename: `[name].js`
     },
 
     // Put each html page in its own file

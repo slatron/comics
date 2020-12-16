@@ -8,7 +8,7 @@
     "start": "webpack serve",
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch",
-    "lint": "npx eslint src/**/*.js"
+    "lint": "npx eslint src"
   },
   "keywords": [],
   "author": "Michael A. Slater <slatron@gmail.com> (http://mikeslater.com/)",
@@ -27,6 +27,7 @@
     "copy-webpack-plugin": "^6.3.2",
     "css-loader": "^5.0.1",
     "eslint": "^7.14.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "image-minimizer-webpack-plugin": "^1.0.0",
@@ -45,6 +46,7 @@
   "dependencies": {
     "eslint-plugin-react": "^7.21.5",
     "firebase": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
