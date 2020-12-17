@@ -1,5 +1,5 @@
 @import './src/styles/base/settings';
-$comic-img-width: 75px;
+$comic-img-width: 80px;
 
 .comics-list {
   ul {
@@ -58,5 +58,8 @@ $comic-img-width: 75px;
     &:nth-of-type(odd) {
       background: #dcdcdc;
     }
+  }
+  h6 {
+    margin-bottom: $base-unit-quarter;
   }
 }

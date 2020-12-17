@@ -6,12 +6,14 @@ import DetailsCreatorList from 'components/ComicsList/DetailsCreatorList/Details
 
 const ComicsListItemDetails = (props) => {
 
-  const {characters, creators} = props.comic
+  const {characters, creators, title} = props.comic
 
   return (
     <div key={props.comic.id.toString()}>
       <DetailsCharacterList characters={characters} />
       <DetailsCreatorList creators={creators} />
+      <h6>Full Title</h6>
+      <p>{title}</p>
     </div>
   )
 }
