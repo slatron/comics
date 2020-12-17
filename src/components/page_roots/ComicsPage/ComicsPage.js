@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/forms/FilterComics/FilterComics'
@@ -11,17 +11,17 @@ const ComicsPage = () => {
   const [filterDate, setFilterDate] = useState('thisWeek')
   const [loadingComics, comicsResults] = useFetchComics(filterDate)
 
-  useEffect(() => {
-    initComics(filterDate)
-  }, [comicsResults]);
-
-  function initComics(dateString) {
+  const initComics = useCallback((dateString) => {
     setFullResults(comicsResults)
     setComicResults(comicsResults)
     setFilterDate(dateString)
-  }
+  }, [comicsResults])
 
-  function filterComics(term) {
+  useEffect(() => {
+    initComics(filterDate)
+  }, [comicsResults, filterDate, initComics]);
+
+  const filterComics = (term) => {
     setActiveFilter(term)
     if (fullResults.length) {
       const filteredComics = fullResults.filter(comic => {
@@ -31,12 +31,12 @@ const ComicsPage = () => {
     }
   }
 
-  function resetComics() {
+  const resetComics = () => {
     setActiveFilter('(all)')
     initComics(filterDate)
   }
 
-  function handleFilterDateChange(e) {
+  const handleFilterDateChange = (e) => {
     setFilterDate(e.target.value)
   }
 

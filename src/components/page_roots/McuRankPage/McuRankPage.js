@@ -8,12 +8,8 @@ import api from 'src/api/api'
 const McuRankPage = () => {
   const [allMovies, setAllMovies] = useLocalStorage('allMovies', [])
   const [allTiers, setAllTiers] = useLocalStorage('allTiers', [])
-
-  useEffect(() => {
-    getMovies()
-  }, []);
-
-  function getMovies() {
+  
+  const getMovies = () => {
     api.getMoviesFB().then(snapshot => {
       const sortedMovies = snapshot.val().sort(sorting().sortBy('rank', true))
       setAllMovies(sortedMovies)
@@ -23,6 +19,8 @@ const McuRankPage = () => {
       setAllTiers(sortedTiers)
     })
   }
+
+  useEffect(getMovies, [setAllMovies, setAllTiers]);
 
   return (
     <>

@@ -61,18 +61,25 @@ $comic-img-width: 80px;
   }
 
   .detail-entry {
-    display: flex;
     h6 {
-      margin-bottom: $base-unit-quarter;
-      padding-right: $base-unit-quarter;
+      margin-bottom: 0;
     }
     p {
-      flex-grow: 1;
       margin-bottom: $base-unit-quarter;
+    }
+    @include breakpoint(laptop) {
+      display: flex;
+      h6 {
+        margin-bottom: $base-unit-quarter;
+        padding-right: $base-unit-quarter;
+      }
+      p {
+        flex-grow: 1;
+      }
     }
   }
 
   .detail-area {
-    margin-bottom: $base-unit-half;
+    margin-bottom: $base-unit;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DetailEntry from 'components/ComicsList/DetailEntry/DetailEntry'
+import DetailEntry from '../DetailEntry/DetailEntry'
 
 const DetailsCharacterList = (props) => {
   const {items} = props.characters
