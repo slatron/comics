@@ -12,8 +12,10 @@ const ComicsListItemDetails = (props) => {
     <div key={props.comic.id.toString()}>
       <DetailsCharacterList characters={characters} />
       <DetailsCreatorList creators={creators} />
-      <h6>Full Title</h6>
-      <p>{title}</p>
+      <div className="detail-entry">
+        <h6>Full Title</h6>
+        <p>{title}</p>
+      </div>
     </div>
   )
 }

@@ -1,58 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import DetailEntry from 'components/ComicsList/DetailEntry/DetailEntry'
 
 const DetailsCreatorList = (props) => {
-  const writers = props.creators?.items.filter((item) => item.role === 'writer')
-  const pencilers = props.creators?.items.filter((item) => item.role === 'penciler')
-  const inkers = props.creators?.items.filter((item) => item.role === 'inker')
-  const colorists = props.creators?.items.filter((item) => item.role === 'colorist')
-  const covers = props.creators?.items.filter((item) => item.role.includes('cover'))
+  const {items} = props.creators
 
-  const writerNames = writers.map(writer => writer.name)
-  const pencilerNames = pencilers.map(writer => writer.name)
-  const inkerNames = inkers.map(writer => writer.name)
-  const coloristNames = colorists.map(writer => writer.name)
-  const coverNames = covers.map(writer => writer.name)
+  const writers = items.filter((item) => item.role === 'writer')
+  const pencilers = items.filter((item) => item.role === 'penciler')
+  const inkers = items.filter((item) => item.role === 'inker')
+  const colorists = items.filter((item) => item.role === 'colorist')
+  const covers = items.filter((item) => item.role.includes('cover'))
 
-  const simplePlural = (string, n) => n > 1 ? `${string}s`: string
+  const detailAreas = [
+    {
+      label: 'Writer',
+      names: writers.map(writer => writer.name),
+      urls: writers.map(writer => writer.resourceURI)
+    },
+    {
+      label: 'Penciler',
+      names: pencilers.map(writer => writer.name),
+      urls: pencilers.map(writer => writer.resourceURI)
+    },
+    {
+      label: 'Inker',
+      names: inkers.map(writer => writer.name),
+      urls: inkers.map(writer => writer.resourceURI)
+    },
+    {
+      label: 'Colorist',
+      names: colorists.map(writer => writer.name),
+      urls: colorists.map(writer => writer.resourceURI)
+    },
+    {
+      label: 'Cover',
+      names: covers.map(writer => writer.name),
+      urls: covers.map(writer => writer.resourceURI)
+    }
+  ]
+
+  const detailEntries = detailAreas.map((area) => {
+    return (
+      <DetailEntry key={area.label} {...area} />
+    )
+  })
 
   return (
-    <>
-      {writerNames.length > 0 &&
-        <>
-          <h6>{simplePlural('Writer', writerNames.length)}</h6>
-          <p>{writerNames.join(', ')}</p>
-        </>
-      }
-
-      {pencilerNames.length > 0 &&
-        <>
-          <h6>{simplePlural('Penciler', pencilerNames.length)}</h6>
-          <p>{pencilerNames.join(', ')}</p>
-        </>
-      }
-
-      {coloristNames.length > 0 &&
-        <>
-          <h6>{simplePlural('Colorist', coloristNames.length)}</h6>
-          <p>{coloristNames.join(', ')}</p>
-        </>
-      }
-
-      {inkerNames.length > 0 &&
-        <>
-          <h6>{simplePlural('Inker', inkerNames.length)}</h6>
-          <p>{inkerNames.join(', ')}</p>
-        </>
-      }
-
-      {coverNames.length > 0 &&
-        <>
-          <h6>Cover</h6>
-          <p>{coverNames.join(', ')}</p>
-        </>
-      }
-    </>
+    <div className="detail-area">
+      {detailEntries}
+    </div>
   )
 }
 

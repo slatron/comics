@@ -59,7 +59,20 @@ $comic-img-width: 80px;
       background: #dcdcdc;
     }
   }
-  h6 {
-    margin-bottom: $base-unit-quarter;
+
+  .detail-entry {
+    display: flex;
+    h6 {
+      margin-bottom: $base-unit-quarter;
+      padding-right: $base-unit-quarter;
+    }
+    p {
+      flex-grow: 1;
+      margin-bottom: $base-unit-quarter;
+    }
+  }
+
+  .detail-area {
+    margin-bottom: $base-unit-half;
   }
 }
