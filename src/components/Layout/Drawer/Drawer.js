@@ -25,7 +25,7 @@ const Drawer = (props) => {
 }
 
 Drawer.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.any,
   section: PropTypes.string
 }
 

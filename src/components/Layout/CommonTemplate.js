@@ -26,7 +26,7 @@ const CommonTemplate = (props) => {
 CommonTemplate.propTypes = {
   pageName: PropTypes.string,
   drawerChildren: PropTypes.element,
-  children: PropTypes.element
+  children: PropTypes.any
 }
 
 export default CommonTemplate
