@@ -8,7 +8,7 @@ const ComicsList = (props) => {
     const comicsListDOM = props.comics.length ?
       props.comics.map((comic) =>
         <ComicListItem key={comic.id.toString()} comic={comic} />
-      ) : <div className="loading">loading...</div>
+      ) : <div>no comics in selected filter</div>
 
     return (
       <ul className="comics-list">

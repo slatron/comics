@@ -14,39 +14,41 @@ const DetailsCreatorList = (props) => {
   const coloristNames = colorists.map(writer => writer.name)
   const coverNames = covers.map(writer => writer.name)
 
+  const simplePlural = (string, n) => n > 1 ? `${string}s`: string
+
   return (
     <>
       {writerNames.length > 0 &&
         <>
-          <h6>{`Writer${writerNames.length > 1 ? 's': ''}`}</h6>
+          <h6>{simplePlural('Writer', writerNames.length)}</h6>
           <p>{writerNames.join(', ')}</p>
         </>
       }
 
       {pencilerNames.length > 0 &&
         <>
-          <h6>{`Penciler${pencilerNames.length > 1 ? 's': ''}`}</h6>
+          <h6>{simplePlural('Penciler', pencilerNames.length)}</h6>
           <p>{pencilerNames.join(', ')}</p>
         </>
       }
 
       {coloristNames.length > 0 &&
         <>
-          <h6>{`Colorist${coloristNames.length > 1 ? 's': ''}`}</h6>
+          <h6>{simplePlural('Colorist', coloristNames.length)}</h6>
           <p>{coloristNames.join(', ')}</p>
         </>
       }
 
       {inkerNames.length > 0 &&
         <>
-          <h6>{`Inker${inkerNames.length > 1 ? 's': ''}`}</h6>
+          <h6>{simplePlural('Inker', inkerNames.length)}</h6>
           <p>{inkerNames.join(', ')}</p>
         </>
       }
 
       {coverNames.length > 0 &&
         <>
-          <h6>{`Cover${coverNames.length > 1 ? 's': ''}`}</h6>
+          <h6>Cover</h6>
           <p>{coverNames.join(', ')}</p>
         </>
       }

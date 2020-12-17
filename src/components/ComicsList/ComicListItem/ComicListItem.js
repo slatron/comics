@@ -43,7 +43,18 @@ const ComicListItem = (props) => {
           alt={props.comic.title} />
       </div>
       <div className="comic-details">
-        <h3>{props.comic.title}</h3>
+        <h3>
+          {props.comic.title.split(' (').length &&
+            <>
+              {props.comic.title.split(' (')[0]}
+            </>
+          }
+          {props.comic.title.split(' #').length > 1 &&
+            <>
+              &nbsp;#{props.comic.title.split(' #')[1]}
+            </>
+          }
+        </h3>
         {detailsOpen &&
           <ComicsListItemDetails comic={props.comic}></ComicsListItemDetails>
         }
