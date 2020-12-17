@@ -4,14 +4,6 @@ import {useFormData} from '../useFormData'
 import api from 'src/api/api'
 import '../forms.scss'
 
-const initFormData = (tiers) => {
-  let formData = {}
-  tiers.forEach(tier => {
-    formData[tier.title] = tier.desc
-  })
-  return formData
-}
-
 const TiersNameForm = (props) => {
     const updateTiers = () => {
       let updateData = [...props.tiers]
@@ -25,8 +17,16 @@ const TiersNameForm = (props) => {
     const {inputs, handleInitData, handleSubmit, handleInputChange} = useFormData(updateTiers)
 
     useEffect(() => {
+      const initFormData = (tiers) => {
+        let formData = {}
+        tiers.forEach(tier => {
+          formData[tier.title] = tier.desc
+        })
+        return formData
+      }
+
       handleInitData(initFormData(props.tiers))
-    }, []);
+    }, [props]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const TierInputs = props.tiers.map((tier) => {
       return (

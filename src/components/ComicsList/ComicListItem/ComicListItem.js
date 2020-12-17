@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {lightboxShow, windowshadeShow} from 'store/actions'
 
-import ComicsListItemDetails from 'components/ComicsList/ComicsListItemDetails/ComicsListItemDetails'
+import ComicsListItemDetails from './ComicsListItemDetails/ComicsListItemDetails'
 
 const ComicListItem = (props) => {
   const [detailsOpen, setDetailsOpen] = useState(false)
@@ -16,7 +16,7 @@ const ComicListItem = (props) => {
       : 'https://via.placeholder.com/150'
   }
 
-  const handleShowDetailsCLick = () => {
+  const handleShowDetailsClick = () => {
     setDetailsOpen(!detailsOpen)
   }
 
@@ -31,6 +31,10 @@ const ComicListItem = (props) => {
     dispatch(windowshadeShow())
   }
 
+  const stripParens = (str) => {
+    return str.replace(/ *\([^)]*\) */g, ' ')
+  }
+
   return (
     <li 
       key={props.comic.id.toString()}
@@ -43,25 +47,14 @@ const ComicListItem = (props) => {
           alt={props.comic.title} />
       </div>
       <div className="comic-details">
-        <h3>
-          {props.comic.title.split(' (').length &&
-            <>
-              {props.comic.title.split(' (')[0]}
-            </>
-          }
-          {props.comic.title.split(' #').length > 1 &&
-            <>
-              &nbsp;#{props.comic.title.split(' #')[1]}
-            </>
-          }
-        </h3>
+        <h3>{stripParens(props.comic.title)}</h3>
         {detailsOpen &&
           <ComicsListItemDetails comic={props.comic}></ComicsListItemDetails>
         }
       </div>
       <span
         className="comic-expand"
-        onClick={() => handleShowDetailsCLick()}
+        onClick={() => handleShowDetailsClick()}
       >
         &lt;
       </span>
