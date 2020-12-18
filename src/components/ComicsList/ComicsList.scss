@@ -16,13 +16,14 @@ $comic-img-width: 80px;
     padding: $base-unit;
 
     .comic-img {
+      flex: 0 0 $comic-img-width;
       width: $comic-img-width;
       padding-right: $base-unit;
       transition: $transtion-drawer;
     }
 
     .comic-details {
-      flex-grow: 1;
+      flex: 1 1 auto;
       max-height: 92px;
       transition: all 0.7s ease-in-out;
       overflow-y: hidden;
@@ -32,6 +33,7 @@ $comic-img-width: 80px;
     }
 
     .comic-expand {
+      flex: 0 1 auto;
       align-self: flex-start;
       cursor: pointer;
       font-size: 24px;
@@ -42,6 +44,7 @@ $comic-img-width: 80px;
 
     &.expanded {
       .comic-img {
+        flex: 0 1 $comic-img-width * 2;
         width: $comic-img-width * 2;
       }
       .comic-details  {

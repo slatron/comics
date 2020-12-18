@@ -1,30 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import ComicsList from 'components/ComicsList/ComicsList'
 import FilterComics from 'components/forms/FilterComics/FilterComics'
 import { useFetchComics } from './useFetchComics'
 
 const ComicsPage = () => {
-  const [fullResults, setFullResults] = useState([])
-  const [comicResults, setComicResults] = useState([])
   const [activeFilter, setActiveFilter] = useState('(all)')
   const [filterDate, setFilterDate] = useState('thisWeek')
-  const [loadingComics, comicsResults] = useFetchComics(filterDate)
-
-  const initComics = useCallback((dateString) => {
-    setFullResults(comicsResults)
-    setComicResults(comicsResults)
-    setFilterDate(dateString)
-  }, [comicsResults])
+  const [loadingComics, comicsRaw] = useFetchComics(filterDate)
+  const [comicResults, setComicResults] = useState([])
 
   useEffect(() => {
-    initComics(filterDate)
-  }, [comicsResults, filterDate, initComics]);
+    setComicResults(comicsRaw)
+  }, [comicsRaw])
 
   const filterComics = (term) => {
     setActiveFilter(term)
-    if (fullResults.length) {
-      const filteredComics = fullResults.filter(comic => {
+    if (comicsRaw.length) {
+      const filteredComics = comicsRaw.filter(comic => {
         return comic.title.indexOf(term) !== -1
       })
       setComicResults(filteredComics)
@@ -33,7 +26,7 @@ const ComicsPage = () => {
 
   const resetComics = () => {
     setActiveFilter('(all)')
-    initComics(filterDate)
+    setComicResults(comicsRaw)
   }
 
   const handleFilterDateChange = (e) => {
