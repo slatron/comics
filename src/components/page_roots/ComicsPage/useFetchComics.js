@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import api from 'src/api/api'
+import { sorting } from 'utils/sorting'
 
 // Clear Cached Responses after 1 hour
 const lastStore = localStorage.getItem('lastStore')
@@ -29,7 +30,7 @@ export const useFetchComics = (dateString) => {
             console.log(' ** Getting Comics Results From API')
             const results = response.data.results.filter(comic => {
               return comic.title.toLowerCase().indexOf('star wars') === -1
-            })
+            }).sort(sorting().sortBy('title', true))
             localStorage.setItem(dateString, JSON.stringify(results))
             localStorage.setItem('lastStore', Date.now())
             setComics(results)
