@@ -10,7 +10,7 @@ import {testTiers, testItems} from 'tests/units/support/rankingFixtures'
 describe('Tier > ', () => {
   it('Displays one empty tier for empty params', () => {
     render(
-      <Tier items={[]} tier={[]} />
+      <Tier items={[]} tier={{}} />
     )
     const tiersRendered = screen.getAllByTestId('tier')
     expect(tiersRendered.length).toBe(1)

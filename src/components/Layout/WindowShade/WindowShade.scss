@@ -15,8 +15,5 @@
 
   &.active {
     display: block;
-    @include breakpoint(laptop) {
-      display: none !important;
-    }
   }
 }

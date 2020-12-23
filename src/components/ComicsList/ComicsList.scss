@@ -33,7 +33,7 @@ $comic-img-width: 80px;
     }
 
     .comic-expand {
-      flex: 0 1 auto;
+      flex: 0 0 26px;
       align-self: flex-start;
       cursor: pointer;
       font-size: 24px;
@@ -44,7 +44,7 @@ $comic-img-width: 80px;
 
     &.expanded {
       .comic-img {
-        flex: 0 1 $comic-img-width * 2;
+        flex: 0 0 $comic-img-width * 2;
         width: $comic-img-width * 2;
       }
       .comic-details  {
