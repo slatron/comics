@@ -29,11 +29,28 @@ const requestConfig = window.location.hostname === 'localhost'
 
 export default {
 
+  // Marvel API Calls
   getComicsByDateDescriptor: (dateDescriptor) => {
     const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateDescriptor}&apikey=${MARVEL_API_PUBLIC}&limit=100`
     return fetch(fetchURI, requestConfig)
   },
 
+  getCreator: (creatorID) => {
+    const fetchURI = `${API_BASE}/creators/${creatorID}?&apikey=${MARVEL_API_PUBLIC}`
+    return fetch(fetchURI, requestConfig)
+  },
+
+  getCharacter: (charID) => {
+    const fetchURI = `${API_BASE}/characters/${charID}?&apikey=${MARVEL_API_PUBLIC}`
+    return fetch(fetchURI, requestConfig)
+  },
+
+  getStory: (storyID) => {
+    const fetchURI = `${API_BASE}/stories/${storyID}?&apikey=${MARVEL_API_PUBLIC}`
+    return fetch(fetchURI, requestConfig)
+  },
+
+  // Firebase Calls
   getMoviesFB: () => {
     return db.ref('movies').once('value')
   },

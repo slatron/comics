@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DetailEntry from '../DetailEntry/DetailEntry'
+import CreatorLinks from './CreatorLinks/CreatorLinks'
 
 const DetailsCreatorList = (props) => {
   const {items} = props.creators
@@ -41,8 +41,15 @@ const DetailsCreatorList = (props) => {
 
   const detailEntries = detailAreas.map((area) => {
     return (
-      <DetailEntry key={area.label} {...area} />
-    )
+      <>
+        <CreatorLinks
+          key={area.label}
+          label={area.label}
+          names={area.names}
+          type="creator"
+          urls={area.urls} />
+      </>
+      )
   })
 
   return (

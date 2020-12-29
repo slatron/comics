@@ -85,4 +85,9 @@ $comic-img-width: 80px;
   .detail-area {
     margin-bottom: $base-unit;
   }
+
+  .detail-creator a {
+    color: $color-black;
+    padding-right: $base-unit-quarter;
+  }
 }
