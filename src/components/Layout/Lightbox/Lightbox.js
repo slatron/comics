@@ -1,4 +1,7 @@
 import React from 'react'
+import LBComicImage from './LBComicImage/LBComicImage'
+import LBDetails from './LBDetails/LBDetails'
+
 import './Lightbox.scss'
 
 import {useSelector, useDispatch} from 'react-redux'
@@ -13,14 +16,21 @@ const Lightbox = () => {
     dispatch(windowshadeHide())
   }
 
-  const LBcontent = lightboxObj
-    && (
-      <>
-        <img
-          src={lightboxObj.url}
-          alt={lightboxObj.title} />
-      </>
-    )
+  let LBcontent = null
+  switch (lightboxObj.type) {
+    case 'cover-image':
+      LBcontent = <LBComicImage url={lightboxObj.url} title={lightboxObj.title} />
+      break;
+    case 'details-character':
+      LBcontent = <LBDetails details={lightboxObj} />
+      break;
+    case 'details-creator':
+      LBcontent = <LBDetails details={lightboxObj} />
+      break;
+    default:
+      LBcontent = <p>DEFAULT LB</p>
+      break;
+  }
 
   return (
     <div

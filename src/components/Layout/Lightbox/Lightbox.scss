@@ -19,4 +19,13 @@
     display: flex;
     justify-content: space-around;
   }
+
+  .lb-details {
+    background-color: $color-white;
+    padding: $base-unit;
+  }
+
+  a {
+    color: $color-black;
+  }
 }

@@ -4,12 +4,11 @@ import PropTypes from 'prop-types'
 import DetailsCharacterList from './DetailsCharacterList/DetailsCharacterList'
 import DetailsCreatorList from './DetailsCreatorList/DetailsCreatorList'
 
-const ComicsListItemDetails = (props) => {
-
-  const {characters, creators} = props.comic
+const ComicsListItemDetails = ({comic}) => {
+  const {characters, creators} = comic
 
   return (
-    <div key={props.comic.id.toString()}>
+    <div key={comic.id.toString()}>
       <DetailsCharacterList characters={characters} />
       <DetailsCreatorList creators={creators} />
     </div>
