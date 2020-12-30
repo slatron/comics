@@ -98,7 +98,23 @@ const HickmanPage = () => {
                   <circle cx="655" cy="575" r="20" />
                 </clipPath>
               </defs>
-              <circle cx="655" cy="558" r="11" fill="#2A3879" clip-path="url(#widow-circle-clip)" />
+              <circle cx="655" cy="558" r="13" fill="#2A3879" clip-path="url(#widow-circle-clip)" />
+              <circle cx="655" cy="575" r="5" fill="#2A3879" />
+              <path d="M 643 563 L 639 573 L 647 566" fill="#2A3879" />
+              <path d="M 667 563 L 671 573 L 663 566" fill="#2A3879" />
+              <circle cx="640" cy="572" r="3" fill="#2A3879" />
+              <circle cx="670" cy="572" r="3" fill="#2A3879" />
+              <line x1="640" y1="572" x2="645" y2="589" stroke="#2A3879" />
+              <line x1="670" y1="572" x2="665" y2="589" stroke="#2A3879" />
+
+              <line x1="649" y1="563" x2="646" y2="576" stroke="#2A3879" stroke-width="2" />
+              <circle cx="646" cy="576" r="2" fill="#2A3879" />
+              <line x1="646" y1="576" x2="650" y2="586" stroke="#2A3879" />
+
+              <line x1="661" y1="563" x2="664" y2="576" stroke="#2A3879" stroke-width="2" />
+              <circle cx="664" cy="576" r="2" fill="#2A3879" />
+              <line x1="664" y1="576" x2="660" y2="586" stroke="#2A3879" />
+
             </CharacterIcon>
             <CharacterIcon name="thor" x="655" y="415"></CharacterIcon>
           </svg>
