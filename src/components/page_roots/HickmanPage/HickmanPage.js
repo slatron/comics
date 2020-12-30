@@ -116,7 +116,14 @@ const HickmanPage = () => {
               <line x1="664" y1="576" x2="660" y2="586" stroke="#2A3879" />
 
             </CharacterIcon>
-            <CharacterIcon name="thor" x="655" y="415"></CharacterIcon>
+            <CharacterIcon name="thor" x="655" y="415">
+              <rect x="643" y="404" width="24" height="12" fill="#2A3879" />
+              <rect x="648" y="403" width="14" height="14" fill="#2A3879" />
+              <rect x="652" y="416" width="6" height="16" fill="#2A3879" />
+              <path
+                d="M 659 419 L 651 425 V 429 L 659 424 V 419"
+                fill="#2A3879" stroke="#ffffff" />
+            </CharacterIcon>
           </svg>
         </div>
       </CommonTemplate>
