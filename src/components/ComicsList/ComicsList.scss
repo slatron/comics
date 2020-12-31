@@ -40,6 +40,7 @@ $comic-img-width: 80px;
       font-weight: bold;
       padding-left: $base-unit-half;
       transition: $transtion-drawer;
+      transform: rotate(-90deg);
     }
 
     &.expanded {
@@ -54,7 +55,7 @@ $comic-img-width: 80px;
         font-weight: bold;
       }
       .comic-expand {
-        transform: rotate(-90deg);
+        transform: rotate(45deg);
       }
     }
 
