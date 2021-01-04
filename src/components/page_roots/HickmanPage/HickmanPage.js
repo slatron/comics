@@ -2,9 +2,12 @@ import React from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import CharacterIcon from './CharacterIcon/CharacterIcon'
 
+import {useEnterEffect} from 'hooks/useEnterEffect'
+
 import './HickmanPage.scss'
 
 const HickmanPage = () => {
+  useEnterEffect('middle-a')
   return (
     <>
       <CommonTemplate pageName="hickman">
@@ -12,8 +15,8 @@ const HickmanPage = () => {
           <svg id="hickman-svg" width="1000" height="1000">
             <defs>
               <linearGradient id="myGradient" gradientTransform="rotate(60)">
-                <stop offset="30%"  stop-color="#57b1e2" />
-                <stop offset="100%" stop-color="#264990" />
+                <stop offset="30%"  stopColor="#57b1e2" />
+                <stop offset="100%" stopColor="#264990" />
               </linearGradient>
             </defs>
             <circle cx="500" cy="500" r="182" stroke="#000000" fill="#bdb2bb" />
@@ -21,9 +24,9 @@ const HickmanPage = () => {
             <g
               id="inner-dashed-line"
               stroke="#EEEEEE"
-              stroke-dasharray="5 2"
-              stroke-opacity="0.25"
-              fill-opacity="0.0"
+              strokeDasharray="5 2"
+              strokeOpacity="0.25"
+              fillOpacity="0.0"
             >
               <path
                 d="M 500 328 L 650 420 V 580 L 500 672 L 350 580 V 420 L 500 328" />
@@ -43,23 +46,28 @@ const HickmanPage = () => {
               <circle cx="500" cy="500" r="75" fill="#2A3879" />
               <circle cx="500" cy="500" r="60" fill="#FFFFFF" />
               <path
+                className="middle-a"
                 d="M 540 420 V 546 H 515 V 530 H 478 L 454 579 L 430 564 L 510 414"
+                stroke="#2A3879"
                 fill="#2A3879"  />
               <path
                 d="M 515 453 V 510 H 485"
                 fill="#FFFFFF"  />
-              <line x1="515" y1="495" x2="540" y2="520" stroke="#FFFFFF" stroke-width="2" />
-              <line x1="540" y1="520" x2="515" y2="545" stroke="#FFFFFF" stroke-width="2" />
+              <line x1="515" y1="495" x2="540" y2="520" stroke="#FFFFFF" strokeWidth="2" />
+              <line x1="540" y1="520" x2="515" y2="545" stroke="#FFFFFF" strokeWidth="2" />
             </g>
             <CharacterIcon name="captain-america" x="500" y="323">
               <path
+                className="captain-america"
                 d="M 500 306 L 504 316 H 515 L 506 323 L 511 336 L 500 328 L 489 336 L 494 323 L 485 316 H 496 L 500 306"
+                strokeDasharray="988.00 988.00"
+                strokeDashoffset="988.00"
                 fill="#2A3879"
                 stroke="#000000" />
             </CharacterIcon>
             <CharacterIcon name="iron-man" x="500" y="677">
-              <circle cx="500" cy="677" r="20" stroke="#2A3879" stroke-width="2" fill="#ffffff"  />
-              <g stroke="#2A3879" stroke-width="2">
+              <circle cx="500" cy="677" r="20" stroke="#2A3879" strokeWidth="2" fill="#ffffff"  />
+              <g stroke="#2A3879" strokeWidth="2">
                 <line
                   x1="500" y1="657"
                   x2="500" y2="697" />
@@ -70,19 +78,14 @@ const HickmanPage = () => {
                   x1="517" y1="689"
                   x2="483" y2="665" />
               </g>
-              <circle cx="500" cy="677" r="13" stroke="#2A3879" stroke-width="2" fill="#ffffff"  />
+              <circle cx="500" cy="677" r="13" stroke="#2A3879" strokeWidth="2" fill="#ffffff"  />
             </CharacterIcon>
             <CharacterIcon name="hulk" x="345" y="415">
-              <rect
-                x="334" y="402" width="8" height="26"
-                stroke="#2A3879"
-                fill="#2A3879" />
-              <rect
-                x="335" y="412" width="16" height="6"
-                stroke="#2A3879"
-                fill="#2A3879" />
-              <rect
-                x="349" y="402" width="8" height="26"
+              <path
+                className="hulk"
+                d="m 333.38927,402.33417 h 7.20291 v 9.54154 h 8.46576 v -9.44798 h 7.10936 v 25.21018 h -7.29644 v -9.86893 h -8.27868 v 9.91571 h -7.39 z"
+                strokeDasharray="988.00 988.00"
+                strokeDashoffset="988.00"
                 stroke="#2A3879"
                 fill="#2A3879" />
             </CharacterIcon>
@@ -98,7 +101,7 @@ const HickmanPage = () => {
                   <circle cx="655" cy="575" r="20" />
                 </clipPath>
               </defs>
-              <circle cx="655" cy="558" r="13" fill="#2A3879" clip-path="url(#widow-circle-clip)" />
+              <circle cx="655" cy="558" r="13" fill="#2A3879" clipPath="url(#widow-circle-clip)" />
               <circle cx="655" cy="575" r="5" fill="#2A3879" />
               <path d="M 643 563 L 639 573 L 647 566" fill="#2A3879" />
               <path d="M 667 563 L 671 573 L 663 566" fill="#2A3879" />
@@ -107,11 +110,11 @@ const HickmanPage = () => {
               <line x1="640" y1="572" x2="645" y2="589" stroke="#2A3879" />
               <line x1="670" y1="572" x2="665" y2="589" stroke="#2A3879" />
 
-              <line x1="649" y1="563" x2="646" y2="576" stroke="#2A3879" stroke-width="2" />
+              <line x1="649" y1="563" x2="646" y2="576" stroke="#2A3879" strokeWidth="2" />
               <circle cx="646" cy="576" r="2" fill="#2A3879" />
               <line x1="646" y1="576" x2="650" y2="586" stroke="#2A3879" />
 
-              <line x1="661" y1="563" x2="664" y2="576" stroke="#2A3879" stroke-width="2" />
+              <line x1="661" y1="563" x2="664" y2="576" stroke="#2A3879" strokeWidth="2" />
               <circle cx="664" cy="576" r="2" fill="#2A3879" />
               <line x1="664" y1="576" x2="660" y2="586" stroke="#2A3879" />
 
@@ -124,6 +127,8 @@ const HickmanPage = () => {
                 d="M 659 419 L 651 425 V 429 L 659 424 V 419"
                 fill="#2A3879" stroke="#ffffff" />
             </CharacterIcon>
+            <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="140" y="230">We Need to</text>
+            <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="483" y="800">Get Bigger</text>
           </svg>
         </div>
       </CommonTemplate>
