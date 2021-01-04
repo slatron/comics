@@ -57,7 +57,7 @@ const ComicListItem = (props) => {
         onClick={() => handleShowDetailsClick()}
       >
         <svg x="0" y="0" viewBox="0 0 20 20">
-          <path d="M 0 20 H 20 V 0 L 0 20" stroke="#000000" stroke-width="3" fill="#ff0000"/>
+          <path d="M 0 20 H 20 V 0 L 0 20" stroke="#000000" strokeWidth="3" fill="#ff0000"/>
         </svg>
       </span>
     </li>

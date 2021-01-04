@@ -1,6 +1,7 @@
 import React from 'react'
 import LBComicImage from './LBComicImage/LBComicImage'
 import LBDetails from './LBDetails/LBDetails'
+import LBHickman from './LBHickman/LBHickman'
 
 import './Lightbox.scss'
 
@@ -22,10 +23,11 @@ const Lightbox = () => {
       LBcontent = <LBComicImage url={lightboxObj.url} title={lightboxObj.title} />
       break;
     case 'details-character':
-      LBcontent = <LBDetails details={lightboxObj} />
-      break;
     case 'details-creator':
       LBcontent = <LBDetails details={lightboxObj} />
+      break;
+    case 'details-hickman':
+      LBcontent = <LBHickman details={lightboxObj} />
       break;
     default:
       LBcontent = <p>DEFAULT LB</p>

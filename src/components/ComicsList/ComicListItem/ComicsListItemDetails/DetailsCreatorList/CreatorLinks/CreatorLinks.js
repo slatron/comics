@@ -13,7 +13,7 @@ const DetailEntry = ({label, names, urls}) => {
   })
   const nameLinks = names.map((creator, idx) => {
     return (
-      <a href={urlLinks[idx]} target="_blank" rel="noreferrer">
+      <a href={urlLinks[idx]} key={idx} target="_blank" rel="noreferrer">
         {creator}
         {idx !== (names.length - 1) ? ',' : ''}
       </a>
@@ -34,7 +34,8 @@ const DetailEntry = ({label, names, urls}) => {
 
 DetailEntry.propTypes = {
   label: PropTypes.string,
-  names: PropTypes.array
+  names: PropTypes.array,
+  urls: PropTypes.array
 }
 
 export default DetailEntry
