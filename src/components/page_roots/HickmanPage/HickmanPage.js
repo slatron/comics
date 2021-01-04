@@ -68,15 +68,42 @@ const HickmanPage = () => {
               <g stroke="#2A3879" strokeWidth="2">
                 <line
                   x1="500" y1="657"
-                  x2="500" y2="697" />
+                  x2="500" y2="665">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
                 <line
-                  x1="517" y1="665"
-                  x2="483" y2="689" />
+                  x1="500" y1="689"
+                  x2="500" y2="697">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
+
                 <line
-                  x1="517" y1="689"
-                  x2="483" y2="665" />
+                  x1="483" y1="689"
+                  x2="490" y2="684">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
+                <line
+                  x1="510" y1="670"
+                  x2="517" y2="665">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
+
+                <line
+                  x1="483" y1="665"
+                  x2="490" y2="670">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
+                <line
+                  x1="510" y1="684"
+                  x2="517" y2="689">
+                  <animate attributeName="stroke-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+                </line>
               </g>
-              <circle cx="500" cy="677" r="13" stroke="#2A3879" strokeWidth="2" fill="#ffffff"  />
+              <path 
+                className="iron-man"
+                d="m 513.73551,677.11054 c 0,7.31244 -6.17919,13.24034 -13.80161,13.24034 -7.62242,0 -13.80161,-5.9279 -13.80161,-13.24034 0,-7.31244 6.17919,-13.24034 13.80161,-13.24034 0.28687,0 0.57169,0.008 0.85422,0.0249 7.22455,0.4232 12.94739,6.17815 12.94739,13.21539 z"
+                stroke="#2A3879" strokeWidth="2" fill="#ffffff"
+                />
             </CharacterIcon>
             <CharacterIcon name="hulk" x="345" y="415">
               <path
@@ -86,17 +113,19 @@ const HickmanPage = () => {
                 fill="#2A3879" />
             </CharacterIcon>
             <CharacterIcon name="hawkeye" x="345" y="575">
-              <circle cx="345" cy="575" r="20" fill="#2A3879"  />
+              <path
+                className="hawkeye"
+                d="m 363.15463,574.80334 c 0,9.20462 -7.96441,16.66644 -17.78897,16.66644 -9.82456,0 -17.78897,-7.46182 -17.78897,-16.66644 0,-9.20462 7.96441,-16.66644 17.78897,-16.66644 0.46687,0 0.92954,0.0169 1.38735,0.0499 9.17618,0.66319 16.40162,7.8493 16.40162,16.6165 z"
+                stroke="#2A3879"
+                stroke-width="6"
+                fill="#ffffff" />
               <circle cx="345" cy="575" r="14" fill="#ffffff"  />
-              <circle cx="345" cy="575" r="10" fill="#2A3879"  />
+              <circle cx="345" cy="575" r="10" fill="#2A3879">
+                <animate attributeName="fill-opacity" values="0.0;1.0" dur="3s" repeatCount="1" />
+              </circle>
               <circle cx="345" cy="575" r="5" fill="#ffffff"  />
             </CharacterIcon>
             <CharacterIcon name="black-widow" x="655" y="575">
-              <defs>
-                <clipPath id="widow-circle-clip">
-                  <circle cx="655" cy="575" r="20" />
-                </clipPath>
-              </defs>
               <path
                 className="black-widow"
                 d="m 667.76623,558.9439 c 0,0 -11.9997,-8.80846 -24.92957,0.18711 m 0,0 c 0,0 -0.0935,2.89987 1.77735,4.95785 l -2.6862,5.55121 c 0,0 -5.23848,0.56127 -2.43215,4.95785 l 7.53364,16.5233 -5.66275,-16.14912 c 0,0 2.43215,0.37418 2.05797,-3.83532 l 3.06037,-4.0545 c 0,0 0.60805,1.02899 1.82413,1.30962 l -1.33176,5.18368 c 0,0 -2.94665,1.21608 -0.51449,3.83532 l 6.25945,9.37049 -4.94984,-9.5108 c 0,0 1.82412,-0.70159 0.42096,-3.50792 l 1.00434,-4.71596 c 0,0 2.47893,0.88867 3.60146,0.98221 0,0 -5.46902,5.29799 1.54681,9.46071 0,0 4.52554,1.17733 6.02225,-2.89185 0,0 0.31273,-3.78992 -1.74524,-6.5027 0,0 1.65973,0.0273 3.06289,-1.04837 l 2.23842,4.63847 c 0,0 -1.59026,1.59025 0.28063,3.13374 l -4.63045,10.10278 6.26747,-9.9157 c 0,0 2.01121,-1.40316 0.0468,-3.64822 l -2.61262,-5.15297 c 0,0 0.74836,-0.0468 1.40317,-1.1693 l 3.64903,4.1367 c 0,0 -1.77734,2.61924 1.44994,3.88209 l -5.8158,16.09432 7.92055,-16.51527 c 0,0 2.8531,-3.92886 -2.15152,-5.00462 l -3.3684,-5.39955 c 0,0 1.82411,-2.5257 1.40316,-5.28526"
@@ -114,7 +143,7 @@ const HickmanPage = () => {
                   <animate attributeName="fill-opacity" values="0.0;1.0" dur="6s" repeatCount="1" />
               </path>
             </CharacterIcon>
-            <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="140" y="230">We Need to</text>
+            <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="140" y="230">We Have to</text>
             <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="483" y="800">Get Bigger</text>
           </svg>
         </div>
