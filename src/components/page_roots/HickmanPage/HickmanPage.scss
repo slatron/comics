@@ -1,10 +1,20 @@
 $svg-width: 1000px;
 
 .center-svg {
+  position: relative;
   width: $svg-width;
   margin: 0 auto;
 }
 
 #hickman-svg {
   background: #ececec;
+}
+
+.hit-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
 }

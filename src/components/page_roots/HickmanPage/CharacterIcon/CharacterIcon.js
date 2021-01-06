@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {lightboxShow, windowshadeShow} from 'store/actions'
 
-import {useEnterEffect} from 'hooks/useEnterEffect'
+import {useEnterEffect} from '../useEnterEffect'
 
 const CharacterIcon = (props) => {
   const {name, x, y} = props

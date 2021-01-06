@@ -10,7 +10,9 @@ const LBDetails = ({details}) => {
       <h3>{info.name}</h3>
       <h4>Identity: {info.identity}</h4>
       <h4>First Appearance: {info.first_appearance}</h4>
-      <h4>Description: {info.description}</h4>
+      <h4>Description:
+        <span dangerouslySetInnerHTML={{ __html: info.description }}></span>
+      </h4>
     </div>
   )
 }
