@@ -15,7 +15,7 @@ export const useEnterEffect = (name) => {
       // Trigger a layout so styles are calculated & the browser
       // picks up the starting position before animating
       path.getBoundingClientRect();
-      path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset 3s ease-in-out, stroke-opacity 3s, fill-opacity 6s';
+      path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset 3s ease-out, fill-opacity 3s ease-in';
       path.style.strokeDashoffset = '0';
       path.style.strokeOpacity = 1.0;
       path.style.fillOpacity = 1.0;
