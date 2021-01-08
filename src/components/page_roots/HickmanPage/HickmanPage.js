@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import CharacterIcon from './CharacterIcon/CharacterIcon'
 
@@ -7,13 +7,24 @@ import './HickmanPage.scss'
 
 const HickmanPage = () => {
   const [frame, setFrame] = useState(1)
-  
+
+  useEffect(() => {
+    let timesRun = 0;
+    const interval = setInterval(() => {
+        timesRun += 1
+        if(timesRun === 2) {
+          clearInterval(interval);
+        }
+        setFrame((frame) => frame + 1)
+    }, 1750); 
+  }, [])
+
   useEnterEffect('middle-a')
   return (
     <>
       <CommonTemplate pageName="hickman">
         <div className="center-svg">
-          {frame < 5 &&
+          {frame > 2 && frame < 6 &&
             <div
               className="hit-area"
               onClick={() => setFrame(frame + 1)}
@@ -67,22 +78,32 @@ const HickmanPage = () => {
               <>
                 <text
                   fontFamily="Courier New"
-                  fontSize="20" x="200" y="240">IT STARTED WITH TWO MEN...</text>
+                  fontSize="20" x="200" y="240">It started with two men</text>
               </>
             }
             {frame > 1 && frame < 4 &&
               <>
                 <text
                   fontFamily="Courier New"
-                  fontSize="16" x="540" y="280">ONE WAS LIFE</text>
+                  fontSize="16" x="540" y="280">one was life</text>
               </>
             }
             {frame > 2 && frame < 4 &&
               <>
                 <text
                   fontFamily="Courier New"
-                  fontSize="16" x="260" y="700">AND ONE WAS DEATH</text>
+                  fontSize="16" x="260" y="700">one was death</text>
               </>
+            }
+            {frame > 3 && frame < 6 &&
+              <text
+                fontFamily="Courier New"
+                fontSize="16" x="210" y="380">We have to</text>
+            }
+            {frame > 4 && frame < 6 &&
+              <text
+                fontFamily="Courier New"
+                fontSize="16" x="680" y="620">get bigger</text>
             }
             {frame > 1 &&
               <CharacterIcon name="captain-america" x="500" y="323">
@@ -137,19 +158,7 @@ const HickmanPage = () => {
                   />
               </CharacterIcon>
             }
-            {frame === 4 &&
-              <>
-                <text fontFamily="Courier New" fontWeight="bold" fontSize="48" x="120" y="500">It started with an idea...</text>
-                <ellipse
-                  fill="#000000"
-                  fill-opacity="0.2"
-                  cx="500"
-                  cy="500"
-                  rx="400"
-                  ry="180" />
-              </>
-            }
-            {frame > 4 &&
+            {frame > 3 &&
               <>
                 <CharacterIcon name="hulk" x="345" y="415">
                   <path
@@ -158,6 +167,22 @@ const HickmanPage = () => {
                     stroke="#000000"
                     fill="#2A3879" />
                 </CharacterIcon>
+                <CharacterIcon name="thor" x="655" y="415">
+                <path
+                  className="thor"
+                  d="m 643.76473,401.91322 h 5.65944 v -1.12252 h 11.31887 v 1.26285 h 5.65944 v 9.63507 h -5.61268 v 1.87087 l -3.3208,0.0468 0.043,18.12661 -4.4864,-0.0204 -0.064,-18.11716 -3.02296,-0.0358 v -1.82412 h -6.17395 z"
+                  stroke="#000000"
+                  fill="#2A3879" />
+                <path
+                  d="M 659 419 L 651 425 V 429 L 659 424 V 419"
+                  fill="#2A3879" stroke="#ffffff">
+                    <animate attributeName="fill-opacity" values="0.0;1.0" dur="6s" repeatCount="1" />
+                </path>
+              </CharacterIcon>
+              </>
+            }
+            {frame > 4 &&
+              <>
                 <CharacterIcon name="hawkeye" x="345" y="575">
                 <path
                   className="hawkeye"
@@ -177,24 +202,6 @@ const HickmanPage = () => {
                   d="m 667.76623,558.9439 c 0,0 -11.9997,-8.80846 -24.92957,0.18711 m 0,0 c 0,0 -0.0935,2.89987 1.77735,4.95785 l -2.6862,5.55121 c 0,0 -5.23848,0.56127 -2.43215,4.95785 l 7.53364,16.5233 -5.66275,-16.14912 c 0,0 2.43215,0.37418 2.05797,-3.83532 l 3.06037,-4.0545 c 0,0 0.60805,1.02899 1.82413,1.30962 l -1.33176,5.18368 c 0,0 -2.94665,1.21608 -0.51449,3.83532 l 6.25945,9.37049 -4.94984,-9.5108 c 0,0 1.82412,-0.70159 0.42096,-3.50792 l 1.00434,-4.71596 c 0,0 2.47893,0.88867 3.60146,0.98221 0,0 -5.46902,5.29799 1.54681,9.46071 0,0 4.52554,1.17733 6.02225,-2.89185 0,0 0.31273,-3.78992 -1.74524,-6.5027 0,0 1.65973,0.0273 3.06289,-1.04837 l 2.23842,4.63847 c 0,0 -1.59026,1.59025 0.28063,3.13374 l -4.63045,10.10278 6.26747,-9.9157 c 0,0 2.01121,-1.40316 0.0468,-3.64822 l -2.61262,-5.15297 c 0,0 0.74836,-0.0468 1.40317,-1.1693 l 3.64903,4.1367 c 0,0 -1.77734,2.61924 1.44994,3.88209 l -5.8158,16.09432 7.92055,-16.51527 c 0,0 2.8531,-3.92886 -2.15152,-5.00462 l -3.3684,-5.39955 c 0,0 1.82411,-2.5257 1.40316,-5.28526"
                   stroke="#000000" fill="#2A3879" />
               </CharacterIcon>
-                <CharacterIcon name="thor" x="655" y="415">
-                <path
-                  className="thor"
-                  d="m 643.76473,401.91322 h 5.65944 v -1.12252 h 11.31887 v 1.26285 h 5.65944 v 9.63507 h -5.61268 v 1.87087 l -3.3208,0.0468 0.043,18.12661 -4.4864,-0.0204 -0.064,-18.11716 -3.02296,-0.0358 v -1.82412 h -6.17395 z"
-                  stroke="#000000"
-                  fill="#2A3879" />
-                <path
-                  d="M 659 419 L 651 425 V 429 L 659 424 V 419"
-                  fill="#2A3879" stroke="#ffffff">
-                    <animate attributeName="fill-opacity" values="0.0;1.0" dur="6s" repeatCount="1" />
-                </path>
-              </CharacterIcon>
-              </>
-            }
-            {frame === 5 &&
-              <>
-                <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="140" y="230">We Have to</text>
-                <text fontFamily="Courier New" fontWeight="bold" fontSize="62.5" x="483" y="800">Get Bigger</text>
               </>
             }
             </svg>
