@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import CharacterIcon from './CharacterIcon/CharacterIcon'
+import SvgText from './SvgText/SvgText'
 
 import {useEnterEffect} from './useEnterEffect'
 import './HickmanPage.scss'
@@ -12,11 +13,11 @@ const HickmanPage = () => {
     let timesRun = 0;
     const interval = setInterval(() => {
         timesRun += 1
-        if(timesRun === 2) {
+        if(timesRun === 12) {
           clearInterval(interval);
         }
         setFrame((frame) => frame + 1)
-    }, 1750); 
+    }, 1500); 
   }, [])
 
   useEnterEffect('middle-a')
@@ -24,7 +25,7 @@ const HickmanPage = () => {
     <>
       <CommonTemplate pageName="hickman">
         <div className="center-svg">
-          {frame > 2 && frame < 6 &&
+          {frame > 6 && frame < 6 &&
             <div
               className="hit-area"
               onClick={() => setFrame(frame + 1)}
@@ -75,35 +76,29 @@ const HickmanPage = () => {
               <line x1="540" y1="520" x2="515" y2="545" stroke="#FFFFFF" strokeWidth="2" />
             </g>
             {frame < 4 &&
-              <>
-                <text
-                  fontFamily="Courier New"
-                  fontSize="20" x="200" y="240">It started with two men</text>
-              </>
+                <SvgText fontSize="20" x="200" y="240" textId="started">
+                  It started with two men
+                </SvgText>
             }
-            {frame > 1 && frame < 4 &&
-              <>
-                <text
-                  fontFamily="Courier New"
-                  fontSize="16" x="540" y="280">one was life</text>
-              </>
+            {frame > 1 && frame < 6 &&
+                <SvgText fontSize="16" x="540" y="280" textId="life">
+                  one was life
+                </SvgText>
             }
-            {frame > 2 && frame < 4 &&
-              <>
-                <text
-                  fontFamily="Courier New"
-                  fontSize="16" x="260" y="700">one was death</text>
-              </>
+            {frame > 2 && frame < 7 &&
+                <SvgText fontSize="16" x="260" y="700" textId="death">
+                  one was death
+                </SvgText>
             }
-            {frame > 3 && frame < 6 &&
-              <text
-                fontFamily="Courier New"
-                fontSize="16" x="210" y="380">We have to</text>
+            {frame > 4 && frame < 9 &&
+              <SvgText fontSize="24" x="200" y="370" textId="we-have-to">
+                We have to
+              </SvgText>
             }
-            {frame > 4 && frame < 6 &&
-              <text
-                fontFamily="Courier New"
-                fontSize="16" x="680" y="620">get bigger</text>
+            {frame > 5 && frame < 11 &&
+              <SvgText fontSize="24" x="680" y="620" textId="get-bigger">
+                get bigger
+              </SvgText>
             }
             {frame > 1 &&
               <CharacterIcon name="captain-america" x="500" y="323">
@@ -158,7 +153,7 @@ const HickmanPage = () => {
                   />
               </CharacterIcon>
             }
-            {frame > 3 &&
+            {frame > 4 &&
               <>
                 <CharacterIcon name="hulk" x="345" y="415">
                   <path
@@ -181,14 +176,14 @@ const HickmanPage = () => {
               </CharacterIcon>
               </>
             }
-            {frame > 4 &&
+            {frame > 5 &&
               <>
                 <CharacterIcon name="hawkeye" x="345" y="575">
                 <path
                   className="hawkeye"
                   d="m 363.15463,574.80334 c 0,9.20462 -7.96441,16.66644 -17.78897,16.66644 -9.82456,0 -17.78897,-7.46182 -17.78897,-16.66644 0,-9.20462 7.96441,-16.66644 17.78897,-16.66644 0.46687,0 0.92954,0.0169 1.38735,0.0499 9.17618,0.66319 16.40162,7.8493 16.40162,16.6165 z"
                   stroke="#2A3879"
-                  stroke-width="6"
+                  strokeWidth="6"
                   fill="#ffffff" />
                 <circle cx="345" cy="575" r="14" fill="#ffffff"  />
                 <circle cx="345" cy="575" r="10" fill="#2A3879">
