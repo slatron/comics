@@ -32,7 +32,7 @@ const ComicListItem = (props) => {
   }
 
   const stripParens = (str) => {
-    return str.replace(/ *\([^)]*\) */g, ' ')
+    return str.replace(/ *\(\d[^)]*\) */g, ' ')
   }
 
   return (
