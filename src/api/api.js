@@ -31,7 +31,7 @@ export default {
 
   // Marvel API Calls
   getComicsByDateDescriptor: (dateDescriptor) => {
-    const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateDescriptor}&apikey=${MARVEL_API_PUBLIC}&limit=100`
+    const fetchURI = `${API_BASE}/comics?dateDescriptor=${dateDescriptor}&apikey=${MARVEL_API_PUBLIC}&limit=100&orderBy=title`
     return fetch(fetchURI, requestConfig)
   },
 
