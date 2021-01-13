@@ -22,7 +22,7 @@ a {
 // Standard block text lements should push the one below away
 h1, h2, h3, h4, h5, h6, p, dl, ol, table {
   margin-top: 0;
-  margin-bottom: $base-unit;
+  margin-bottom: $base-unit-half;
 }
 
 dd {

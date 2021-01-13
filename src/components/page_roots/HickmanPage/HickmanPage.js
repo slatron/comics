@@ -17,7 +17,7 @@ const HickmanPage = () => {
           clearInterval(interval);
         }
         setFrame((frame) => frame + 1)
-    }, 1500); 
+    }, 1000); 
   }, [])
 
   useEnterEffect('middle-a')
@@ -25,12 +25,6 @@ const HickmanPage = () => {
     <>
       <CommonTemplate pageName="hickman">
         <div className="center-svg">
-          {frame > 6 && frame < 6 &&
-            <div
-              className="hit-area"
-              onClick={() => setFrame(frame + 1)}
-            ></div>
-          }
           <svg id="hickman-svg" width="1000" height="1000">
             <defs>
               <linearGradient id="aShield" gradientTransform="rotate(60)">
@@ -76,19 +70,19 @@ const HickmanPage = () => {
               <line x1="540" y1="520" x2="515" y2="545" stroke="#FFFFFF" strokeWidth="2" />
             </g>
             {frame < 4 &&
-                <SvgText fontSize="20" x="200" y="240" textId="started">
-                  It started with two men
-                </SvgText>
+              <SvgText fontSize="20" x="200" y="240" textId="started">
+                It started with two men
+              </SvgText>
             }
             {frame > 1 && frame < 6 &&
-                <SvgText fontSize="16" x="540" y="280" textId="life">
-                  one was life
-                </SvgText>
+              <SvgText fontSize="16" x="540" y="280" textId="life">
+                one was life
+              </SvgText>
             }
             {frame > 2 && frame < 7 &&
-                <SvgText fontSize="16" x="260" y="700" textId="death">
-                  one was death
-                </SvgText>
+              <SvgText fontSize="16" x="260" y="700" textId="death">
+                one was death
+              </SvgText>
             }
             {frame > 4 && frame < 9 &&
               <SvgText fontSize="24" x="200" y="370" textId="we-have-to">
