@@ -1,0 +1,43 @@
+@import './src/styles/base/settings';
+
+.lb-hickman {
+    background-color: $color-newspaper;
+    padding: $base-unit;
+    border: 2px solid $color-black;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    @include breakpoint(laptop) {
+      max-width: 860px;
+    }
+
+    h3 {
+      text-align: justify;
+      border-top: 10px solid $color-red;
+      padding-top: $base-unit-half;
+      font-size: 36px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    h4 {
+      text-align: justify;
+      padding-bottom: $base-unit-half;
+      font-size: 24px;
+      font-family: "Lucida Sans", Lucida, sans-serif;
+    }
+
+    section {
+      padding-bottom: $base-unit-half;
+      border-bottom: 10px solid $color-red;
+      flex-grow: 4;
+    }
+
+    section p {
+      font-size: 16px;
+      text-align: justify;
+      font-family: "Lucida Sans", Lucida, sans-serif;
+      padding-bottom: $base-unit;
+    }
+  
+}
