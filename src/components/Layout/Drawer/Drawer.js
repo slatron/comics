@@ -18,9 +18,6 @@ const Drawer = (props) => {
         <li className={`${props.section === 'comics' ? 'active' : ''}`}>
           <a href="./comics.html">Comics</a>
         </li>
-        <li className={`${props.section === 'hickman' ? 'active' : ''}`}>
-          <a href="./hickman.html">Interactive Hickman Machine</a>
-        </li>
       </ul>
       {props.children}
     </nav>
