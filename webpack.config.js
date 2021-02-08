@@ -137,6 +137,8 @@ module.exports = (env, argv) => {
           }
         }
       }
-    }
+    },
+
+    target: ['web', 'es5']
   } // End webpack.config object returned
 }
