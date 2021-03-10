@@ -1,3 +1,6 @@
+import 'core-js/stable';
+import "regenerator-runtime/runtime";
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import RemRankPage from 'components/page_roots/RemRankPage/RemRankPage'
