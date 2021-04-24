@@ -24,13 +24,21 @@
       text-align: justify;
       padding-bottom: $base-unit-half;
       font-size: 24px;
-      font-family: "Lucida Sans", Lucida, sans-serif;
+      font-family: 'Courier New', Courier, monospace;
     }
 
+    h5 {
+      text-align: justify;
+      padding-bottom: $base-unit-half;
+      font-size: 18px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    
     section {
       padding-bottom: $base-unit-half;
       border-bottom: 10px solid $color-red;
       flex-grow: 4;
+      transition: all linear 500ms;
     }
 
     section p {
@@ -38,6 +46,7 @@
       text-align: justify;
       font-family: "Lucida Sans", Lucida, sans-serif;
       padding-bottom: $base-unit;
+      line-height: 24px;
     }
   
 }
