@@ -5,7 +5,12 @@
   margin: 0 auto;
 }
 main {
-  position: relative;
-  top: $header-height;
+  padding-top: $header-height;
   z-index: $layer-main-body;
+}
+
+#lifetracker,
+.main-content-lifetracker  {
+  height: 100%;
+  position: relative;
 }

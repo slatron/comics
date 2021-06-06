@@ -1,0 +1,75 @@
+.life-tracker-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+}
+
+section.life-section {
+  color: #000;
+  border: 1px solid #fff;
+  &.low-players {
+    grid-column: 1 / span 2;
+  }
+  &:nth-child(1) {
+    background-color: aqua;
+  }
+  &:nth-child(2) {
+    background-color: pink;
+  }
+  &:nth-child(3) {
+    background-color: yellow;
+  }
+  &:nth-child(4) {
+    background-color: goldenrod;
+  }
+  &:nth-child(5) {
+    background-color: plum;
+  }
+  &:nth-child(6) {
+    background-color: thistle;
+  }
+}
+
+// lifetracker layout classes
+.layout-wrap {
+  height: 100%;
+  position: relative;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.centered-vert {
+  display: flex;
+  align-items: center;
+}
+.full-height-layout {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.full-height-layout .align-row.align-content {
+  flex: 1 1 auto;
+  // flex-grow: 1;
+  // flex-shrink: 1;
+  // flex-basis: auto;
+}
+
+.double-col-row {
+  display: flex;
+  > section {
+    flex-grow: 1;
+    &:nth-child(2) {
+      text-align: right;
+    }
+  }
+}
+.flip {
+  transform: rotate(180deg);
+}
