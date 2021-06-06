@@ -1,0 +1,122 @@
+.edit-name-form {
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.95;
+  text-align: center;
+  z-index: 1000;
+  span {
+    color: #fdfdfd;
+  }
+}
+
+.header-row {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .header-row {
+    font-size: 24px;
+  }
+}
+.header-row button {
+  font-size: 10px;
+}
+@media (min-width: 768px) {
+  .header-row button {
+    font-size: 20px;
+  }
+}
+.counter-area {
+  background: #efefef;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-radius: 0 0 0 1rem;
+  font-size: 26px;
+  padding-left: 3rem;
+  position: absolute;
+  top: 0;
+  right: -95px;
+  transition: right 0.3s ease;
+
+  &.active {
+    right: 0;
+  }
+  i {
+    cursor: pointer;
+    padding: 0.3rem 0.3rem 2rem 0.6rem;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .counter-area {
+    right: -167px;
+    i {
+      padding: 0.6rem 0.6rem 2rem;
+    }
+  }
+}
+.counter-sections {
+  width: 95px;
+}
+@media (min-width: 768px) {
+  .counter-sections {
+    height: auto;
+    width: 155px;
+    max-height: 216px;
+    overflow-y: scroll;
+  }
+}
+.align-content {
+  cursor: pointer;
+  font-size: 124px;
+  line-height: 1.0;
+}
+@media (min-width: 768px) {
+  .align-content {
+    font-size: 158px;
+  }
+}
+.life-section {
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.double-col-row > section > span {
+  padding-right: 1.5rem;
+}
+button.up {
+  border: 1px solid green;
+}
+button.down {
+  border: 1px solid red;
+}
+button.up-big {
+  border: 3px solid green;
+}
+button.down-big {
+  border: 3px solid red;
+}
+button {
+  font-size: 16px;
+  background-color: #fff;
+  margin: 0.15em;
+  padding: 0.5em;
+  border-radius: 0.25em;
+}
+@media (min-width: 768px) {
+  button {
+    font-size: 26px;
+    background-color: #fff;
+    padding: 0.75em;
+    border-radius: 0.25em;
+  }
+}
+.low-players .life-section button {
+  padding: 1.25em;
+}

@@ -1,0 +1,42 @@
+.life-tracker-menu {
+  display: flex;
+  flex-direction: column;
+  margin: .5rem;
+  color: #fff;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  fieldset {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    label {
+      padding: 0.25rem 0;
+      text-align: right;
+      width: 55px;
+    }
+  
+    .input-container {
+      flex: 1 0 auto;
+      margin-left: 1rem;
+    }
+  }
+
+  button {
+    padding: 0.2rem; 
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+  }
+
+  @media (min-width: 768px) {
+    button {
+      padding: 0.5rem;
+    }
+  }
+}
+
