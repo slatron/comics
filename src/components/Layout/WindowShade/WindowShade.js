@@ -15,11 +15,10 @@ const WindowShade = () => {
   }
 
   return (
-    <>
-      <div
-        className={`window-shade ${active ? 'active' : ''}`}
-        onClick={() => closeShade()} />
-    </>
+    <div
+      className={`window-shade ${active ? 'active' : ''}`}
+      onClick={() => closeShade()}
+    />
   )
 }
 

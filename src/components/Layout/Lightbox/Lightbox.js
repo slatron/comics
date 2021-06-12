@@ -37,7 +37,8 @@ const Lightbox = () => {
   return (
     <div
       className={`lightbox ${lightboxObj.type ? 'active' : ''}`}
-      onClick={() => handleClick()}>
+      onClick={() => handleClick()}
+    >
       {LBcontent}
     </div>
   )

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CreatorLinks from './CreatorLinks/CreatorLinks'
 
-const DetailsCreatorList = (props) => {
-  const {items} = props.creators
+const DetailsCreatorList = ({creators}) => {
+  const {items} = creators
 
   const writers = items.filter((item) => item.role === 'writer')
   const pencilers = items.filter((item) => item.role === 'penciler')
@@ -41,15 +41,14 @@ const DetailsCreatorList = (props) => {
 
   const detailEntries = detailAreas.map((area) => {
     return (
-      <>
-        <CreatorLinks
-          key={area.label}
-          label={area.label}
-          names={area.names}
-          type="creator"
-          urls={area.urls} />
-      </>
-      )
+      <CreatorLinks
+        key={area.label}
+        label={area.label}
+        names={area.names}
+        type="creator"
+        urls={area.urls}
+      />
+    )
   })
 
   return (

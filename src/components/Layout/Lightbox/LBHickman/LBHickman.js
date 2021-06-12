@@ -5,7 +5,7 @@ import {characterData} from 'components/page_roots/HickmanPage/characterData'
 import './LBHickman.scss'
 
 const LBDetails = ({details}) => {
-  const [detailsOpen, setDetailsOpen] = useState(false)
+  const [detailsOpen] = useState(false)
   const info = characterData[details.character]
 
   return (

@@ -12,6 +12,25 @@
   ],
   "env": {
     "browser": true,
-    "jest": true
+    "jest": true,
+    "es6": true
+  },
+  "rules": {
+    "react/button-has-type": "warn",
+    "react/destructuring-assignment": "warn",
+    "react/no-typos": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/jsx-closing-bracket-location": "warn",
+    "react/jsx-closing-tag-location": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-equals-spacing": "warn",
+    "react/jsx-fragments": ["warn", "syntax"],
+    "react/jsx-handler-names": "warn",
+    "react/jsx-max-props-per-line": ["warn", { "maximum": 3}],
+    "react/jsx-no-useless-fragment": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/jsx-props-no-multi-spaces": "warn",
+    "react/jsx-tag-spacing": "warn",
+    "react/jsx-wrap-multilines": "warn"
   }
 }

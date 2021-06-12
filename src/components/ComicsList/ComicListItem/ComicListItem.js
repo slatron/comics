@@ -6,7 +6,7 @@ import {lightboxShow, windowshadeShow} from 'store/actions'
 
 import ComicsListItemDetails from './ComicsListItemDetails/ComicsListItemDetails'
 
-const ComicListItem = (props) => {
+const ComicListItem = ({comic}) => {
   const [detailsOpen, setDetailsOpen] = useState(false)
   const dispatch = useDispatch()
 
@@ -22,10 +22,10 @@ const ComicListItem = (props) => {
 
   const handleImageClick = () => {
     dispatch(lightboxShow({
-      ...props.comic,
+      ...comic,
       ...{
         type: 'cover-image',
-        url: generateImgUrl(props.comic)
+        url: generateImgUrl(comic)
       }
     }))
     dispatch(windowshadeShow())
@@ -37,19 +37,20 @@ const ComicListItem = (props) => {
 
   return (
     <li 
-      key={props.comic.id.toString()}
+      key={comic.id.toString()}
       className={`${detailsOpen ? 'expanded' : ''}`}
     >
       <div className="comic-img">
         <img
-          src={generateImgUrl(props.comic)}
+          src={generateImgUrl(comic)}
           onClick={() => handleImageClick()}
-          alt={props.comic.title} />
+          alt={comic.title}
+        />
       </div>
       <div className="comic-details">
-        <h3>{stripParens(props.comic.title)}</h3>
+        <h3>{stripParens(comic.title)}</h3>
         {detailsOpen &&
-          <ComicsListItemDetails comic={props.comic}></ComicsListItemDetails>
+          <ComicsListItemDetails comic={comic}></ComicsListItemDetails>
         }
       </div>
       <span
@@ -57,7 +58,12 @@ const ComicListItem = (props) => {
         onClick={() => handleShowDetailsClick()}
       >
         <svg x="0" y="0" viewBox="0 0 20 20">
-          <path d="M 0 20 H 20 V 0 L 0 20" stroke="#000000" strokeWidth="3" fill="#ff0000"/>
+          <path
+            d="M 0 20 H 20 V 0 L 0 20"
+            stroke="#000000"
+            strokeWidth="3"
+            fill="#ff0000"
+          />
         </svg>
       </span>
     </li>

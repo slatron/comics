@@ -23,11 +23,9 @@ const McuRankPage = () => {
   useEffect(getMovies, [setAllMovies, setAllTiers]);
 
   return (
-    <>
-      <CommonTemplate pageName="mcu">
-        <TiersList items={allMovies} tiers={allTiers} />
-      </CommonTemplate>
-    </>
+    <CommonTemplate pageName="mcu">
+      <TiersList items={allMovies} tiers={allTiers} />
+    </CommonTemplate>
   )
 }
 

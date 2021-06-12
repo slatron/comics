@@ -6,8 +6,12 @@ import {lightboxShow, windowshadeShow} from 'store/actions'
 
 import {useEnterEffect} from '../useEnterEffect'
 
-const CharacterIcon = (props) => {
-  const {name, x, y} = props
+const CharacterIcon = ({
+  name,
+  x,
+  y,
+  children
+}) => {
   const dispatch = useDispatch()
   useEnterEffect(name)
   const [isHover, setIsHover] = useState(false);
@@ -34,10 +38,29 @@ const CharacterIcon = (props) => {
   }
 
   return (
-    <g id={`logo-${name}`} onClick={() => handleIconClick(name)} onMouseOver={triggerEnter} onMouseLeave={triggerLeave}>
-      <circle cx={x} cy={y} stroke="#000000" fill="#bdb2bb" style={style}></circle>
-      <circle cx={x} cy={y} r="20" stroke="#2A3879" fill="#ffffff"></circle>
-      {props.children}
+    <g
+      id={`logo-${name}`}
+      onClick={() => handleIconClick(name)}
+      onMouseOver={triggerEnter}
+      onMouseLeave={triggerLeave}
+    >
+      <circle
+        cx={x}
+        cy={y}
+        stroke="#000000"
+        fill="#bdb2bb"
+        style={style}
+      >
+      </circle>
+      <circle
+        cx={x}
+        cy={y}
+        r="20"
+        stroke="#2A3879"
+        fill="#ffffff"
+      >
+      </circle>
+      {children}
     </g>
   )
 }

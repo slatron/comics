@@ -1,13 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import './lifeSection.scss'
 
-const LifeSection = ({flip, startingLife, name}) => {
-  const [life, setLife] = useState(startingLife)
-
-  useEffect(() => {
-    setLife(startingLife)
-  }, [startingLife])
-
+const LifeSection = ({id, flip, life, name, dispatch}) => {
   return (
     <div className={`full-height-layout life-section ${flip ? 'flip' : ''}`}>
       <div className="header-row align-row align-header">
@@ -17,7 +13,7 @@ const LifeSection = ({flip, startingLife, name}) => {
       </div>
       <div
         className="align-content centered align-row align-footer"
-        onClick={() => setLife(life => (life - 1))}
+        onClick={() => dispatch({type: 'CHANGE_LIFE', payload: {id, change: -1}})}
       >
         {life}
       </div>
@@ -25,13 +21,15 @@ const LifeSection = ({flip, startingLife, name}) => {
         <section className="centered">
           <button
             className="down"
-            onClick={() => setLife(life => (life - 1))}
+            onClick={() => dispatch({type: 'CHANGE_LIFE', payload: {id, change: -1}})}
+            type="button"
           >
             -1
           </button>
           <button
             className="down-big"
-            onClick={() => setLife(life => (life - 5))}
+            onClick={() => dispatch({type: 'CHANGE_LIFE', payload: {id, change: -5}})}
+            type="button"
           >
             -5
           </button>
@@ -39,13 +37,15 @@ const LifeSection = ({flip, startingLife, name}) => {
         <section className="centered">
           <button
             className="up-big"
-            onClick={() => setLife(life => (life + 5))}
+            onClick={() => dispatch({type: 'CHANGE_LIFE', payload: {id, change: 5}})}
+            type="button"
           >
             +5
           </button>
           <button
             className="up"
-            onClick={() => setLife(life => (life + 1))}
+            onClick={() => dispatch({type: 'CHANGE_LIFE', payload: {id, change: 1}})}
+            type="button"
           >
             +1
           </button>
@@ -55,4 +55,13 @@ const LifeSection = ({flip, startingLife, name}) => {
   )
 }
 
+LifeSection.propTypes = {
+  id: PropTypes.number,
+  flip: PropTypes.bool,
+  life: PropTypes.number,
+  name: PropTypes.string,
+  dispatch: PropTypes.func
+}
+
 export default LifeSection
+

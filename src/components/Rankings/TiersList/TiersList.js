@@ -3,18 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Tier from 'components/Rankings/Tier/Tier'
 
-const TiersList = (props) => {
-
+const TiersList = ({items, tiers}) => {
   // Sort items into object keyed by tier title
   const itemsByTier = {}
-  props.items.forEach(item => {
+  items.forEach(item => {
     if (!itemsByTier[item.tier]) itemsByTier[item.tier] = []
     itemsByTier[item.tier].push(item)
   })
 
   // Generate list of tiers if populated
-  const tiersListDOM = props.tiers.length ?
-    props.tiers.map((tier) => {
+  const tiersListDOM = tiers.length ?
+    tiers.map((tier) => {
       return <Tier tier={tier} key={tier.title} items={itemsByTier[tier.title]} />
     }) : <div className="loading">loading...</div>
 

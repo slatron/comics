@@ -7,16 +7,20 @@ import WindowShade from './WindowShade/WindowShade'
 
 import './CommonTemplate.scss'
 
-const CommonTemplate = (props) => (
+const CommonTemplate = ({
+  pageName,
+  drawerChildren,
+  children
+}) => (
   <>
     <HeaderBar />
-    <Drawer section={props.pageName}>
-      {props.drawerChildren}
+    <Drawer section={pageName}>
+      {drawerChildren}
     </Drawer>
     <Lightbox />
     <WindowShade />
-    <main className={`main-content-${props.pageName}`}>
-      {props.children}
+    <main className={`main-content-${pageName}`}>
+      {children}
     </main>
   </>
 )

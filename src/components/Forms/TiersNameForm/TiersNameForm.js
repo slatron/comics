@@ -4,9 +4,9 @@ import {useFormData} from '../useFormData'
 import api from 'src/api/api'
 import '../forms.scss'
 
-const TiersNameForm = (props) => {
+const TiersNameForm = ({tiers}) => {
     const updateTiers = () => {
-      let updateData = [...props.tiers]
+      let updateData = [...tiers]
       updateData.forEach((tier) => {
         tier.desc = (inputs[tier.title] === 0 || inputs[tier.title])
           ? inputs[tier.title]
@@ -25,10 +25,10 @@ const TiersNameForm = (props) => {
         return formData
       }
 
-      handleInitData(initFormData(props.tiers))
-    }, [props]) // eslint-disable-line react-hooks/exhaustive-deps
+      handleInitData(initFormData(tiers))
+    }, [tiers, handleInitData])
 
-    const TierInputs = props.tiers.map((tier) => {
+    const TierInputs = tiers.map((tier) => {
       return (
         <div key={tier.title} className="field-pair">
           <label>{tier.title.toUpperCase()}</label>
@@ -36,7 +36,8 @@ const TiersNameForm = (props) => {
             <input
               value={inputs[`${tier.title}`]}
               onChange={handleInputChange}
-              name={`${tier.title}`} />
+              name={`${tier.title}`}
+            />
           </div>
         </div>
       )

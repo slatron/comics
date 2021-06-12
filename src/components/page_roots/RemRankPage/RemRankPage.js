@@ -24,11 +24,9 @@ const RemRankPage = () => {
   }
 
   return (
-    <>
-      <CommonTemplate pageName="rem">
-        <TiersList items={allAlbums} tiers={allTiers} />
-      </CommonTemplate>
-    </>
+    <CommonTemplate pageName="rem">
+      <TiersList items={allAlbums} tiers={allTiers} />
+    </CommonTemplate>
   )
 }
 
