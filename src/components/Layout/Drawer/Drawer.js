@@ -4,7 +4,7 @@ import './Drawer.scss'
 
 import {useSelector} from 'react-redux'
 
-const Drawer = (props) => {
+const Drawer = ({children, section}) => {
   const drawerActive = useSelector(state => state.drawer)
   return (
     <nav
@@ -12,17 +12,17 @@ const Drawer = (props) => {
       className={`${drawerActive ? 'active' : ''}`}
     >
       <ul>
-        <li className={`${props.section === 'mcu' ? 'active' : ''}`}>
+        <li className={`${section === 'mcu' ? 'active' : ''}`}>
           <a href="./mcu-rank.html">MCU Rank</a>
         </li>
-        <li className={`${props.section === 'comics' ? 'active' : ''}`}>
+        <li className={`${section === 'comics' ? 'active' : ''}`}>
           <a href="./comics.html">Comics</a>
         </li>
-        <li className={`${props.section === 'lifetracker' ? 'active' : ''}`}>
+        <li className={`${section === 'lifetracker' ? 'active' : ''}`}>
           <a href="./lifetracker.html">Lifetracker</a>
         </li>
       </ul>
-      {props.children}
+      {children}
     </nav>
   )
 }

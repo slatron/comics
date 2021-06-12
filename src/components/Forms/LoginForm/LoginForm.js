@@ -12,34 +12,34 @@ const LoginForm = () => {
   const {inputs, handleSubmit, handleInputChange} = useFormData(signup)
 
   return (
-    <>
-      <form className="basic-form" onSubmit={handleSubmit}>
-        <h3>Login Here</h3>
-        <div className="field-pair">
-          <label htmlFor="login_email">Email </label>
-          <div className="input-container">
-            <input
-              type="email"
-              name="login_email"
-              id="login_email"
-              value={inputs.login_email}
-              onChange={handleInputChange}/>
-          </div>
+    <form className="basic-form" onSubmit={handleSubmit}>
+      <h3>Login Here</h3>
+      <div className="field-pair">
+        <label htmlFor="login_email">Email </label>
+        <div className="input-container">
+          <input
+            type="email"
+            name="login_email"
+            id="login_email"
+            value={inputs.login_email}
+            onChange={handleInputChange}
+          />
         </div>
-        <div className="field-pair">
-          <label htmlFor="login_pass">Password </label>
-          <div className="input-container">
-            <input
-              id="login_pass"
-              type="password"
-              name="login_pass"
-              value={inputs.login_pass}
-              onChange={handleInputChange}/>
-          </div>
+      </div>
+      <div className="field-pair">
+        <label htmlFor="login_pass">Password </label>
+        <div className="input-container">
+          <input
+            id="login_pass"
+            type="password"
+            name="login_pass"
+            value={inputs.login_pass}
+            onChange={handleInputChange}
+          />
         </div>
-        <button type="submit">login</button>
-      </form>
-    </>
+      </div>
+      <button type="submit">login</button>
+    </form>
   )
 }
 

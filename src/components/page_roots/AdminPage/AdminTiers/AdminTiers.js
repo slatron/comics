@@ -18,7 +18,7 @@ const AdminTiers = () => {
     }
 
     const tiersContent = allTiers.length
-    ? < TiersNameForm tiers={allTiers} />
+    ? <TiersNameForm tiers={allTiers} />
     : <div className="loading">loading...</div>
 
     return (

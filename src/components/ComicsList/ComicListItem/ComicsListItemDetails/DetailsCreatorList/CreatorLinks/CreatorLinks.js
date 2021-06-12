@@ -11,24 +11,28 @@ const DetailEntry = ({label, names, urls}) => {
   const urlLinks = urls.map((url, idx) => {
     return `https://www.marvel.com/comics/creators/${getId(url)}/${names[idx].split(' ').join('_')}`
   })
+
   const nameLinks = names.map((creator, idx) => {
     return (
-      <a href={urlLinks[idx]} key={idx} target="_blank" rel="noreferrer">
+      <a
+        href={urlLinks[idx]}
+        key={idx}
+        target="_blank"
+        rel="noreferrer"
+      >
         {creator}
         {idx !== (names.length - 1) ? ',' : ''}
       </a>
     )
   })
 
+  if (!names.length) return null
+
   return (
-    <>
-      {names.length > 0 &&
-        <div className="detail-entry detail-creator">
-          <h6>{simplePlural(label, names.length)}</h6>
-          <p>{nameLinks}</p>
-        </div>
-      }
-    </>
+    <div className="detail-entry detail-creator">
+      <h6>{simplePlural(label, names.length)}</h6>
+      <p>{nameLinks}</p>
+    </div>
   )
 }
 
