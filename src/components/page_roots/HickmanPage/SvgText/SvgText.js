@@ -1,21 +1,20 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import {useEnterFade} from '../useEnterEffect'
 
-const SvgText = (props) => {
-  const {fontSize, x, y, textId} = props
+const SvgText = ({fontSize, x, y, textId, children}) => {
   useEnterFade(textId)
   return (
-    <>
-      <text
-        className={textId}
-        fontFamily="Courier New"
-        fontSize={fontSize} x={x} y={y}>
-          {props.children}
-        </text>
-    </>
+    <text
+      className={textId}
+      fontFamily="Courier New"
+      fontSize={fontSize}
+      x={x}
+      y={y}
+    >
+      {children}
+    </text>
   )
 }
 

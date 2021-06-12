@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useState, useEffect} from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import CharacterIcon from './CharacterIcon/CharacterIcon'

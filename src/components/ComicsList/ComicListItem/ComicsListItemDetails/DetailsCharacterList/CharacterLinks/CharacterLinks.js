@@ -30,15 +30,13 @@ const CharacterLinks = ({label, names, urls}) => {
     })
   }
 
+  if (!names.length) return null
+
   return (
-    <>
-      {names.length > 0 &&
-        <div className="detail-entry">
-          <h6>{simplePlural(label, names.length)}</h6>
-          <p className="hand" onClick={() => handleCharacterClick(urls[0])}>{names[0]}</p>
-        </div>
-      }
-    </>
+    <div className="detail-entry">
+      <h6>{simplePlural(label, names.length)}</h6>
+      <p className="hand" onClick={() => handleCharacterClick(urls[0])}>{names[0]}</p>
+    </div>
   )
 }
 

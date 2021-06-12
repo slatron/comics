@@ -11,7 +11,8 @@ const DetailsCharacterList = ({characters}) => {
         label="Main Character"
         names={items.map(item => item.name)}
         type="character"
-        urls={items.map(item => item.resourceURI)} />
+        urls={items.map(item => item.resourceURI)}
+      />
     </div>
   )
 }

@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Item.scss'
 
-const Item = (props) => {
+const Item = ({item}) => {
   return (
     <section
-      className={`item ${props.item.key}`}
+      className={`item ${item.key}`}
       data-testid="item"
-      style={{backgroundImage: `url('./assets/images/${props.item.key}.jpg')`}}
-      key={props.item.key}
+      style={{backgroundImage: `url('./assets/images/${item.key}.jpg')`}}
+      key={item.key}
     >
-      <span className="ranking clarify">{props.item.rank}</span>
+      <span className="ranking clarify">{item.rank}</span>
       <span className="title clarify">
-        {props.item.title}
+        {item.title}
       </span>
     </section>
   )

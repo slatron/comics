@@ -1,13 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './lifetrackerMenu.scss'
 
 const LifetrackerMenu = ({
-  playerCount,
-  startingLife,
-  multiplayerMode,
-  setPlayerCount,
-  setStartingLife,
-  setMultiplayerMode,
+  state,
+  dispatch,
   resetGame
 }) => (
   <div className="life-tracker-menu">
@@ -15,8 +12,8 @@ const LifetrackerMenu = ({
       <label>Players</label>
       <div className="input-container">
         <select
-          value={playerCount}
-          onChange={(e) => setPlayerCount(parseInt(e.target.value))}
+          value={state.playerCount}
+          onChange={e => dispatch({type: 'SET_PLAYER_COUNT', payload: parseInt(e.target.value) })}
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -31,8 +28,8 @@ const LifetrackerMenu = ({
       <label>Life</label>
       <div className="input-container">
         <select
-          value={startingLife}
-          onChange={(e) => setStartingLife(parseInt(e.target.value))}
+          value={state.startingLife}
+          onChange={e => dispatch({type: 'SET_STARTING_LIFE', payload: parseInt(e.target.value) })}
         >
           <option value="20">20</option>
           <option value="25">25</option>
@@ -51,16 +48,22 @@ const LifetrackerMenu = ({
       <div className="input-container">
         <input
           id="multiplayer_cb"
-          checked={multiplayerMode}
+          checked={state.multiplayerMode}
           type="checkbox"
-          onChange={(e) => setMultiplayerMode(e.target.checked)}
+          onChange={e => dispatch({type: 'SET_MULTIPLAYER_MODE', payload: e.target.checked })}
         />
       </div>
     </fieldset>
     <fieldset>
-      <button onClick={() => resetGame()}>Reset</button>
+      <button type="button" onClick={() => resetGame()}>Reset</button>
     </fieldset>
   </div>
 )
+
+LifetrackerMenu.propTypes = {
+  state: PropTypes.object,
+  dispatch: PropTypes.func,
+  resetGame: PropTypes.func
+}
 
 export default LifetrackerMenu
