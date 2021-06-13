@@ -41,6 +41,8 @@ const ComicsPage = () => {
     handleFilterDateChange
   }
 
+  if (loadingComics) return <div className="loading">loading...</div>
+
   return (
     <CommonTemplate
       drawerChildren={
@@ -48,7 +50,6 @@ const ComicsPage = () => {
       }
       pageName="comics"
     >
-      {loadingComics && <div className="loading">loading...</div>}
       <ComicsList comics={comicResults} />
     </CommonTemplate>
   )

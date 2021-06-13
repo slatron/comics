@@ -3,7 +3,7 @@ import "regenerator-runtime/runtime";
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RemRankPage from 'components/page_roots/RemRankPage/RemRankPage'
+import AppRouter from 'components/page_roots/AppRouter'
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -15,6 +15,6 @@ const store = createStore(allReducer)
 
 ReactDOM.render(
   <Provider store={store}>
-    <RemRankPage />
+    <AppRouter />
   </Provider>,
-  document.getElementById('rem-rank-page'))
+  document.getElementById('app-container'))

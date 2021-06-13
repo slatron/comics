@@ -4,6 +4,8 @@ import './Drawer.scss'
 
 import {useSelector} from 'react-redux'
 
+import {Link} from "react-router-dom"
+
 const Drawer = ({children, section}) => {
   const drawerActive = useSelector(state => state.drawer)
   return (
@@ -13,13 +15,13 @@ const Drawer = ({children, section}) => {
     >
       <ul>
         <li className={`${section === 'mcu' ? 'active' : ''}`}>
-          <a href="./mcu-rank.html">MCU Rank</a>
+          <Link to="/mcu-rank">MCU Rank</Link>
         </li>
         <li className={`${section === 'comics' ? 'active' : ''}`}>
-          <a href="./comics.html">Comics</a>
+          <Link to="/comics">Comics</Link>
         </li>
         <li className={`${section === 'lifetracker' ? 'active' : ''}`}>
-          <a href="./lifetracker.html">Lifetracker</a>
+          <Link to="/lifetracker">Lifetracker</Link>
         </li>
       </ul>
       {children}

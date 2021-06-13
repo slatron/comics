@@ -8,8 +8,8 @@ const getFilesFromDir = require('./config/files')
 const PAGE_DIR = path.join('src', 'pages', path.sep)
 
 // Generate entry setting for javscript files in PAGE_DIR
-const jsFiles = getFilesFromDir(PAGE_DIR, ['.js'])
-const entry = generateSetting.entry(jsFiles)
+// const jsFiles = getFilesFromDir(PAGE_DIR, ['.js'])
+// const entry = generateSetting.entry(jsFiles)
 
 // Generate entry setting for html files in PAGE_DIR
 const htmlFiles = getFilesFromDir(PAGE_DIR, ['.html'])
@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
   return {
     devtool: 'source-map',
     // Create js bundle for each page:
-    entry,
+    entry: { index: './src/pages/index.js' },
 
     // generates js files for pages
     output: {
