@@ -3,7 +3,6 @@ import React, {useReducer} from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import LifeSection from './LifeSection/LifeSection'
 import LifetrackerMenu from './LifetrackerMenu/LifetrackerMenu'
-// import {useInitLifetracker} from './useInitLifetracker'
 
 import './lifetrackerPage.scss'
 
