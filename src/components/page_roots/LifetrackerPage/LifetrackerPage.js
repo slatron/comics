@@ -99,6 +99,7 @@ const LifetrackerPage = () => {
         <div className="align-row align-content life-tracker-wrapper">
           {state.sections.map(section => {
             section.dispatch = dispatch
+            section.playerCount = state.playerCount
             return (
               <section key={section.id} className={`life-section ${state.playerCount < 3 ? 'low-players' : ''}`} >
                 <LifeSection {...section} />

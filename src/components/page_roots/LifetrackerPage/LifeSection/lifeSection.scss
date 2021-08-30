@@ -61,17 +61,6 @@
     }
   }
 }
-.counter-sections {
-  width: 95px;
-}
-@media (min-width: 768px) {
-  .counter-sections {
-    height: auto;
-    width: 155px;
-    max-height: 216px;
-    overflow-y: scroll;
-  }
-}
 .align-content {
   cursor: pointer;
   font-size: 124px;
@@ -117,6 +106,31 @@ button {
     border-radius: 0.25em;
   }
 }
-.low-players .life-section button {
+.low-players .life-button {
   padding: 1.25em;
 }
+
+.counter-sections {
+  width: 95px;
+
+  button {
+    padding: .25em;
+    margin: 0 .25em;
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .counter-sections {
+    height: auto;
+    width: 155px;
+    max-height: 216px;
+    overflow-y: scroll;
+  }
+}
+
+.bg-aqua      { background-color: aqua; }
+.bg-pink      { background-color: pink; }
+.bg-yellow    { background-color: yellow; }
+.bg-goldenrod { background-color: goldenrod; }
+.bg-plum      { background-color: plum; }
+.bg-thistle   { background-color: thistle; }
