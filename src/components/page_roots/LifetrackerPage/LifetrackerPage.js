@@ -12,7 +12,6 @@ const STARTING_PLAYERS = 2
 
 const initSections = ({playerCount, startingLife, multiplayerMode}) => {
   return Array.from(new Array(playerCount), (x,i) => {
-    console.log(`Generating Section ${i} ${x}`)
     return {
       id: i + 1,
       life: startingLife,

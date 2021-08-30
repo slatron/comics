@@ -1,10 +1,27 @@
-import React, {useReducer} from 'react'
+import React, {useReducer, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
 
 import './lifeSection.scss'
 
 import LifeButton from './LifeButton'
+
+const ALL_COLORS = ['aqua', 'pink', 'yellow', 'goldenrod', 'plum', 'thistle']
+
+const getInitColors = (playerCount, id) => {
+  const colorCount = playerCount - 1 || 1
+  const OTHER_COLORS = [...ALL_COLORS]
+  // remove id index
+  OTHER_COLORS.splice(id - 1, 1)
+  return OTHER_COLORS.splice(0, colorCount)
+}
+
+const initialCountersState = (playerCount, id) => {
+  return {
+    colors: getInitColors(playerCount, id),
+    counters: {}
+  }
+} 
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,27 +36,25 @@ const reducer = (state, action) => {
       state.colors = state.color.filter(c => c !== color)
       return {...state};
     }
+    case 'INIT_COLORS': {
+      const {playerCount, id} = action.payload
+      state.colors = getInitColors(playerCount, id)
+      return {...state};
+    }
   }
   return state
 }
 
-const getInitColors = (playerCount, id) => {
-  const colorCount = playerCount - 1 || 1
-  const ALL_COLORS = ['aqua', 'pink', 'yellow', 'goldenrod', 'plum', 'thistle']
-  // remove id index
-  ALL_COLORS.splice(id - 1, 1)
-  return ALL_COLORS.splice(0, colorCount)
-}
-
 const LifeSection = ({id, flip, life, name, dispatch, playerCount}) => {
-  const initialCountersState= {
-    colors: getInitColors(playerCount, id),
-    counters: {}
-  } 
+  
   const [viewCounters, setViewCounters] = useState(false)
-  const [state, counterDispatch] = useReducer(reducer, initialCountersState)
+  const [state, counterDispatch] = useReducer(reducer, initialCountersState(playerCount, id))
 
-  console.log(state, counterDispatch)
+  useEffect(() => {
+    counterDispatch({type: 'INIT_COLORS', payload: {id, playerCount}})
+  }, [playerCount, id])
+
+  console.log(id, state.colors)
 
   const changeCounter = (up) => {
     console.log(up ? 'up' : 'down')
@@ -48,7 +63,7 @@ const LifeSection = ({id, flip, life, name, dispatch, playerCount}) => {
   const CounterSection = () => (
     <section className="counter-sections">
       <div className="choose-color-section centered">
-        colors
+        colorss
       </div>
       <div
         className="counter-section centered"
