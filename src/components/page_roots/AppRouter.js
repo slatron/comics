@@ -2,6 +2,7 @@ import React from "react"
 
 import McuRankPage from "./McuRankPage/McuRankPage"
 import ComicsPage from "./ComicsPage/ComicsPage"
+import RemRankPage from "./RemRankPage/RemRankPage"
 import LifetrackerPage from "./LifetrackerPage/LifetrackerPage"
 
 import {
@@ -19,6 +20,9 @@ export default function App() {
         </Route>
         <Route path="/mcu-rank">
           <McuRankPage />
+        </Route>
+        <Route path="/rem-rank">
+          <RemRankPage />
         </Route>
         <Route path="/">
           <ComicsPage />
