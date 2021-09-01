@@ -12,7 +12,6 @@ const STARTING_PLAYERS = 2
 
 const initSections = ({playerCount, startingLife, multiplayerMode}) => {
   return Array.from(new Array(playerCount), (x,i) => {
-    console.log(`Generating Section ${i} ${x}`)
     return {
       id: i + 1,
       life: startingLife,
@@ -76,6 +75,7 @@ const reducer = (state, action) => {
         sections: [...state.sections]
       };
     }
+    
   }
   return state
 }
@@ -99,6 +99,7 @@ const LifetrackerPage = () => {
         <div className="align-row align-content life-tracker-wrapper">
           {state.sections.map(section => {
             section.dispatch = dispatch
+            section.playerCount = state.playerCount
             return (
               <section key={section.id} className={`life-section ${state.playerCount < 3 ? 'low-players' : ''}`} >
                 <LifeSection {...section} />
