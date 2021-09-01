@@ -75,6 +75,7 @@ const reducer = (state, action) => {
         sections: [...state.sections]
       };
     }
+    
   }
   return state
 }
