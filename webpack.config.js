@@ -27,6 +27,10 @@ module.exports = (env, argv) => {
       filename: `[name].js`
     },
 
+    devServer: {
+      historyApiFallback: true
+    },
+
     // Put each html page in its own file
     plugins:[
       ...htmlPlugins,
