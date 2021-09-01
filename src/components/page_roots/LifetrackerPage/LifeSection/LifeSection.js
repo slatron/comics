@@ -6,6 +6,7 @@ import './lifeSection.scss'
 
 import LifeButton from './LifeButton'
 import CounterSection from './CounterSection'
+import Pawn from './Pawn'
 
 const ALL_COLORS = ['aqua', 'pink', 'yellow', 'goldenrod', 'plum', 'thistle']
 
@@ -41,6 +42,7 @@ const reducer = (state, action) => {
       const {playerCount, id} = action.payload
       const newColors = getInitColors(playerCount, id)
       state.colors = newColors
+      state.counters = {}
       return {...state};
     }
   }
@@ -52,12 +54,6 @@ const LifeSection = ({id, flip, life, name, dispatch, playerCount}) => {
   const [viewCounters, setViewCounters] = useState(false)
   const [currentPlayerCount, setPlayerCount] = useState(playerCount)
   const [state, counterDispatch] = useReducer(reducer, initialCountersState(playerCount, id))
-
-  console.log("------------------------")
-  console.log(`PLAYER: ${id}`)
-  console.log(`COLORS: ${state.colors}`)
-  console.log(`Counters on 'pink': ${state.counters.pink}`)
-  console.log("------------------------")
 
   useEffect(() => {
     if (playerCount !== currentPlayerCount) {
@@ -75,10 +71,9 @@ const LifeSection = ({id, flip, life, name, dispatch, playerCount}) => {
       </div>
 
       <section className={`counter-area${viewCounters ? ' active': ''}`}>
-        <i
-          className="ms ms-planeswalker ms-shadow"
-          onClick={() => setViewCounters(!viewCounters)}
-        />
+        <span class="counter-area-control-icon" onClick={() => setViewCounters(!viewCounters)}>
+          <Pawn />
+        </span>
         <section className="counter-sections">
           <CounterSection available={state.colors} counters={state.counters} counterDispatch={counterDispatch} />
         </section>

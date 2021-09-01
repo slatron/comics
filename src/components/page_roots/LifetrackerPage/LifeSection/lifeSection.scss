@@ -82,7 +82,7 @@ button.down-big {
     &.active {
       right: 0;
     }
-    i {
+    .counter-area-control-icon {
       cursor: pointer;
       padding: 0.3rem 0.3rem 2rem 0.6rem;
       width: 42px;
@@ -94,7 +94,7 @@ button.down-big {
   @media (min-width: 768px) {
     .counter-area {
       right: -167px;
-      i {
+      .counter-area-control-icon {
         padding: 0.6rem 0.6rem 2rem;
       }
     }
