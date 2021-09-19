@@ -2,27 +2,6 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
 
-// Detect if user is on IE browser
-var isIE = !!window.MSInputMethodContext && !!document.documentMode;
-
-if (isIE) {
-   // Create Promise polyfill script tag
-    var promiseScript = document.createElement("script");
-    promiseScript.type = "text/javascript";
-    promiseScript.src =
-        "https://cdn.jsdelivr.net/npm/promise-polyfill@8.1.3/dist/polyfill.min.js";
-
-    // Create Fetch polyfill script tag
-    var fetchScript = document.createElement("script");
-    fetchScript.type = "text/javascript";
-    fetchScript.src =
-        "https://cdn.jsdelivr.net/npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js";
-
-    // Add polyfills to head element
-    document.head.appendChild(promiseScript);
-    document.head.appendChild(fetchScript);
-}
-
 const firebaseConfig = {
   apiKey: "AIzaSyA4Ut5x488eODNFmnlisGKRSNYhuoHJ6Pw",
   authDomain: "mcu-tiers.firebaseapp.com",
@@ -72,25 +51,12 @@ export default {
   },
 
   // Firebase Calls
-  getMoviesFB: () => {
-    return db.ref('movies').once('value')
-  },
-
-  getTiersFB: () => {
-    return db.ref('tiers').once('value')
-  },
-
-  getRemAlbumsFB: () => {
-    return db.ref('rem-albums').once('value')
-  },
-
-  getRemTiersFB: () => {
-    return db.ref('rem-tiers').once('value')
-  },
-
-  updateRemTiersFB: (tiers) => {
-    return db.ref('rem-tiers').set(tiers)
-  },
+  getMoviesFB: () => db.ref('movies').once('value'),
+  getTiersFB: () => db.ref('tiers').once('value'),
+  getRemAlbumsFB: () => db.ref('rem-albums').once('value'),
+  getRemTiersFB: () => db.ref('rem-tiers').once('value'),
+  updateRemTiersFB: tiers => db.ref('rem-tiers').set(tiers),
+  updateRemAlbumsFB: albums => db.ref('rem-albums').set(albums),
 
   login: (email, pass) => {
     firebase.auth()
@@ -109,17 +75,13 @@ export default {
   logout: () => {
     firebase.auth()
             .signOut()
-            .then(() => {
-              console.log('You have signed out')
-            })
-            .catch((error) => {
-              console.log('Error signing out: ', error)
-            })
+            .then(() => console.log('You have signed out'))
+            .catch(error => console.log('Error signing out: ', error))
   },
 
-  getLoginObserver: (callback) => {
+  getLoginObserver: callback => {
     firebase.auth()
-            .onAuthStateChanged((user) => {
+            .onAuthStateChanged(user => {
               user = user ? user : {}
               callback(user)
             })

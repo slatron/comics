@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useFetchAuth} from '../useFetchAuth'
-import api from 'src/api/api'
+import api from 'src/api'
 
 import LoginForm from 'components/forms/LoginForm/LoginForm'
 import CommonTemplate from 'components/Layout/CommonTemplate'
@@ -32,9 +32,7 @@ const AdminPage = () => {
   
   return (
     <CommonTemplate
-      drawerChildren={
-        <div>After the Drawer Links</div>
-      }
+      drawerChildren={null}
       pageName="admin"
     >
       {loadingUser && <div className="loading">loading...</div>}

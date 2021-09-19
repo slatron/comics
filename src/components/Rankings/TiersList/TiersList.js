@@ -1,7 +1,7 @@
 // This component takes items and tiers and sorts them into Tier components
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tier from 'components/Rankings/Tier/Tier'
+import Tier from 'components/Rankings/Tier'
 
 const TiersList = ({items, tiers}) => {
   // Sort items into object keyed by tier title
@@ -12,10 +12,9 @@ const TiersList = ({items, tiers}) => {
   })
 
   // Generate list of tiers if populated
-  const tiersListDOM = tiers.length ?
-    tiers.map((tier) => {
-      return <Tier tier={tier} key={tier.title} items={itemsByTier[tier.title]} />
-    }) : <div className="loading">loading...</div>
+  const tiersListDOM = tiers.length
+    ? tiers.map(tier => itemsByTier[tier.title] ? <Tier tier={tier} key={tier.title} items={itemsByTier[tier.title]} /> : null) 
+    : <div className="loading">loading...</div>
 
   return (
     <div className="tiers-list">

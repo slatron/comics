@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Item from 'components/Rankings/Item/Item'
+import Item from 'components/Rankings/Item'
 
 import './Tier.scss'
 
