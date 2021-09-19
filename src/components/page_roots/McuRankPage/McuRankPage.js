@@ -1,26 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import CommonTemplate from 'components/Layout/CommonTemplate'
-import TiersList from 'components/Rankings/TiersList/TiersList'
-import { sorting } from 'utils/sorting'
-import { useLocalStorage } from 'hooks/useLocalStorage';
-import api from 'src/api/api'
+import TiersList from 'components/Rankings/TiersList'
+import api from 'src/api'
+import {useSetTierNames} from 'src/components/Rankings/useSetTierNames'
 
 const McuRankPage = () => {
-  const [allMovies, setAllMovies] = useLocalStorage('allMovies', [])
-  const [allTiers, setAllTiers] = useLocalStorage('allTiers', [])
-  
-  const getMovies = () => {
-    api.getMoviesFB().then(snapshot => {
-      const sortedMovies = snapshot.val().sort(sorting().sortBy('rank', true))
-      setAllMovies(sortedMovies)
-    })
-    api.getTiersFB().then(snapshot => {
-      const sortedTiers = snapshot.val().sort(sorting().sortBy('position', true))
-      setAllTiers(sortedTiers)
-    })
-  }
-
-  useEffect(getMovies, [setAllMovies, setAllTiers]);
+  const [allMovies, allTiers] = useSetTierNames(api.getTiersFB, api.getMoviesFB)
+  if (!allMovies.length || !allTiers.length) return null
 
   return (
     <CommonTemplate pageName="mcu">

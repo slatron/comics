@@ -5,11 +5,30 @@ import api from 'src/api'
 
 import LoginForm from 'components/forms/LoginForm/LoginForm'
 import CommonTemplate from 'components/Layout/CommonTemplate'
-import AdminTiers from './AdminTiers/AdminTiers'
+import AdminRankings from './AdminRankings'
+const noop = () => {}
 
 const AdminPage = () => {
   const [loadingUser, user] = useFetchAuth()
   const logoutUser = () => api.logout()
+
+  const allRankings = () => (
+    <>
+      <h2>MCU Rankings</h2>
+      <AdminRankings
+        itemsAPI={api.getMoviesFB}
+        saveRankings={api.updateMoviesFB}
+        tiersAPI={api.getTiersFB}
+        updateTierData={api.updateTiersFB}/>
+      <hr/>
+      <h2>REM Album Rankings</h2>
+      <AdminRankings
+        itemsAPI={api.getRemAlbumsFB}
+        saveRankings={api.updateRemAlbumsFB}
+        tiersAPI={api.getRemTiersFB}
+        updateTierData={api.updateRemTiersFB}/>
+    </>
+  )
 
   const AdminSection = ({user}) => {
     return user.logged_in
@@ -18,7 +37,7 @@ const AdminPage = () => {
         <p>
           {`${user.name} is Logged In`} | <span className="hand" onClick={() => logoutUser()}>logout</span>
         </p>
-        <AdminTiers />
+        {allRankings()}
       </>
       )
       : (

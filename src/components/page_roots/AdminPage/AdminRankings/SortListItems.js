@@ -1,21 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import api from 'src/api'
-import { sorting } from 'utils/sorting'
 import MoveableItem from './MoveableItem'
 import update from 'immutability-helper';
 
-const SortListItems = () => {
-  const [items, setItems] = useState([])
-
-  useEffect(() => getItems(), []);
-
-  function getItems() {
-    api.getRemAlbumsFB().then(snapshot => {
-      const sortedItems = snapshot.val().sort(sorting().sortBy('rank', true))
-      setItems(sortedItems)
-    })
-  }
-
+const SortListItems = ({items, setItems, saveRankings}) => {
   const moveItem = (dragIndex, hoverIndex) => {
     const dragItem = items[dragIndex];
     setItems(update(items, {
@@ -26,9 +15,8 @@ const SortListItems = () => {
     }));
   };
 
-  // const saveItems = () => api.updateRemAlbumsFB(items)
   const saveItems = () => {
-    api.updateRemAlbumsFB(items.map((item, idx) => {
+    saveRankings(items.map((item, idx) => {
       item.rank = idx + 1
       return item
     }))
@@ -40,6 +28,12 @@ const SortListItems = () => {
       <button type="button" onClick={saveItems}>Save</button>
     </div>
   )
+}
+
+SortListItems.prototypes = {
+  items: PropTypes.array,
+  setItems: PropTypes.func,
+  saveRankings: PropTypes.func
 }
 
 export default SortListItems

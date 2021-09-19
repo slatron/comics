@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useFormData} from 'src/components/Forms/useFormData'
-import api from 'src/api'
 
-const TiersNameForm = ({tiers}) => {
+const TiersNameForm = ({tiers, updateTierData}) => {
   const updateTiers = () => {
     const updateData = [...tiers]
     updateData.forEach(tier => {
@@ -17,7 +16,7 @@ const TiersNameForm = ({tiers}) => {
           : tier.lowest
       }
     })
-    api.updateRemTiersFB(updateData)
+    updateTierData(updateData)
   }
   const {formData, handleSubmit, handleInputChange, handleSetFormData} = useFormData(updateTiers)
 
@@ -64,7 +63,8 @@ const TiersNameForm = ({tiers}) => {
 }
 
 TiersNameForm.propTypes = {
-  tiers: PropTypes.array
+  tiers: PropTypes.array,
+  updateTierData: PropTypes.func
 }
 
 export default TiersNameForm

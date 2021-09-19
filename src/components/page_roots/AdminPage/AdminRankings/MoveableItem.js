@@ -8,7 +8,7 @@ const style = {
     backgroundColor: 'white',
     cursor: 'move'
 };
-const MoveableItem = forwardRef(function Item({ text, isDragging, connectDragSource, connectDropTarget }, ref) {
+const MoveableItem = forwardRef(function Item({ index, text, isDragging, connectDragSource, connectDropTarget }, ref) {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
     connectDropTarget(elementRef);
@@ -17,7 +17,7 @@ const MoveableItem = forwardRef(function Item({ text, isDragging, connectDragSou
         getNode: () => elementRef.current,
     }));
     return (<div ref={elementRef} style={{ ...style, opacity }}>
-			{text}
+			{index + 1} | {text}
 		</div>);
 });
 export default DropTarget('item', {
