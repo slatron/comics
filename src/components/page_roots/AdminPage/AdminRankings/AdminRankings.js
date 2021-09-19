@@ -11,6 +11,7 @@ const AdminRankings = ({itemsAPI, tiersAPI, updateTierData, saveRankings}) => {
     const [tiers, setTiers] = useState([])
     const [items, setItems] = useState([])
     const [newTitle, setNewTitle] = useState('')
+    const [newMovieKey, setNewMovieKey] = useState('')
     useEffect(() => getTiers(), [])
     useEffect(() => getItems(), []);
   
@@ -29,20 +30,25 @@ const AdminRankings = ({itemsAPI, tiersAPI, updateTierData, saveRankings}) => {
     }
 
     function handleAddItem() {
+      debugger
+      if (!newTitle || !newMovieKey || newMovieKey.indexOf(' ') > -1) return
       saveRankings([
         ...items,
-        {title: newTitle, rank: items.length + 1, key: newTitle}
+        {title: newTitle, rank: items.length + 1, key: newMovieKey.trim()}
       ])
+      setNewTitle('')
+      setNewMovieKey('')
     }
 
     const tiersContent = tiers.length
         ? (
           <>
             <DndProvider backend={HTML5Backend}>
-              <SortListItems items={items} setItems={setItems} saveRankings={saveRankings} />
+              <SortListItems items={items} setItems={setItems} savßeRankings={saveRankings} />
             </DndProvider>
             <div>
-              <input value={newTitle} onChange={e => setNewTitle(e.target.value)}/>
+              <input value={newTitle} placeholder="Title" onChange={e => setNewTitle(e.target.value)}/>
+              <input value={newMovieKey} placeholder="Key" onChange={e => setNewMovieKey(e.target.value)}/>
               <button type="button" onClick={handleAddItem}>Add New Item</button>
             </div>
             <TiersNameForm tiers={tiers} updateTierData={updateTierData} />
