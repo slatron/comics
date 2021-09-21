@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {useFormData} from 'src/components/Forms/useFormData'
+import {useFormData} from 'src/components/forms/useFormData'
 
 const TiersNameForm = ({tiers, updateTierData}) => {
   const updateTiers = () => {

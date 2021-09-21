@@ -9,10 +9,18 @@ import AdminPage from "./AdminPage/AdminPage"
 import {
   BrowserRouter as Router,
   Switch,
+  Redirect,
   Route
 } from "react-router-dom"
 
 export default function App() {
+
+  let path = localStorage.getItem('redirect-path') || null;
+  if (path) {
+    localStorage.removeItem('redirect-path');
+    return <Redirect to={path} />
+  }
+
   return (
     <Router>
       <Switch>
