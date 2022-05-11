@@ -3,3 +3,4 @@ app
 deploy.sh
 *.snap
 .vscode
+.DS_Store
