@@ -20,11 +20,11 @@ const Drawer = ({children, section}) => {
         <li className={`${section === 'comics' ? 'active' : ''}`}>
           <Link to="/comics">Comics</Link>
         </li>
-        <li className={`${section === 'mcu' ? 'active' : ''}`}>
-          <Link to="/rem-rank">REM Rank</Link>
-        </li>
         <li className={`${section === 'lifetracker' ? 'active' : ''}`}>
           <Link to="/lifetracker">Lifetracker</Link>
+        </li>
+        <li >
+          <Link to="/admin">Admin</Link>
         </li>
       </ul>
       {children}
