@@ -8,6 +8,7 @@ const style = {
     backgroundColor: 'white',
     cursor: 'move'
 };
+// eslint-disable-next-line react/prop-types
 const MoveableItem = forwardRef(function Item({ index, text, isDragging, connectDragSource, connectDropTarget }, ref) {
     const elementRef = useRef(null);
     connectDragSource(elementRef);

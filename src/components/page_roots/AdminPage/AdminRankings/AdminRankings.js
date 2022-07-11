@@ -30,7 +30,6 @@ const AdminRankings = ({itemsAPI, tiersAPI, updateTierData, saveRankings}) => {
     }
 
     function handleAddItem() {
-      debugger
       if (!newTitle || !newMovieKey || newMovieKey.indexOf(' ') > -1) return
       saveRankings([
         ...items,
@@ -44,7 +43,7 @@ const AdminRankings = ({itemsAPI, tiersAPI, updateTierData, saveRankings}) => {
         ? (
           <>
             <DndProvider backend={HTML5Backend}>
-              <SortListItems items={items} setItems={setItems} savßeRankings={saveRankings} />
+              <SortListItems items={items} setItems={setItems} saveRankings={saveRankings} />
             </DndProvider>
             <div>
               <input value={newTitle} placeholder="Title" onChange={e => setNewTitle(e.target.value)}/>

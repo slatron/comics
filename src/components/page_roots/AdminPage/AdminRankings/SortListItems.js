@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import api from 'src/api'
 import MoveableItem from './MoveableItem'
 import update from 'immutability-helper';
 
@@ -30,7 +29,7 @@ const SortListItems = ({items, setItems, saveRankings}) => {
   )
 }
 
-SortListItems.prototypes = {
+SortListItems.propTypes = {
   items: PropTypes.array,
   setItems: PropTypes.func,
   saveRankings: PropTypes.func

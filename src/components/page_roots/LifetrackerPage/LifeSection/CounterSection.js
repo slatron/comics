@@ -5,8 +5,9 @@ const CounterSection = ({available, counters, counterDispatch}) => {
 
   const makePlayerSections = sections => {
     return sections.map(color => (
-      <div className="counter-section centered" style={{backgroundColor: color}}>
+      <div key={color} className="counter-section centered" style={{backgroundColor: color}}>
         <button
+          type="button"
           className="down"
           onClick={() => counterDispatch({type: 'CHANGE_COUNTER', payload: {color, change: -1}})}
         >
@@ -14,6 +15,7 @@ const CounterSection = ({available, counters, counterDispatch}) => {
         </button>
         <div className="counter-count">{counters[color]}</div>
         <button
+          type="button"
           className="up"
           onClick={() => counterDispatch({type: 'CHANGE_COUNTER', payload: {color, change: 1}})}
         >
@@ -30,6 +32,7 @@ const CounterSection = ({available, counters, counterDispatch}) => {
         ? <div className="choose-color-section centered">
             {available.map(color => (
               <button
+                type="button"
                 key={color}
                 className={`color-chooser bg-${color}`}
                 onClick={() => counterDispatch({type: 'ASSIGN_COLOR', payload: {color}})}

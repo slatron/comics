@@ -6,7 +6,6 @@ import api from 'src/api'
 import LoginForm from 'components/forms/LoginForm/LoginForm'
 import CommonTemplate from 'components/Layout/CommonTemplate'
 import AdminRankings from './AdminRankings'
-const noop = () => {}
 
 const AdminPage = () => {
   const [loadingUser, user] = useFetchAuth()
@@ -19,14 +18,7 @@ const AdminPage = () => {
         itemsAPI={api.getMoviesFB}
         saveRankings={api.updateMoviesFB}
         tiersAPI={api.getTiersFB}
-        updateTierData={api.updateTiersFB}/>
-      <hr/>
-      <h2>REM Album Rankings</h2>
-      <AdminRankings
-        itemsAPI={api.getRemAlbumsFB}
-        saveRankings={api.updateRemAlbumsFB}
-        tiersAPI={api.getRemTiersFB}
-        updateTierData={api.updateRemTiersFB}/>
+        updateTierData={api.updateTiersFB} />
     </>
   )
 

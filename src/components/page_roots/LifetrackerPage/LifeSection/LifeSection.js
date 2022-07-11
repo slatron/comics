@@ -71,7 +71,7 @@ const LifeSection = ({id, flip, life, name, dispatch, playerCount}) => {
       </div>
 
       <section className={`counter-area${viewCounters ? ' active': ''}`}>
-        <span class="counter-area-control-icon" onClick={() => setViewCounters(!viewCounters)}>
+        <span className="counter-area-control-icon" onClick={() => setViewCounters(!viewCounters)}>
           <Pawn />
         </span>
         <section className="counter-sections">
