@@ -3,7 +3,7 @@
 // Layout
 #drawer {
   top: $header-height - 1;
-  background: red;
+  background: $brand-color;
   width: $drawer-width;
   left: -$drawer-width;
   overflow-y: auto;

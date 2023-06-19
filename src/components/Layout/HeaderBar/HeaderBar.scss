@@ -1,7 +1,7 @@
 @import './src/styles/base/settings';
 
 .header-bar {
-  background: red;
+  background: $brand-color;
   border-bottom: 1px solid $color-white;
   padding: 0.5em;
   position: fixed;
