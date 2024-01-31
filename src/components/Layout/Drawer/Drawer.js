@@ -15,7 +15,7 @@ const Drawer = ({children, section}) => {
     >
       <ul>
         <li className={`${section === 'mcu' ? 'active' : ''}`}>
-          <Link to="/mcu-rank">MCU Rank</Link>
+          <a href="https://slatron.github.io/mcu-tiers/">MCU Rank</a>
         </li>
         <li className={`${section === 'comics' ? 'active' : ''}`}>
           <Link to="/comics">Comics</Link>

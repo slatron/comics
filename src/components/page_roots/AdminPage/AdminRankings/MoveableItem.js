@@ -1,5 +1,6 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import { DragSource, DropTarget, } from 'react-dnd';
+import api from 'src/api/api';
 
 const style = {
     border: '1px dashed gray',
@@ -8,18 +9,58 @@ const style = {
     backgroundColor: 'white',
     cursor: 'move'
 };
+
+const buttonStyle = {
+    'margin-left': '1rem'
+};
+
+const reviewStyle = {
+    padding: '0.5rem 1rem'
+};
+
 // eslint-disable-next-line react/prop-types
-const MoveableItem = forwardRef(function Item({ index, text, isDragging, connectDragSource, connectDropTarget }, ref) {
-    const elementRef = useRef(null);
-    connectDragSource(elementRef);
-    connectDropTarget(elementRef);
+const MoveableItem = forwardRef(function Item({ index, item, getItems, isDragging, connectDragSource, connectDropTarget }, ref) {
+    const [showReview, setShowReview] = useState(false);
+    const rootElement = useRef(null);
+    const reviewInput = useRef(null);
+    connectDragSource(rootElement);
+    connectDropTarget(rootElement);
     const opacity = isDragging ? 0 : 1;
     useImperativeHandle(ref, () => ({
-        getNode: () => elementRef.current,
+        getNode: () => rootElement.current,
     }));
-    return (<div ref={elementRef} style={{ ...style, opacity }}>
-			{index + 1} | {text}
-		</div>);
+
+    const text = item.title;
+    const review = item.review;
+    const itemId = item.rank - 1;
+
+    const updateReview = e => {
+        e.preventDefault();
+        const newReview = reviewInput?.current?.value || '';
+
+        api.getMoviesFB().then(snapshot => {
+          const movies = snapshot.val();
+          movies[itemId].review = newReview;
+          api.updateMoviesFB(movies).then(() => {
+            getItems();
+            setShowReview(false);
+          });
+        });
+    };
+
+    return (
+      <div ref={rootElement} style={{ ...style, opacity }}>
+        {index + 1} | {text} 
+        <button style={buttonStyle} onClick={() => setShowReview(prev => !prev)}>
+            {showReview ? 'cancel' : 'edit review'}
+        </button>
+        {showReview && (
+            <form style={reviewStyle} method="post" onSubmit={updateReview}>
+                <textarea name={`${itemId}_review`} ref={reviewInput} defaultValue={review || ''} />
+                <button>save</button>
+            </form>
+        )}
+      </div>);
 });
 export default DropTarget('item', {
     hover(props, monitor, component) {

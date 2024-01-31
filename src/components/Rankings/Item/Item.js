@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './Item.scss'
 
 const IMG_PATH = window.location.hostname === 'localhost'
  ? './assets/images/'
@@ -8,6 +7,7 @@ const IMG_PATH = window.location.hostname === 'localhost'
 
 
 const Item = ({item}) => {
+  const [showReview, setShowReview] = useState(false);
   return (
     <section
       className={`item ${item.key}`}
@@ -19,6 +19,20 @@ const Item = ({item}) => {
       <span className="title clarify">
         {item.title}
       </span>
+      {item.review && (
+        <span onClick={() => setShowReview(true)} className="icon-info clarify">
+          i
+        </span>
+      )}
+      {showReview && item.review && (
+        <>
+        <div
+          className="item-review"
+          onClick={() => setShowReview(false)}
+        />
+        <div className="item-review-text" onClick={() => setShowReview(false)}>{item.review}</div>
+        </>
+      )}
     </section>
   )
 }

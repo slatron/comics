@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Tier from 'components/Rankings/Tier'
 
 const TiersList = ({items, tiers}) => {
+  console.log({items});
   // Sort items into object keyed by tier title
   const itemsByTier = {}
   items.forEach(item => {

@@ -43,7 +43,7 @@ const AdminRankings = ({itemsAPI, tiersAPI, updateTierData, saveRankings}) => {
         ? (
           <>
             <DndProvider backend={HTML5Backend}>
-              <SortListItems items={items} setItems={setItems} saveRankings={saveRankings} />
+              <SortListItems items={items} setItems={setItems} getItems={getItems} saveRankings={saveRankings} />
             </DndProvider>
             <div>
               <input value={newTitle} placeholder="Title" onChange={e => setNewTitle(e.target.value)}/>

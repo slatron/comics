@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import MoveableItem from './MoveableItem'
 import update from 'immutability-helper';
 
-const SortListItems = ({items, setItems, saveRankings}) => {
+const SortListItems = ({items, setItems, getItems, saveRankings}) => {
   const moveItem = (dragIndex, hoverIndex) => {
     const dragItem = items[dragIndex];
     setItems(update(items, {
@@ -21,9 +21,13 @@ const SortListItems = ({items, setItems, saveRankings}) => {
     }))
   }
 
+  React.useEffect(() => {
+    console.log({items});
+  }, [items]);
+
   return (
     <div>
-      {items.map((item, i) => (<MoveableItem key={item.key} index={i} id={item.key} text={item.title} moveItem={moveItem}/>))}
+      {items.map((item, i) => (<MoveableItem key={item.key} index={i} item={item} getItems={getItems} moveItem={moveItem}/>))}
       <button type="button" onClick={saveItems}>Save</button>
     </div>
   )
@@ -32,7 +36,8 @@ const SortListItems = ({items, setItems, saveRankings}) => {
 SortListItems.propTypes = {
   items: PropTypes.array,
   setItems: PropTypes.func,
-  saveRankings: PropTypes.func
+  saveRankings: PropTypes.func,
+  getItems: PropTypes.func,
 }
 
 export default SortListItems

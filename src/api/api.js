@@ -56,11 +56,6 @@ export default {
   updateTiersFB: tiers => db.ref('tiers').set(tiers),
   updateMoviesFB: movies => db.ref('movies').set(movies),
 
-  getRemAlbumsFB: () => db.ref('rem-albums').once('value'),
-  getRemTiersFB: () => db.ref('rem-tiers').once('value'),
-  updateRemTiersFB: tiers => db.ref('rem-tiers').set(tiers),
-  updateRemAlbumsFB: albums => db.ref('rem-albums').set(albums),
-
   login: (email, pass) => {
     firebase.auth()
             .signInWithEmailAndPassword(email, pass)
