@@ -23,6 +23,7 @@ const MoveableItem = forwardRef(function Item({ index, item, getItems, isDraggin
     const [showReview, setShowReview] = useState(false);
     const rootElement = useRef(null);
     const reviewInput = useRef(null);
+    const metacriticInput = useRef(null);
     connectDragSource(rootElement);
     connectDropTarget(rootElement);
     const opacity = isDragging ? 0 : 1;
@@ -32,15 +33,26 @@ const MoveableItem = forwardRef(function Item({ index, item, getItems, isDraggin
 
     const text = item.title;
     const review = item.review;
+    const metacritic = item.metacritic;
     const itemId = item.rank - 1;
 
     const updateReview = e => {
         e.preventDefault();
         const newReview = reviewInput?.current?.value || '';
+        const newMetacritic = metacriticInput?.current?.value || '';
 
         api.getMoviesFB().then(snapshot => {
           const movies = snapshot.val();
-          movies[itemId].review = newReview;
+          const thisMovie = movies[itemId];
+
+          if (thisMovie.review !== newReview) {
+            thisMovie.review = newReview;
+          }
+
+          if (thisMovie.metacritic !== newMetacritic) {
+            thisMovie.metacritic = newMetacritic;
+          }
+
           api.updateMoviesFB(movies).then(() => {
             getItems();
             setShowReview(false);
@@ -52,11 +64,14 @@ const MoveableItem = forwardRef(function Item({ index, item, getItems, isDraggin
       <div ref={rootElement} style={{ ...style, opacity }}>
         {index + 1} | {text} 
         <button style={buttonStyle} onClick={() => setShowReview(prev => !prev)}>
-            {showReview ? 'cancel' : 'edit review'}
+            {showReview ? 'cancel' : 'edit'}
         </button>
         {showReview && (
             <form style={reviewStyle} method="post" onSubmit={updateReview}>
+                <label>Review</label>
                 <textarea name={`${itemId}_review`} ref={reviewInput} defaultValue={review || ''} />
+                <label>Metacritic</label>
+                <input name={`${itemId}_rmetacritic`} ref={metacriticInput} defaultValue={metacritic || ''} />
                 <button>save</button>
             </form>
         )}

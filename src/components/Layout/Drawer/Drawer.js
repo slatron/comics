@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux'
 
 import {Link} from "react-router-dom"
 
-const Drawer = ({children, section}) => {
+const Drawer = ({children}) => {
   const drawerActive = useSelector(state => state.drawer)
   return (
     <nav
@@ -14,11 +14,8 @@ const Drawer = ({children, section}) => {
       className={`${drawerActive ? 'active' : ''}`}
     >
       <ul>
-        <li className={`${section === 'mcu' ? 'active' : ''}`}>
-          <a href="https://slatron.github.io/mcu-tiers/">MCU Rank</a>
-        </li>
-        <li className={`${section === 'comics' ? 'active' : ''}`}>
-          <Link to="/comics">Comics</Link>
+        <li>
+          <Link to="/comics">Admin</Link>
         </li>
         <li >
           <Link to="/admin">Admin</Link>
